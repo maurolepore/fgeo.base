@@ -30,22 +30,3 @@ navbar:
 
     - text: fgeo
       href: https://forestgeo.github.io/fgeo/
-
-
-
-reference:
-
-  - title: EDIT-TITLE-OF-FUNCTION-GROUP
-    contents:
-      - EDIT-FUNCTION-NAME
-      - EDIT-FUNCTION-NAME
-
-  - title: EDIT-TITLE-OF-FUNCTION-GROUP
-    contents:
-      - matches("EDIT-MATCH")
-      - starts_with("EDIT-START")
-      - end_with("EDIT-END")
-
-  - title: Datasets
-    contents:
-      - EDIT-DATASET-NAME

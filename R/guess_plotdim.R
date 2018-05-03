@@ -1,11 +1,15 @@
 #' Guess plot dimensions.
 #'
-#' @template x_fgeo
+#' @param x A dataframe; a ForestGEO dataset (census or ViewFullTable).
 #' @param accuracy A number giving the accuracy with which to round `gx` and
 #'   `gy`.
 #'
 #' @return A numeric vector of length 2.
 #' @export
+#'
+#' @family functions for fgeo census and vft.
+#' @family functions for fgeo census.
+#' @family functions for fgeo vft.
 #'
 #' @examples
 #' x <- data.frame(
@@ -16,19 +20,20 @@
 guess_plotdim <- function(x, accuracy = 20) {
   stopifnot(is.data.frame(x))
   stopifnot(is.numeric(accuracy))
-  
+
   names(x) <- tolower(names(x))
   .match <- c("x", "gx", "y", "gy", "x", "px")
   matched <- nms_extract_match(x, .match)
+
   n_nms <- length(matched)
   if (n_nms != 2) {
     stop("Not enough columns to find x/y positions.\n", matched, call. = FALSE)
   }
-  
+
   guess <- vapply(
     x[ , c("gx", "gy")], guess_max, double(1), accuracy = accuracy
   )
-  
+
   message("Gessing: plotdim = c(", commas(guess), ")")
   unname(guess)
 }
@@ -79,15 +84,15 @@ regex_line <- function(x) {
 
 
 #' Round to multiple of any number. Copied from `plyr:::round_any.numeric()`.
-#' 
+#'
 #' @param x Numeric vector to round.
 #' @param accuracy Number to round to.
 #' @param f Rounding function: floor, ceiling or round.
-#' 
+#'
 #' @seealso `plyr::round_any()` and \url{http://bit.ly/2JrBQK3}.
-#' 
+#'
 #' @export
-#' 
+#'
 #' @examples
 #' # From pryr::round_any()
 #' round_any(135, 10)
@@ -108,7 +113,7 @@ round_any <- function(x, accuracy, f = round) {
 
 
 
-# Utils 
+# Utils
 
 #' Paste wrappers.
 #'
@@ -122,13 +127,13 @@ round_any <- function(x, accuracy, f = round) {
 #' @name stick
 
 #' @export
-#' @rdname stick 
+#' @rdname stick
 or <- function(...) {
   paste0(..., collapse = "|")
 }
 
 #' @export
-#' @rdname stick 
+#' @rdname stick
 commas <- function(...) {
   paste0(..., collapse = ", ")
 }
