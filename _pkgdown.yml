@@ -30,3 +30,14 @@ navbar:
 
     - text: fgeo
       href: https://forestgeo.github.io/fgeo/
+
+
+reference:
+
+  - title: Functions
+    contents:
+      - -matches("luquillo_")
+
+  - title: Datasets
+    contents:
+      - matches("luquillo_")

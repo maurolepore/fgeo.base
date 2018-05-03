@@ -3,7 +3,7 @@
 ^LICENSE\.md$
 ^README\.Rmd$
 ^\.travis\.yml$
-^\./github$
 ^_pkgdown\.yml$
 ^docs$
 ^data-raw$
+^\.github$
