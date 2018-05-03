@@ -18,6 +18,6 @@ A character vector.
 Extract names that match a character vector.
 }
 \examples{
-nms_extract_match(fgeo.data::luquillo_vft_4quad, c("x", "PX", "gx"))
-nms_extract_match(fgeo.data::luquillo_stem6_1ha, c("x", "PX", "gx"))
+nms_extract_match(luquillo_stem_random_tiny, c("x", "PX", "gx"))
+nms_extract_match(luquillo_vft_4quad, c("x", "PX", "gx"))
 }
