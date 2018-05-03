@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • fgeo.base</title>
+<title>Find datasets in a package. — find_datasets • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,7 +28,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Find datasets in a package. — find_datasets" />
+
+<meta property="og:description" content="Find datasets in a package." />
+<meta name="twitter:card" content="summary" />
 
 
 <!-- mathjax -->
@@ -43,7 +46,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -101,92 +104,48 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Find datasets in a package.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/find_datasets.R'><code>R/find_datasets.R</code></a></small>
+    <div class="hidden name"><code>find_datasets.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Find datasets in a package.</p>
+    
+    </div>
 
-    <colgroup>
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-functions" class="hasAnchor"><a href="#section-functions" class="anchor"></a>Functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="find_datasets.html">find_datasets()</a></code> </p>
-        </td>
-        <td><p>Find datasets in a package.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="guess_max.html">guess_max()</a></code> </p>
-        </td>
-        <td><p>Guess maximum value of a vector with flexible accuracy.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="guess_plotdim.html">guess_plotdim()</a></code> </p>
-        </td>
-        <td><p>Guess plot dimensions.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="nms_extract_match.html">nms_extract_match()</a></code> </p>
-        </td>
-        <td><p>Extract names that match a character vector.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="regex_line.html">regex_line()</a></code> </p>
-        </td>
-        <td><p>Add regex line-start and -end.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="round_any.html">round_any()</a></code> </p>
-        </td>
-        <td><p>Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>.</p></td>
-      </tr><tr>
-        <!--  -->
-        <td>
-          <p><code><a href="stick.html">or()</a></code> <code><a href="stick.html">commas()</a></code> </p>
-        </td>
-        <td><p>Paste wrappers.</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        <!--  -->
-        <td>
-          <p><code><a href="luquillo.html">luquillo_stem_random_tiny</a></code> <code><a href="luquillo.html">luquillo_vft_4quad</a></code> </p>
-        </td>
-        <td><p>Datasets from <strong>fgeo.data</strong>.</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>find_datasets</span>(<span class='no'>package</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>package</th>
+      <td><p>String; package name to search.</p></td>
+    </tr>
     </table>
-  </div>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
+    <p>Sting.</p>
+    
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'>find_datasets</span>(<span class='st'>"fgeo.base"</span>)</div><div class='output co'>#&gt; [1] "luquillo_stem_random_tiny" "luquillo_vft_4quad"       </div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-functions">Functions</a></li>
-      <li><a href="#section-datasets">Datasets</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
     </ul>
+
   </div>
 </div>
 
