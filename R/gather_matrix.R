@@ -1,47 +1,47 @@
-#' Convert matrices to data frames.
+#' Gather matrix columns into a long-format dataframe.
 #'
-#' These functions convert a matrix to three-column data frames, where columns
-#' store row names, column names, and values of the original matrix.
-#' [mat_enframe()] outputs a long-format dataframe and [mat_enframe_ls()]
+#' These functions convert a matrix to dataframes with three-columns: One for
+#' the matrix-rownames; a second one for the matrix-colnames; and a third one
+#' for the matrix-values. These functions combine features of `tidyr::gather()`
+#' and `tibble::enframe()`:
+#' * [gather_matrix()] outputs a long-format dataframe.
+#' * [gather_matrix_ls()]
 #' returns a list of dataframes where each element of the list maps to a column
 #' of the original matrix.
-#'
-#' These functions are a matrix implementation of the `enframe()` function of
-#' the __tibble__ package.
 #'
 #' @param mat A matrix.
 #' @param rownm,colnm,value Names of the columns that store the row names, the
 #'   column names and the values.
-#' @param ... Arguments passed to mat_enframe_ls.
+#' @param ... Arguments passed to gather_matrix_ls.
 #'
-#' @seealso `enframe()` (__tibble__ package).
+#' @seealso `enframe()` (__tibble__ package) and `gather()` (__tidyr__ package).
 #'
 #' @return
-#' * [mat_enframe()]: A dataframe.
-#' * [mat_enframe_ls()]: A list of dataframes.
-#' 
+#' * [gather_matrix()]: A dataframe.
+#' * [gather_matrix_ls()]: A list of dataframes.
+#'
 #' @export
 #' @examples
 #'  mat <- matrix(1:6, 2, dimnames = list(LETTERS[1:2], letters[1:3]))
 #'  mat
-#'  
-#'  mat_enframe_ls(mat)
-#'  
-#'  mat_enframe(mat)
-#'  
-#'  mat_enframe(mat, "metric", "sp")
-#'  
+#'
+#'  gather_matrix_ls(mat)
+#'
+#'  gather_matrix(mat)
+#'
+#'  gather_matrix(mat, "metric", "sp")
+#'
 #'  mat <- matrix(1:6, 2)
 #'  mat
-#'  
-#'  mat_enframe(mat)
-mat_enframe <- function(...) {
-  Reduce(rbind, mat_enframe_ls(...))
+#'
+#'  gather_matrix(mat)
+gather_matrix <- function(...) {
+  Reduce(rbind, gather_matrix_ls(...))
 }
 
-#' @rdname mat_enframe
+#' @rdname gather_matrix
 #' @export
-mat_enframe_ls <- function(mat,
+gather_matrix_ls <- function(mat,
                            rownm = "rownames",
                            colnm = "colnames",
                            value = "value") {

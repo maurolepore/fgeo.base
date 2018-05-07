@@ -2,10 +2,11 @@
 
 export(commas)
 export(find_datasets)
+export(gather_matrix)
+export(gather_matrix_ls)
 export(guess_max)
 export(guess_plotdim)
-export(mat_enframe)
-export(mat_enframe_ls)
+export(name_df_lst)
 export(nms_extract_match)
 export(or)
 export(regex_line)
