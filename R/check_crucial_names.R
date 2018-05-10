@@ -29,6 +29,14 @@ check_crucial_names <- function(x, nms) {
   }
 }
 
+#' Is named object? (Base-only version of rlang::is_named).
+#'
+#' @param x An object to test.
+#'
+#' @return The scalar `TRUE` or `FALSE`.
+#' @export
+#'
+#' @examples
 is_named <- function (x) {
   nms <- names(x)
   if (is.null(nms)) {
