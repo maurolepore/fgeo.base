@@ -11,6 +11,7 @@
 NULL
 
 condition_na <- function(.f) {
+  force(.f)
   function(x) {
     stopifnot(is.data.frame(x) || is.vector(x), !is.null(names(x)), is_named(x))
 
