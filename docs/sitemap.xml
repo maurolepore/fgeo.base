@@ -4,10 +4,16 @@
     <loc>https://forestgeo.github.io/fgeo.base//index.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/check_crucial_names.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/fgeo.base-package.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/find_datasets.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/gather_matrix.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/guess_max.html</loc>
@@ -17,6 +23,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/luquillo.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/name_df_lst.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/nms_extract_match.html</loc>

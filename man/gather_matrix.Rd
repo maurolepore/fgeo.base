@@ -5,18 +5,19 @@
 \alias{gather_matrix_ls}
 \title{Gather matrix columns into a long-format dataframe.}
 \usage{
-gather_matrix(...)
+gather_matrix(mat, rownm = "rownames", colnm = "colnames",
+  value = "value")
 
 gather_matrix_ls(mat, rownm = "rownames", colnm = "colnames",
   value = "value")
 }
 \arguments{
-\item{...}{Arguments passed to gather_matrix_ls.}
-
 \item{mat}{A matrix.}
 
 \item{rownm, colnm, value}{Names of the columns that store the row names, the
 column names and the values.}
+
+\item{...}{Arguments passed to gather_matrix_ls.}
 }
 \value{
 \itemize{

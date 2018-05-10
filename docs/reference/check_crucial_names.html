@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>. — round_any • fgeo.base</title>
+<title>Check if an object contains specific names. — check_crucial_names • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>. — round_any" />
+<meta property="og:title" content="Check if an object contains specific names. — check_crucial_names" />
 
-<meta property="og:description" content="Round to multiple of any number. Copied from plyr:::round_any.numeric()." />
+<meta property="og:description" content="Check if an object contains specific names." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,51 +106,55 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/guess_plotdim.R'><code>R/guess_plotdim.R</code></a></small>
-    <div class="hidden name"><code>round_any.Rd</code></div>
+    <h1>Check if an object contains specific names.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/check_crucial_names.R'><code>R/check_crucial_names.R</code></a></small>
+    <div class="hidden name"><code>check_crucial_names.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>.</p>
+    <p>Check if an object contains specific names.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>round_any</span>(<span class='no'>x</span>, <span class='no'>accuracy</span>, <span class='kw'>f</span> <span class='kw'>=</span> <span class='no'>round</span>)</pre>
+    <pre class="usage"><span class='fu'>check_crucial_names</span>(<span class='no'>x</span>, <span class='no'>nms</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Numeric vector to round.</p></td>
+      <td><p>A named object.</p></td>
     </tr>
     <tr>
-      <th>accuracy</th>
-      <td><p>Number to round to.</p></td>
-    </tr>
-    <tr>
-      <th>f</th>
-      <td><p>Rounding function: floor, ceiling or round.</p></td>
+      <th>nms</th>
+      <td><p>String; names expected to be found in <code>x</code>.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Invisible <code>x</code>, or an error with informative message.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/plyr/topics/round_any'>plyr::round_any()</a></code> and <a href='http://bit.ly/2JrBQK3'>http://bit.ly/2JrBQK3</a>.</p>
-<p>Other functions for developers.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code></p></div>
+    <div class='dont-index'><p>Other functions for developers.: <code><a href='round_any.html'>round_any</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># From pryr::round_any()</span>
-<span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>10</span>)</div><div class='output co'>#&gt; [1] 140</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt; [1] 100</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>25</span>)</div><div class='output co'>#&gt; [1] 125</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>10</span>, <span class='no'>floor</span>)</div><div class='output co'>#&gt; [1] 130</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>100</span>, <span class='no'>floor</span>)</div><div class='output co'>#&gt; [1] 100</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>25</span>, <span class='no'>floor</span>)</div><div class='output co'>#&gt; [1] 125</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>10</span>, <span class='no'>ceiling</span>)</div><div class='output co'>#&gt; [1] 140</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>100</span>, <span class='no'>ceiling</span>)</div><div class='output co'>#&gt; [1] 200</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>25</span>, <span class='no'>ceiling</span>)</div><div class='output co'>#&gt; [1] 150</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='fu'>check_crucial_names</span>(<span class='no'>v</span>, <span class='st'>"x"</span>)
+
+<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='fu'>check_crucial_names</span>(<span class='no'>dfm</span>, <span class='st'>"x"</span>)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

@@ -35,16 +35,22 @@
 #'  mat
 #'
 #'  gather_matrix(mat)
-gather_matrix <- function(...) {
-  Reduce(rbind, gather_matrix_ls(...))
+gather_matrix <- function(mat,
+                          rownm = "rownames",
+                          colnm = "colnames",
+                          value = "value") {
+  Reduce(
+    rbind,
+    gather_matrix_ls(mat = mat, rownm = rownm, colnm = colnm, value = value)
+  )
 }
 
 #' @rdname gather_matrix
 #' @export
 gather_matrix_ls <- function(mat,
-                           rownm = "rownames",
-                           colnm = "colnames",
-                           value = "value") {
+                             rownm = "rownames",
+                             colnm = "colnames",
+                             value = "value") {
   stopifnot(!is.null(mat))
 
   if (is.null(rownames(mat))) {
