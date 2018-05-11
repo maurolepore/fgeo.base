@@ -37,6 +37,15 @@ check_crucial_names <- function(x, nms) {
 #' @export
 #'
 #' @examples
+#' is_named(c(x = 1))
+#' is_named(c(1))
+#' is_named(x = 1)
+#'
+#' is_named(data.frame(x = 1))
+#'
+#' dfm <- data.frame(1)
+#' is_named(dfm)
+#' dfm
 is_named <- function (x) {
   nms <- names(x)
   if (is.null(nms)) {

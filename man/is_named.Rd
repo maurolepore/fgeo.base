@@ -15,3 +15,14 @@ The scalar \code{TRUE} or \code{FALSE}.
 \description{
 Is named object? (Base-only version of rlang::is_named).
 }
+\examples{
+is_named(c(x = 1))
+is_named(c(1))
+is_named(x = 1)
+
+is_named(data.frame(x = 1))
+
+dfm <- data.frame(1)
+is_named(dfm)
+dfm
+}

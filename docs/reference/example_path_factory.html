@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Is named object? (Base-only version of rlang::is_named). — is_named • fgeo.base</title>
+<title>Create functions to output paths to directories from inst/extdata. — example_path_factory • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,12 @@
 
 
 
-<meta property="og:title" content="Is named object? (Base-only version of rlang::is_named). — is_named" />
+<meta property="og:title" content="Create functions to output paths to directories from inst/extdata. — example_path_factory" />
 
-<meta property="og:description" content="Is named object? (Base-only version of rlang::is_named)." />
+<meta property="og:description" content="This is a function factory that creates other functions. It is intended not
+for users but for developers. The goal is to quickly and consistently
+create functions that output paths to directories from inst/data -- where
+the system stores example data." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,39 +109,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Is named object? (Base-only version of rlang::is_named).</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/check_crucial_names.R'><code>R/check_crucial_names.R</code></a></small>
-    <div class="hidden name"><code>is_named.Rd</code></div>
+    <h1>Create functions to output paths to directories from inst/extdata.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/example_path_factory.R'><code>R/example_path_factory.R</code></a></small>
+    <div class="hidden name"><code>example_path_factory.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Is named object? (Base-only version of rlang::is_named).</p>
+    <p>This is a function factory that creates other functions. It is intended not
+for users but for developers. The goal is to quickly and consistently
+create functions that output paths to directories from inst/data -- where
+the system stores example data.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>is_named</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>example_path_factory</span>(<span class='no'>package</span>, <span class='no'>.f</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>An object to test.</p></td>
+      <th>package</th>
+      <td><p>Character string giving the package name where to look for the
+desired data.</p></td>
+    </tr>
+    <tr>
+      <th>.f</th>
+      <td><p>A function to apply to a path. Tested functions include <code>file.path</code>
+, <code>basename</code> and <code>dirname</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>The scalar <code>TRUE</code> or <code>FALSE</code>.</p>
+    <p>A string giving the <code>path</code> from inst/extdata/ to a file with
+extension, even if the output of the closure will not be the file itself but
+the containing directory.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>is_named</span>(<span class='fu'>c</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>is_named</span>(<span class='fu'>c</span>(<span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>is_named</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
-<span class='fu'>is_named</span>(<span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>))</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
-<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='fl'>1</span>)
-<span class='fu'>is_named</span>(<span class='no'>dfm</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='no'>dfm</span></div><div class='output co'>#&gt;   X1
-#&gt; 1  1</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Similar to fs::path</span>
+<span class='no'>example_path</span> <span class='kw'>&lt;-</span> <span class='fu'>example_path_factory</span>(<span class='st'>"fgeo.base"</span>, <span class='no'>file.path</span>)
+<span class='fu'>example_path</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"folder/file.csv"</span>)</div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Dropbox/git_repos/fgeo.base/inst/extdata/folder/file.csv"</div><div class='input'>
+<span class='co'># Similar to fs::path_file</span>
+<span class='no'>example_path_file</span> <span class='kw'>&lt;-</span> <span class='fu'>example_path_factory</span>(<span class='st'>"fgeo.base"</span>, <span class='no'>basename</span>)
+<span class='fu'>example_path_file</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"folder/file.csv"</span>)</div><div class='output co'>#&gt; [1] "file.csv"</div><div class='input'>
+<span class='co'># Similar to fs::path_dir</span>
+<span class='no'>example_path_dir</span> <span class='kw'>&lt;-</span> <span class='fu'>example_path_factory</span>(<span class='st'>"fgeo.base"</span>, <span class='no'>dirname</span>)
+<span class='fu'>example_path_dir</span>(<span class='kw'>path</span> <span class='kw'>=</span> <span class='st'>"folder/file.csv"</span>)</div><div class='output co'>#&gt; [1] "C:/Users/LeporeM/Dropbox/git_repos/fgeo.base/inst/extdata/folder"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

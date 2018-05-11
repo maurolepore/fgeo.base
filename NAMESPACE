@@ -3,6 +3,7 @@
 export(abort_na)
 export(check_crucial_names)
 export(commas)
+export(example_path_factory)
 export(find_datasets)
 export(gather_matrix)
 export(gather_matrix_ls)
