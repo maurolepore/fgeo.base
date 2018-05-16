@@ -53,6 +53,8 @@
 NULL
 
 var_cond_x <- function(var, cond) {
+  force(var)
+  force(cond)
   function(dfm, x, na.rm = FALSE) {
     stopifnot(is.data.frame(dfm), !missing(x), is.logical(na.rm))
     .var <- dfm[[var]]
