@@ -13,7 +13,7 @@
 #' @param na.rm Set to `TRUE` if you want to remove missing values from the
 #'   variable encoded in the function name.
 #'
-#' @seealso [dplyr::filter()], `[`.
+#' @seealso `dplyr::filter()`, `[`.
 #'
 #' @return Dataframe rows with matching conditions.
 #'
