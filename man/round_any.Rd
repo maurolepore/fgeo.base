@@ -31,5 +31,6 @@ round_any(135, 25, ceiling)
 \seealso{
 \code{plyr::round_any()} and \url{http://bit.ly/2JrBQK3}.
 
-Other functions for developers.: \code{\link{check_crucial_names}}
+Other functions for developers.: \code{\link{check_crucial_names}},
+  \code{\link{check_unique}}, \code{\link{exists_in_pkg}}
 }

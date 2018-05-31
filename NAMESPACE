@@ -2,8 +2,11 @@
 
 export(abort_na)
 export(check_crucial_names)
+export(check_unique)
+export(check_unique_vector)
 export(commas)
 export(drop_status)
+export(exists_in_pkg)
 export(find_datasets)
 export(gather_matrix)
 export(gather_matrix_ls)
