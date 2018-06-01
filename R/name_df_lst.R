@@ -20,7 +20,7 @@
 #' dfs2 <- list(data.frame(x = 1), data.frame(x = 1))
 #' name_df_lst(dfs2)
 name_df_lst <- function(df_lst, name = "name") {
-  stopifnot(is.list(df_lst), is.data.frame(df_lst[[1]]), is.character(name))
+  check_name_df_lst(df_lst, name)
 
   df_lst <- fill_names(df_lst, "df")
   lst_nms <- names(df_lst)
@@ -31,11 +31,27 @@ name_df_lst <- function(df_lst, name = "name") {
   df_lst
 }
 
+check_name_df_lst <- function(df_lst, name) {
+  stopifnot(is.list(df_lst), is.data.frame(df_lst[[1]]), is.character(name))
+
+  any_df_has_cero_row <- any(
+    unlist(lapply(df_lst, function(x) nrow(x) == 0 || ncol(x) == 0))
+  )
+  if (any_df_has_cero_row) {
+    stop("All dataframes must have at least one row/column.", call. = TRUE)
+  }
+}
+
 #' Fill names of an unnamed list
 #'
 #' @param x A list.
 #' @param prefix A prefix for the added names.
 #'
+#' @examples
+#' \dontrun{
+#' fill_names(list(1))
+#' fill_names(list(1, named_df = 1), "df")
+#' }
 #' @noRd
 fill_names <- function(x, prefix = NULL) {
   stopifnot(is.list(x))
@@ -51,6 +67,3 @@ fill_names <- function(x, prefix = NULL) {
   }
   x
 }
-# fill_names(list(1))
-# fill_names(list(1, named_df = 1), "df")
-

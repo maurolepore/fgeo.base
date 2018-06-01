@@ -20,3 +20,19 @@ test_that("fails with wrong input", {
   expect_error(name_df_lst(list(1)), "is not TRUE")
   expect_error(name_df_lst(list(data.frame(1)), 1), "is not TRUE")
 })
+
+test_that("Errs if has cero row/column dataframe", {
+  cero_row_col <-  data.frame()
+  dfs3 <- list(a = cero_row_col, b = data.frame(1))
+  expect_error(name_df_lst(dfs3), "must have at least one row/column")
+
+  df <- data.frame(x = 1)
+  cero_row <- df[0, , drop = FALSE]
+  dfs4 <- list(a = cero_row, b = data.frame(1))
+  expect_error(name_df_lst(dfs4), "must have at least one row/column")
+
+  df <- data.frame(x = 1)
+  cero_col <- df[0]
+  dfs5 <- list(a = cero_row, b = data.frame(1))
+  expect_error(name_df_lst(dfs5), "must have at least one row/column")
+})
