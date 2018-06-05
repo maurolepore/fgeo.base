@@ -1,4 +1,4 @@
-#' Keep and drop rows of a dataframe.
+#' Pick and drop rows of a dataframe.
 #'
 #' These functions provide an expressive and convenient way to filter
 #' ForestGEO's data. They let you remove missing values (with `na.rm = TRUE`)
@@ -26,30 +26,30 @@
 #' cns
 #'
 #' # <=
-#' keep_dbh_max(cns, 100)
-#' keep_dbh_max(cns, 100, na.rm = TRUE)
+#' pick_dbh_max(cns, 100)
+#' pick_dbh_max(cns, 100, na.rm = TRUE)
 #' # >=
-#' keep_dbh_min(cns, 100)
-#' keep_dbh_min(cns, 100, na.rm = TRUE)
+#' pick_dbh_min(cns, 100)
+#' pick_dbh_min(cns, 100, na.rm = TRUE)
 #' # <
-#' keep_dbh_under(cns, 100)
-#' keep_dbh_under(cns, 100, na.rm = TRUE)
+#' pick_dbh_under(cns, 100)
+#' pick_dbh_under(cns, 100, na.rm = TRUE)
 #' # >
-#' keep_dbh_over(cns, 100)
-#' keep_dbh_over(cns, 100, na.rm = TRUE)
+#' pick_dbh_over(cns, 100)
+#' pick_dbh_over(cns, 100, na.rm = TRUE)
 #' # Same, but `subset()` does not let you keep NAs.
 #' subset(cns, dbh > 100)
 #'
 #' # ==
-#' keep_status(cns, "A")
-#' keep_status(cns, "A", na.rm = TRUE)
+#' pick_status(cns, "A")
+#' pick_status(cns, "A", na.rm = TRUE)
 #' # !=
 #' drop_status(cns, "D")
 #' drop_status(cns, "D", na.rm = TRUE)
 #'
 #' # Compose
-#' keep_dbh_over(drop_status(cns, "D", na.rm = TRUE), 100)
-#' @name keep_drop
+#' pick_dbh_over(drop_status(cns, "D", na.rm = TRUE), 100)
+#' @name pick_drop
 NULL
 
 var_cond_x <- function(var, cond) {
@@ -67,21 +67,21 @@ var_cond_x <- function(var, cond) {
   }
 }
 
-#' @rdname keep_drop
+#' @rdname pick_drop
 #' @export
-keep_dbh_min <- var_cond_x("dbh", `>=`)
-#' @rdname keep_drop
+pick_dbh_min <- var_cond_x("dbh", `>=`)
+#' @rdname pick_drop
 #' @export
-keep_dbh_max <- var_cond_x("dbh", `<=`)
-#' @rdname keep_drop
+pick_dbh_max <- var_cond_x("dbh", `<=`)
+#' @rdname pick_drop
 #' @export
-keep_dbh_under <- var_cond_x("dbh", `<`)
-#' @rdname keep_drop
+pick_dbh_under <- var_cond_x("dbh", `<`)
+#' @rdname pick_drop
 #' @export
-keep_dbh_over <- var_cond_x("dbh", `>`)
-#' @rdname keep_drop
+pick_dbh_over <- var_cond_x("dbh", `>`)
+#' @rdname pick_drop
 #' @export
-keep_status <- var_cond_x("status", `==`)
-#' @rdname keep_drop
+pick_status <- var_cond_x("status", `==`)
+#' @rdname pick_drop
 #' @export
 drop_status <- var_cond_x("status", `!=`)

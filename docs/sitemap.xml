@@ -37,9 +37,6 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/is_named.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/keep_drop.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/luquillo.html</loc>
   </url>
   <url>
@@ -47,6 +44,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/nms_extract_match.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/pick_drop.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/regex_line.html</loc>
