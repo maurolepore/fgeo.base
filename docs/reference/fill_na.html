@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Extract names that match a character vector. — nms_extract_match • fgeo.base</title>
+<title>Fill NA's with a single filler. — fill_na • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,10 @@
 
 
 
-<meta property="og:title" content="Extract names that match a character vector. — nms_extract_match" />
+<meta property="og:title" content="Fill NA's with a single filler. — fill_na" />
 
-<meta property="og:description" content="Extract names that match a character vector." />
+<meta property="og:description" content="This is a wrapper of base::replace() with a simplified interface and a name
+that target the specific job of filling NA's." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,39 +107,79 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Extract names that match a character vector.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/guess_plotdim.R'><code>R/guess_plotdim.R</code></a></small>
-    <div class="hidden name"><code>nms_extract_match.Rd</code></div>
+    <h1>Fill NA's with a single filler.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/fill_na.R'><code>R/fill_na.R</code></a></small>
+    <div class="hidden name"><code>fill_na.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Extract names that match a character vector.</p>
+    <p>This is a wrapper of <code><a href='http://www.rdocumentation.org/packages/base/topics/replace'>base::replace()</a></code> with a simplified interface and a name
+that target the specific job of filling NA's.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>nms_extract_match</span>(<span class='no'>x</span>, <span class='no'>.match</span>)</pre>
+    <pre class="usage"><span class='fu'>fill_na</span>(<span class='no'>x</span>, <span class='kw'>filler</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A named object.</p></td>
+      <td><p>A dataframe.</p></td>
     </tr>
     <tr>
-      <th>.match</th>
-      <td><p>A character vector giving names to match.</p></td>
+      <th>filler</th>
+      <td><p>A filler; whatever you want to replace NA's with.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A character vector.</p>
+    <p>A modified version of <code>x</code>.</p>
+    
+    <h2 class="hasAnchor" id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
+
+    
+    <p>This function was inspired by conversations with David Kenfack and by a
+<a href='https://goo.gl/aMTQck'>blog post by Rick Pack</a>. Also tanks to Edgar Ruiz
+(@edgararuiz) for discussing alternatives
+(via <a href='https://goo.gl/4uME2U'>this blog post</a> on RStudio community).</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>nms_extract_match</span>(<span class='no'>luquillo_stem_random_tiny</span>, <span class='fu'>c</span>(<span class='st'>"x"</span>, <span class='st'>"PX"</span>, <span class='st'>"gx"</span>))</div><div class='output co'>#&gt; [1] "gx"</div><div class='input'><span class='fu'>nms_extract_match</span>(<span class='no'>luquillo_vft_4quad</span>, <span class='fu'>c</span>(<span class='st'>"x"</span>, <span class='st'>"PX"</span>, <span class='st'>"gx"</span>))</div><div class='output co'>#&gt; [1] "PX"</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>NA</span>, <span class='fl'>1</span>), <span class='kw'>y</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"a"</span>, <span class='fl'>NA</span>), <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+
+<span class='no'>a_dataframe</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>
+<span class='fu'>fill_na</span>(<span class='no'>a_dataframe</span>)</div><div class='output co'>#&gt;   x y
+#&gt; 1 0 a
+#&gt; 2 1 0</div><div class='input'><span class='fu'>fill_na</span>(<span class='no'>a_dataframe</span>, <span class='st'>""</span>)</div><div class='output co'>#&gt;   x y
+#&gt; 1   a
+#&gt; 2 1  </div><div class='input'><span class='fu'>fill_na</span>(<span class='no'>a_dataframe</span>, <span class='st'>"missing"</span>)</div><div class='output co'>#&gt;         x       y
+#&gt; 1 missing       a
+#&gt; 2       1 missing</div><div class='input'>
+<span class='no'>a_matrix</span> <span class='kw'>&lt;-</span> <span class='fu'>as.matrix</span>(<span class='no'>x</span>)
+<span class='fu'>fill_na</span>(<span class='no'>a_matrix</span>)</div><div class='output co'>#&gt;      x    y  
+#&gt; [1,] "0"  "a"
+#&gt; [2,] " 1" "0"</div><div class='input'>
+<span class='no'>a_vector</span> <span class='kw'>&lt;-</span> <span class='no'>x</span>$<span class='no'>x</span>
+<span class='fu'>fill_na</span>(<span class='no'>a_vector</span>)</div><div class='output co'>#&gt; [1] 0 1</div><div class='input'>
+<span class='no'>a_list</span> <span class='kw'>&lt;-</span> <span class='fu'>list</span>(<span class='no'>x</span>, <span class='no'>x</span>, <span class='no'>x</span>)
+<span class='fu'>lapply</span>(<span class='no'>a_list</span>, <span class='no'>fill_na</span>)</div><div class='output co'>#&gt; [[1]]
+#&gt;   x y
+#&gt; 1 0 a
+#&gt; 2 1 0
+#&gt; 
+#&gt; [[2]]
+#&gt;   x y
+#&gt; 1 0 a
+#&gt; 2 1 0
+#&gt; 
+#&gt; [[3]]
+#&gt;   x y
+#&gt; 1 0 a
+#&gt; 2 1 0
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -146,6 +187,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#acknowledgments">Acknowledgments</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
