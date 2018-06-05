@@ -21,6 +21,11 @@ test_that("works as expected", {
 })
 
 test_that("fails with informative message", {
+  not_lengh_1 <- c("A", "A")
+  expect_error(pick_status(cns, not_lengh_1), "is not TRUE")
+  not_lengh_1 <- c(1, 2)
+  expect_error(pick_dbh_min(cns, not_lengh_1), "is not TRUE")
+
   expect_error(pick_dbh_min(1), "is not TRUE")
   expect_error(pick_dbh_min(cns), "is not TRUE")
   expect_error(pick_dbh_min(cns, 100, "not logical"), "is not TRUE")

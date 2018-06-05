@@ -56,7 +56,9 @@ var_cond_x <- function(var, cond) {
   force(var)
   force(cond)
   function(dfm, x, na.rm = FALSE) {
-    stopifnot(is.data.frame(dfm), !missing(x), is.logical(na.rm))
+    stopifnot(
+      is.data.frame(dfm), !missing(x), is.logical(na.rm), length(x) == 1
+    )
     .var <- dfm[[var]]
     rows <- do.call(cond, list(.var, x))
     if (na.rm) {
