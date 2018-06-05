@@ -76,5 +76,5 @@ drop_status(cns, "D", na.rm = TRUE)
 keep_dbh_over(drop_status(cns, "D", na.rm = TRUE), 100)
 }
 \seealso{
-\code{dplyr::filter()}, \code{[}.
+\code{dplyr::filter()}, \code{Extract} (\code{[}).
 }

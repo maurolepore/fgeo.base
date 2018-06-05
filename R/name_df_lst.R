@@ -1,5 +1,3 @@
-# Move to fgeo.base. Replaces fgeo.tool::ls_name_df().
-
 #' Identify each dataframe in a list with a name.
 #'
 #' Identify each dataframe in a list with the name of the corresponding list
