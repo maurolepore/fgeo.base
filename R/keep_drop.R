@@ -1,4 +1,4 @@
-#' Pick and drop rows of a dataframe.
+#' Pick and drop rows of a ForestGEO census or viewfull table.
 #'
 #' These functions provide an expressive and convenient way to filter
 #' ForestGEO's data. They let you remove missing values (with `na.rm = TRUE`)
@@ -14,6 +14,9 @@
 #'   variable encoded in the function name.
 #'
 #' @seealso `dplyr::filter()`, `Extract` (`[`).
+#' @family functions for fgeo census and vft.
+#' @family functions for fgeo census.
+#' @family functions for fgeo vft.
 #'
 #' @return Dataframe rows with matching conditions.
 #'
@@ -59,13 +62,22 @@ var_cond_x <- function(var, cond) {
     stopifnot(
       is.data.frame(dfm), !missing(x), is.logical(na.rm), length(x) == 1
     )
-    .var <- dfm[[var]]
+
+
+
+    old <- names(dfm)
+    names(dfm) <- tolower(names(dfm))
+
+    .var <- dfm[[tolower(var)]]
     rows <- do.call(cond, list(.var, x))
     if (na.rm) {
-      dfm[rows & !is.na(rows), , drop = FALSE]
+      dfm <- dfm[rows & !is.na(rows), , drop = FALSE]
     } else {
-      dfm[rows | is.na(rows), , drop = FALSE]
+      dfm <- dfm[rows | is.na(rows), , drop = FALSE]
     }
+
+    names(dfm) <- old
+    dfm
   }
 }
 

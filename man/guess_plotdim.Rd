@@ -25,3 +25,10 @@ x <- data.frame(
 )
 guess_plotdim(x)
 }
+\seealso{
+Other functions for fgeo census and vft.: \code{\link{pick_drop}}
+
+Other functions for fgeo census.: \code{\link{pick_drop}}
+
+Other functions for fgeo vft.: \code{\link{pick_drop}}
+}

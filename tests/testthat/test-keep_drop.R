@@ -30,3 +30,35 @@ test_that("fails with informative message", {
   expect_error(pick_dbh_min(cns), "is not TRUE")
   expect_error(pick_dbh_min(cns, 100, "not logical"), "is not TRUE")
 })
+
+vft <- data.frame(
+  DBH = c(0, 50, 100, 150, NA, NA, NA),
+  Status = c(rep("A", 4), "M", "D", NA),
+  stringsAsFactors = FALSE
+)
+
+test_that("works both with census and viewfulltable", {
+  expect_equal(
+    unname(pick_dbh_min(cns, 100)),
+    unname(pick_dbh_min(vft, 100))
+  )
+  expect_equal(
+    unname(pick_status(cns, "A")),
+    unname(pick_status(vft, "A"))
+  )
+  expect_equal(
+    unname(drop_status(cns, "A")),
+    unname(drop_status(vft, "A"))
+  )
+})
+
+test_that("returns names equal to input", {
+  expect_named(pick_dbh_min(vft, 100), names(vft))
+  expect_named(pick_status(vft, "A"), names(vft))
+})
+
+test_that("Additional variables are returned unchanged", {
+  vft2 <- transform(vft, OtherVar = 1:7)
+  out <- pick_dbh_max(vft2, 1000)
+  expect_equal(out$OtherVar, vft2$OtherVar)
+})
