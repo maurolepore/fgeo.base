@@ -13,7 +13,7 @@
 #' @param na.rm Set to `TRUE` if you want to remove missing values from the
 #'   variable encoded in the function name.
 #'
-#' @seealso `dplyr::filter()`, `Extract` (`[`).
+#' @seealso `dplyr::filter()`, `Extract` (`[`), [pick_plotname()].
 #' @family functions for fgeo census and vft.
 #' @family functions for fgeo census.
 #' @family functions for fgeo vft.
@@ -62,8 +62,6 @@ var_cond_x <- function(var, cond) {
     stopifnot(
       is.data.frame(dfm), !missing(x), is.logical(na.rm), length(x) == 1
     )
-
-
 
     old <- names(dfm)
     names(dfm) <- tolower(names(dfm))
