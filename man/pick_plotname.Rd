@@ -26,4 +26,7 @@ pick_plotname(vft, "b")
 \seealso{
 Other functions for fgeo vft.: \code{\link{guess_plotdim}},
   \code{\link{pick_drop}}
+
+Other functions to filter dataframes.: \code{\link{drop_if_na}},
+  \code{\link{pick_drop}}
 }

@@ -7,6 +7,7 @@
 #'   `plotname`) to pick from `vft`.
 #'
 #' @family functions for fgeo vft.
+#' @family functions to filter dataframes.
 #'
 #' @return A dataframe.
 #' @export

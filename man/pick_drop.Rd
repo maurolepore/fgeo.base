@@ -76,14 +76,15 @@ drop_status(cns, "D", na.rm = TRUE)
 pick_dbh_over(drop_status(cns, "D", na.rm = TRUE), 100)
 }
 \seealso{
-\code{dplyr::filter()}, \code{Extract} (\code{[}), [pick_plotname()].
-
-[`), [pick_plotname()]: R:%60),%20[pick_plotname()
+\code{dplyr::filter()}, \code{Extract} (\code{[}).
 
 Other functions for fgeo census and vft.: \code{\link{guess_plotdim}}
 
 Other functions for fgeo census.: \code{\link{guess_plotdim}}
 
 Other functions for fgeo vft.: \code{\link{guess_plotdim}},
+  \code{\link{pick_plotname}}
+
+Other functions to filter dataframes.: \code{\link{drop_if_na}},
   \code{\link{pick_plotname}}
 }

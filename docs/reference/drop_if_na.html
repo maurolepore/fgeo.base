@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Guess plot dimensions. — guess_plotdim • fgeo.base</title>
+<title>Drop if missing values. — drop_if_na • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,9 @@
 
 
 
-<meta property="og:title" content="Guess plot dimensions. — guess_plotdim" />
+<meta property="og:title" content="Drop if missing values. — drop_if_na" />
 
-<meta property="og:description" content="Guess plot dimensions." />
+<meta property="og:description" content="Valuable mostly for its warning." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,51 +106,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Guess plot dimensions.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/guess_plotdim.R'><code>R/guess_plotdim.R</code></a></small>
-    <div class="hidden name"><code>guess_plotdim.Rd</code></div>
+    <h1>Drop if missing values.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/drop_if_na.R'><code>R/drop_if_na.R</code></a></small>
+    <div class="hidden name"><code>drop_if_na.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Guess plot dimensions.</p>
+    <p>Valuable mostly for its warning.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>guess_plotdim</span>(<span class='no'>x</span>, <span class='kw'>accuracy</span> <span class='kw'>=</span> <span class='fl'>20</span>)</pre>
+    <pre class="usage"><span class='fu'>drop_if_na</span>(<span class='no'>dfm</span>, <span class='no'>x</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A dataframe; a ForestGEO dataset (census or ViewFullTable).</p></td>
+      <th>dfm</th>
+      <td><p>A dataframe.</p></td>
     </tr>
     <tr>
-      <th>accuracy</th>
-      <td><p>A number giving the accuracy with which to round <code>gx</code> and
-<code>gy</code>.</p></td>
+      <th>x</th>
+      <td><p>String giving a column name of <code>dfm</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A numeric vector of length 2.</p>
+    <p>A dataframe.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions for fgeo census and vft.: <code><a href='pick_drop.html'>pick_drop</a></code></p>
-<p>Other functions for fgeo census.: <code><a href='pick_drop.html'>pick_drop</a></code></p>
-<p>Other functions for fgeo vft.: <code><a href='pick_drop.html'>pick_drop</a></code>,
+    <div class='dont-index'><p>Other functions to filter dataframes.: <code><a href='pick_drop.html'>pick_drop</a></code>,
   <code><a href='pick_plotname.html'>pick_plotname</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
-  <span class='kw'>gx</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>300</span>, <span class='fl'>979</span>),
-  <span class='kw'>gy</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>0</span>, <span class='fl'>300</span>, <span class='fl'>481</span>)
-)
-<span class='fu'>guess_plotdim</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; <span class='message'>Gessing: plotdim = c(980, 500)</span></div><div class='output co'>#&gt; [1] 980 500</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>NA</span>)
+<span class='fu'>drop_if_na</span>(<span class='no'>dfm</span>, <span class='st'>"b"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Dropping 1 rows with missing `b` values.</span></div><div class='output co'>#&gt; [1] a b
+#&gt; &lt;0 rows&gt; (or 0-length row.names)</div><div class='input'><span class='fu'>drop_if_na</span>(<span class='no'>dfm</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt;   a  b
+#&gt; 1 1 NA</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

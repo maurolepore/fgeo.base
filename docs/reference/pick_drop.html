@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Pick and drop rows of a dataframe. — pick_drop • fgeo.base</title>
+<title>Pick and drop rows of a ForestGEO census or viewfull table. — pick_drop • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,7 +28,7 @@
 
 
 
-<meta property="og:title" content="Pick and drop rows of a dataframe. — pick_drop" />
+<meta property="og:title" content="Pick and drop rows of a ForestGEO census or viewfull table. — pick_drop" />
 
 <meta property="og:description" content="These functions provide an expressive and convenient way to filter
 ForestGEO's data. They let you remove missing values (with na.rm = TRUE)
@@ -111,8 +111,8 @@ and you may want to include missing trees in your analysis." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Pick and drop rows of a dataframe.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/keep_drop.R'><code>R/keep_drop.R</code></a></small>
+    <h1>Pick and drop rows of a ForestGEO census or viewfull table.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/pick_drop_var_cond.R'><code>R/pick_drop_var_cond.R</code></a></small>
     <div class="hidden name"><code>pick_drop.Rd</code></div>
     </div>
 
@@ -164,7 +164,13 @@ variable encoded in the function name.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>, <code>Extract</code> (<code>[</code>).</p></div>
+    <div class='dont-index'><p><code><a href='http://dplyr.tidyverse.org/reference/filter.html'>dplyr::filter()</a></code>, <code>Extract</code> (<code>[</code>).</p>
+<p>Other functions for fgeo census and vft.: <code><a href='guess_plotdim.html'>guess_plotdim</a></code></p>
+<p>Other functions for fgeo census.: <code><a href='guess_plotdim.html'>guess_plotdim</a></code></p>
+<p>Other functions for fgeo vft.: <code><a href='guess_plotdim.html'>guess_plotdim</a></code>,
+  <code><a href='pick_plotname.html'>pick_plotname</a></code></p>
+<p>Other functions to filter dataframes.: <code><a href='drop_if_na.html'>drop_if_na</a></code>,
+  <code><a href='pick_plotname.html'>pick_plotname</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

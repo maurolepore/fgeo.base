@@ -22,3 +22,7 @@ dfm <- data.frame(a = 1, b = NA)
 drop_if_na(dfm, "b")
 drop_if_na(dfm, "a")
 }
+\seealso{
+Other functions to filter dataframes.: \code{\link{pick_drop}},
+  \code{\link{pick_plotname}}
+}

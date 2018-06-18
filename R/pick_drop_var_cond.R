@@ -13,10 +13,11 @@
 #' @param na.rm Set to `TRUE` if you want to remove missing values from the
 #'   variable encoded in the function name.
 #'
-#' @seealso `dplyr::filter()`, `Extract` (`[`), [pick_plotname()].
+#' @seealso `dplyr::filter()`, `Extract` (`[`).
 #' @family functions for fgeo census and vft.
 #' @family functions for fgeo census.
 #' @family functions for fgeo vft.
+#' @family functions to filter dataframes.
 #'
 #' @return Dataframe rows with matching conditions.
 #'
