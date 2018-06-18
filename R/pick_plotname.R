@@ -23,7 +23,7 @@ pick_plotname <- function(vft, plot_nm = NULL) {
 
   fgeo.base::check_crucial_names(vft, "plotname")
 
-  plots <- sort(unique(vft$PlotName))
+  plots <- sort(unique(vft$plotname))
   if (is.null(plot_nm)) plot_nm <- plots
 
   valid_plot <- sort(unique(vft$plotname))
