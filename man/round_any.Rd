@@ -34,3 +34,6 @@ round_any(135, 25, ceiling)
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{check_unique}}, \code{\link{exists_in_pkg}}
 }
+\concept{functions for developers with no depenciencies.}
+\concept{functions for developers.}
+\concept{functions to manipulate names.}

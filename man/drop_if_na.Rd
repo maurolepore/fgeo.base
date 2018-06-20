@@ -26,3 +26,4 @@ drop_if_na(dfm, "a")
 Other functions to filter dataframes.: \code{\link{pick_drop}},
   \code{\link{pick_plotname}}
 }
+\concept{functions to filter dataframes.}
