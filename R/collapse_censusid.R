@@ -1,5 +1,5 @@
-#' Collapse the values of CensusID. 
-#' 
+#' Collapse the values of CensusID.
+#'
 #' This function is useful to summarize the status history of a tree tag across
 #' censuses. It is particularly useful to avoid duplicated tree tags on maps.
 #'
@@ -9,34 +9,23 @@
 #' @export
 #'
 #' @examples
-#' library(dplyr)
-#' 
-#' x <- dplyr::tribble(
-#'   ~CensusID, ~Tag, ~Status,
-#'         "1",  "1", "alive",
-#'         "1",  "1",  "dead",
-#'         "1",  "2",  "dead",
-#'         "1",  "2",  "dead",
-#'         "2",  "1", "alive",
-#'         "2",  "1", "alive",
-#'         "2",  "2", "alive",
-#'         "2",  "2",  "dead"
+#' x <- data.frame(
+#'   CensusID = c(1, 1, 1, 1, 2, 2, 2, 2),
+#'   Tag = c(1, 1, 2, 2, 1, 1, 2, 2),
+#'   Status = c("alive", "dead", "dead", "dead", "alive", "alive", "alive", "dead"),
+#'   stringsAsFactors = FALSE
 #' )
-#' 
+#' x
 #' collapse_censusid(x)
-#' 
-#' with_status_tree <- fgeo.tool::add_status_tree(x, "alive", "dead")
-#' collapsed_cns <- collapse_censusid(with_status_tree)
-#' unique(select(collapsed_cns, -Status))
 collapse_censusid <- function(x) {
   stopifnot(is.data.frame(x))
-  
+
   old <- names(x)
   names(x) <- tolower(old)
   fgeo.base::check_crucial_names(x, "censusid")
-  
+
   x$censusid <- commas(sort(unique(x$censusid)))
-  
+
   x <- stats::setNames(x, old)
   unique(x)
 }
