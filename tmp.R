@@ -43,7 +43,7 @@ fgeo.base::str_to_tidy_names()  # TODO: remove str_? compare to tibble::set_tidy
 # Collapse add collapse_ or TODO: Search for a short synonym.
 fgeo.base::commas()
 fgeo.base::or()
-fgeo.base::regex_line()
+fgeo.base::regex_line()  # enline
 
 
 
