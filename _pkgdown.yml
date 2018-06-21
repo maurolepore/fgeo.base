@@ -85,7 +85,7 @@ reference:
   - title: Deal with objects' names
     desc: General (not specific to ForestGEO)
     contents:
-      - name_df_lst
+      - name_dfs
       - nms_extract_match
 
   - title: Construct or restructure data
