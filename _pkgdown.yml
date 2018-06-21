@@ -56,11 +56,11 @@ reference:
     desc: General (not specific to ForestGEO)
     contents:
       - fill_na
-      - str_suffix_match
-      - str_to_tidy_names
-      - commas
-      - or
-      - regex_line
+      - suffix_match
+      - to_tidy_names
+      - glue_comma
+      - glue_pipe
+      - enline
 
   - title: Assert
     desc: General (not specific to ForestGEO)
@@ -91,8 +91,8 @@ reference:
   - title: Construct or restructure data
     desc: General (not specific to ForestGEO)
     contents:
-      - gather_matrix
-      - gather_matrix_ls
+      - gather_mat
+      - gather_mats
 
   - title: Access data
     desc: Specific to ForestGEO

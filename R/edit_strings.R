@@ -9,14 +9,14 @@
 #' @export
 #'
 #' @examples
-#' str_suffix_match(
+#' suffix_match(
 #'   string = c("one", "banana"),
 #'   to_match = c("number", "fruit"),
 #'   .match = "number",
 #'   suffix = "_num"
 #' )
 #'
-#' str_suffix_match(
+#' suffix_match(
 #'   string = c("tag1", "tag2"),
 #'   to_match = c("dead", "not-dead"),
 #'   .match = "dead",
@@ -28,9 +28,9 @@
 #'   Status = c("dead", "alive"),
 #'   stringsAsFactors = FALSE
 #' )
-#' transform(vft, tagged = str_suffix_match(Tag, Status, "dead", ".d"))
-str_suffix_match <- function(string, to_match, .match, suffix) {
-  check_str_suffix_match(
+#' transform(vft, tagged = suffix_match(Tag, Status, "dead", ".d"))
+suffix_match <- function(string, to_match, .match, suffix) {
+  check_suffix_match(
     string = string, to_match = to_match, .match = .match, suffix = suffix
   )
 
@@ -43,7 +43,7 @@ str_suffix_match <- function(string, to_match, .match, suffix) {
   string
 }
 
-check_str_suffix_match <- function(string, to_match, .match, suffix) {
+check_suffix_match <- function(string, to_match, .match, suffix) {
   if (!is.character(string)) {
     warning("`string` is not of class character", call. = FALSE)
   }
@@ -72,18 +72,33 @@ check_str_suffix_match <- function(string, to_match, .match, suffix) {
 #' @examples
 #' messy <- "Hi yOu"
 #'
-#' str_to_tidy_names(messy)
+#' to_tidy_names(messy)
 #'
 #' messy_named_string <- c(`Messy Name` = messy)
 #' # Targets strings, not its names (Target names with `fgeo.tool::nms_tidy()`)
-#' str_to_tidy_names(messy_named_string)
+#' to_tidy_names(messy_named_string)
 #'
 #' dfm <- data.frame(1)
-#' setNames(dfm, str_to_tidy_names(messy))
+#' setNames(dfm, to_tidy_names(messy))
 #'
 #' # Makes more sense when operating on strings
-#' setNames(list(1), str_to_tidy_names(messy))
-str_to_tidy_names <- function(x) {
+#' setNames(list(1), to_tidy_names(messy))
+to_tidy_names <- function(x) {
   stopifnot(is.character(x))
   gsub(" ", "_", tolower(x))
+}
+
+
+
+#' Add regex line-start and -end.
+#'
+#' @param x A vector.
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#' enline(c("a", "b"))
+enline <- function(x) {
+  paste0("^", x, "$")
 }

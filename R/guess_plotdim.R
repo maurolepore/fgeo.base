@@ -34,7 +34,7 @@ guess_plotdim <- function(x, accuracy = 20) {
     x[ , c("gx", "gy")], guess_max, double(1), accuracy = accuracy
   )
 
-  message("Gessing: plotdim = c(", commas(guess), ")")
+  message("Gessing: plotdim = c(", glue_comma(guess), ")")
   unname(guess)
 }
 
@@ -65,20 +65,7 @@ guess_max <- function(x, accuracy) {
 #' nms_extract_match(luquillo_stem_random_tiny, c("x", "PX", "gx"))
 #' nms_extract_match(luquillo_vft_4quad, c("x", "PX", "gx"))
 nms_extract_match <- function(x, .match) {
-  names(x)[grepl(or(regex_line(.match)), names(x))]
-}
-
-#' Add regex line-start and -end.
-#'
-#' @param x A vector.
-#'
-#' @return A character vector.
-#' @export
-#'
-#' @examples
-#' regex_line(c("a", "b"))
-regex_line <- function(x) {
-  paste0("^", x, "$")
+  names(x)[grepl(glue_pipe(enline(.match)), names(x))]
 }
 
 
@@ -113,27 +100,3 @@ round_any <- function(x, accuracy, f = round) {
 
 
 
-# Utils
-
-#' Paste wrappers.
-#'
-#' @inheritDotParams base::paste
-#'
-#' @return String.
-#' @export
-#'
-#' @examples
-#' or(1:3)
-#' @name stick
-
-#' @export
-#' @rdname stick
-or <- function(...) {
-  paste0(..., collapse = "|")
-}
-
-#' @export
-#' @rdname stick
-commas <- function(...) {
-  paste0(..., collapse = ", ")
-}

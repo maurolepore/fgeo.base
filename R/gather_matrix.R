@@ -4,53 +4,53 @@
 #' the matrix-rownames; a second one for the matrix-colnames; and a third one
 #' for the matrix-values. These functions combine features of `tidyr::gather()`
 #' and `tibble::enframe()`:
-#' * [gather_matrix()] outputs a long-format dataframe.
-#' * [gather_matrix_ls()]
+#' * [gather_mat()] outputs a long-format dataframe.
+#' * [gather_mats()]
 #' returns a list of dataframes where each element of the list maps to a column
 #' of the original matrix.
 #'
 #' @param mat A matrix.
 #' @param rownm,colnm,value Names of the columns that store the row names, the
 #'   column names and the values.
-#' @param ... Arguments passed to gather_matrix_ls.
+#' @param ... Arguments passed to gather_mats.
 #'
 #' @seealso `enframe()` (__tibble__ package) and `gather()` (__tidyr__ package).
 #'
 #' @return
-#' * [gather_matrix()]: A dataframe.
-#' * [gather_matrix_ls()]: A list of dataframes.
+#' * [gather_mat()]: A dataframe.
+#' * [gather_mats()]: A list of dataframes.
 #'
 #' @export
 #' @examples
 #'  mat <- matrix(1:6, 2, dimnames = list(LETTERS[1:2], letters[1:3]))
 #'  mat
 #'
-#'  gather_matrix_ls(mat)
+#'  gather_mats(mat)
 #'
-#'  gather_matrix(mat)
+#'  gather_mat(mat)
 #'
-#'  gather_matrix(mat, "metric", "sp")
+#'  gather_mat(mat, "metric", "sp")
 #'
 #'  mat <- matrix(1:6, 2)
 #'  mat
 #'
-#'  gather_matrix(mat)
-gather_matrix <- function(mat,
-                          rownm = "rownames",
-                          colnm = "colnames",
-                          value = "value") {
+#'  gather_mat(mat)
+gather_mat <- function(mat,
+                       rownm = "rownames",
+                       colnm = "colnames",
+                       value = "value") {
   Reduce(
     rbind,
-    gather_matrix_ls(mat = mat, rownm = rownm, colnm = colnm, value = value)
+    gather_mats(mat = mat, rownm = rownm, colnm = colnm, value = value)
   )
 }
 
-#' @rdname gather_matrix
+#' @rdname gather_mat
 #' @export
-gather_matrix_ls <- function(mat,
-                             rownm = "rownames",
-                             colnm = "colnames",
-                             value = "value") {
+gather_mats <- function(mat,
+                        rownm = "rownames",
+                        colnm = "colnames",
+                        value = "value") {
   stopifnot(!is.null(mat))
 
   if (is.null(rownames(mat))) {

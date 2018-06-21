@@ -23,7 +23,7 @@ check_crucial_names <- function(x, nms) {
     return(invisible(x))
   } else {
     stop(
-      "Ensure your data set has these variables:\n", commas(nms),
+      "Ensure your data set has these variables:\n", glue_comma(nms),
       call. = FALSE
     )
   }

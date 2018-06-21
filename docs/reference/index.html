@@ -181,25 +181,25 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="str_suffix_match.html">str_suffix_match()</a></code> </p>
+          <p><code><a href="suffix_match.html">suffix_match()</a></code> </p>
         </td>
         <td><p>Suffix a strings where a vector exactly matches one specific string.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="str_to_tidy_names.html">str_to_tidy_names()</a></code> </p>
+          <p><code><a href="to_tidy_names.html">to_tidy_names()</a></code> </p>
         </td>
         <td><p>Create a names-friendly version of a string (lowercase and with no spaces).</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="stick.html">or()</a></code> <code><a href="stick.html">commas()</a></code> </p>
+          <p><code><a href="glue_comma.html">glue_comma()</a></code> <code><a href="glue_comma.html">glue_pipe()</a></code> </p>
         </td>
-        <td><p>Paste wrappers.</p></td>
+        <td><p>Collapse strings into a single one.</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="regex_line.html">regex_line()</a></code> </p>
+          <p><code><a href="enline.html">enline()</a></code> </p>
         </td>
         <td><p>Add regex line-start and -end.</p></td>
       </tr>
@@ -283,7 +283,97 @@
       <tr>
         
         <td>
-          <p><code><a href="name_df_lst.html">name_df_lst()</a></code> </p>
+          <p><code><a href="check_crucial_names.html">check_crucial_names()</a></code> </p>
+        </td>
+        <td><p>Check if an object contains specific names.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="check_unique.html">check_unique()</a></code> <code><a href="check_unique.html">check_unique_vector()</a></code> </p>
+        </td>
+        <td><p>Report if a vector or a variable of a dataframe is duplicated.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="collapse_censusid.html">collapse_censusid()</a></code> </p>
+        </td>
+        <td><p>Collapse the values of CensusID.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="condition_na.html">warn_na()</a></code> <code><a href="condition_na.html">inform_na()</a></code> <code><a href="condition_na.html">abort_na()</a></code> </p>
+        </td>
+        <td><p>Throw condition if variable has missing values.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="drop_if_na.html">drop_if_na()</a></code> </p>
+        </td>
+        <td><p>Drop if missing values.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="enline.html">enline()</a></code> </p>
+        </td>
+        <td><p>Add regex line-start and -end.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="exists_in_pkg.html">exists_in_pkg()</a></code> </p>
+        </td>
+        <td><p>Test if an object exists in the namespace of a package.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="fill_na.html">fill_na()</a></code> </p>
+        </td>
+        <td><p>Fill NA's with a single filler.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="find_datasets.html">find_datasets()</a></code> </p>
+        </td>
+        <td><p>Find datasets in a package.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="gather_mat.html">gather_mat()</a></code> <code><a href="gather_mat.html">gather_mats()</a></code> </p>
+        </td>
+        <td><p>Gather matrix columns into a long-format dataframe.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="glue_comma.html">glue_comma()</a></code> <code><a href="glue_comma.html">glue_pipe()</a></code> </p>
+        </td>
+        <td><p>Collapse strings into a single one.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="guess_max.html">guess_max()</a></code> </p>
+        </td>
+        <td><p>Guess maximum value of a vector with flexible accuracy.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="guess_plotdim.html">guess_plotdim()</a></code> </p>
+        </td>
+        <td><p>Guess plot dimensions.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="is_named.html">is_named()</a></code> </p>
+        </td>
+        <td><p>Is named object? (Base-only version of rlang::is_named).</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="luquillo.html">luquillo_stem_random_tiny</a></code> <code><a href="luquillo.html">luquillo_vft_4quad</a></code> </p>
+        </td>
+        <td><p>Datasets from <strong>fgeo.data</strong>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="name_dfs.html">name_dfs()</a></code> </p>
         </td>
         <td><p>Identify each dataframe in a list with a name.</p></td>
       </tr><tr>
@@ -292,6 +382,36 @@
           <p><code><a href="nms_extract_match.html">nms_extract_match()</a></code> </p>
         </td>
         <td><p>Extract names that match a character vector.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pick_drop.html">pick_dbh_min()</a></code> <code><a href="pick_drop.html">pick_dbh_max()</a></code> <code><a href="pick_drop.html">pick_dbh_under()</a></code> <code><a href="pick_drop.html">pick_dbh_over()</a></code> <code><a href="pick_drop.html">pick_status()</a></code> <code><a href="pick_drop.html">drop_status()</a></code> </p>
+        </td>
+        <td><p>Pick and drop rows of a ForestGEO census or viewfull table.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="pick_plotname.html">pick_plotname()</a></code> </p>
+        </td>
+        <td><p>Pick the given or first (alpha sorted) plot from a ViewFullTable.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="round_any.html">round_any()</a></code> </p>
+        </td>
+        <td><p>Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="suffix_match.html">suffix_match()</a></code> </p>
+        </td>
+        <td><p>Suffix a strings where a vector exactly matches one specific string.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="to_tidy_names.html">to_tidy_names()</a></code> </p>
+        </td>
+        <td><p>Create a names-friendly version of a string (lowercase and with no spaces).</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -303,7 +423,7 @@
       <tr>
         
         <td>
-          <p><code><a href="gather_matrix.html">gather_matrix()</a></code> <code><a href="gather_matrix.html">gather_matrix_ls()</a></code> </p>
+          <p><code><a href="gather_mat.html">gather_mat()</a></code> <code><a href="gather_mat.html">gather_mats()</a></code> </p>
         </td>
         <td><p>Gather matrix columns into a long-format dataframe.</p></td>
       </tr>

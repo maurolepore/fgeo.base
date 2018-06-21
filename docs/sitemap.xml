@@ -19,6 +19,9 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/drop_if_na.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/enline.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/exists_in_pkg.html</loc>
   </url>
   <url>
@@ -31,7 +34,10 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/find_datasets.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/gather_matrix.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/gather_mat.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/glue_comma.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/guess_max.html</loc>
@@ -46,7 +52,7 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/luquillo.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/name_df_lst.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/name_dfs.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/nms_extract_match.html</loc>
@@ -58,18 +64,12 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/pick_plotname.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/regex_line.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/round_any.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/stick.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/suffix_match.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/str_suffix_match.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/str_to_tidy_names.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/to_tidy_names.html</loc>
   </url>
 </urlset>

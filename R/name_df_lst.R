@@ -3,7 +3,7 @@
 #' Identify each dataframe in a list with the name of the corresponding list
 #' item.
 #'
-#' @param df_lst A list of dataframes.
+#' @param dfs A list of dataframes.
 #' @param name Names of the columns that store the names and values.
 #'
 #' @return A list of dataframes.
@@ -11,29 +11,29 @@
 #'
 #' @examples
 #' dfs <- list(a = data.frame(x = 1), b = data.frame(x = 1))
-#' name_df_lst(dfs)
+#' name_dfs(dfs)
 #'
-#' name_df_lst(dfs, "custom_name")
+#' name_dfs(dfs, "custom_name")
 #'
 #' dfs2 <- list(data.frame(x = 1), data.frame(x = 1))
-#' name_df_lst(dfs2)
-name_df_lst <- function(df_lst, name = "name") {
-  check_name_df_lst(df_lst, name)
+#' name_dfs(dfs2)
+name_dfs <- function(dfs, name = "name") {
+  check_name_dfs(dfs, name)
 
-  df_lst <- fill_names(df_lst, "df")
-  lst_nms <- names(df_lst)
+  dfs <- fill_names(dfs, "df")
+  lst_nms <- names(dfs)
   for (i in seq_along(lst_nms)) {
-    df_nms <- c(names(df_lst[[i]]), name)
-    df_lst[[i]] <- stats::setNames(cbind(df_lst[[i]], lst_nms[[i]]), df_nms)
+    df_nms <- c(names(dfs[[i]]), name)
+    dfs[[i]] <- stats::setNames(cbind(dfs[[i]], lst_nms[[i]]), df_nms)
   }
-  df_lst
+  dfs
 }
 
-check_name_df_lst <- function(df_lst, name) {
-  stopifnot(is.list(df_lst), is.data.frame(df_lst[[1]]), is.character(name))
+check_name_dfs <- function(dfs, name) {
+  stopifnot(is.list(dfs), is.data.frame(dfs[[1]]), is.character(name))
 
   any_df_has_cero_row <- any(
-    unlist(lapply(df_lst, function(x) nrow(x) == 0 || ncol(x) == 0))
+    unlist(lapply(dfs, function(x) nrow(x) == 0 || ncol(x) == 0))
   )
   if (any_df_has_cero_row) {
     stop("All dataframes must have at least one row/column.", call. = TRUE)

@@ -1,8 +1,8 @@
-context("str_suffix_match")
+context("suffix_match")
 
 
 test_that("tags a vector", {
-  actual <- str_suffix_match(
+  actual <- suffix_match(
     c("tag1", "tag2"),
     c("dead", "whatever"),
     "dead",
@@ -14,7 +14,7 @@ test_that("tags a vector", {
 
 test_that("with numeric `tag` does not abort -- only warns (#13)", {
   expect_warning(
-    str_suffix_match(
+    suffix_match(
       as.numeric(c("000", "001")),
       c("dead", "whatever"),
       "dead",
@@ -26,7 +26,7 @@ test_that("with numeric `tag` does not abort -- only warns (#13)", {
 
 test_that("warns if no stem is dead", {
   expect_warning(
-    str_suffix_match(
+    suffix_match(
       c("tag1", "tag2"),
       c("not-dead", "not-dead"),
       "dead",
@@ -38,7 +38,7 @@ test_that("warns if no stem is dead", {
 test_that("fails if x, status, and suffix are not character vectors", {
   # Passes
   expect_equal(
-    str_suffix_match(
+    suffix_match(
       c("tag1", "tag2"),
       c("dead", "whatever"),
       "dead",
@@ -49,7 +49,7 @@ test_that("fails if x, status, and suffix are not character vectors", {
 
   # Warn
   expect_warning(
-    str_suffix_match(
+    suffix_match(
       1,
       c("dead", "whatever"),
       "dead",
@@ -57,7 +57,7 @@ test_that("fails if x, status, and suffix are not character vectors", {
     )
   )
   expect_error(
-    str_suffix_match(
+    suffix_match(
       c("tag1", "tag2"),
       1,
       "dead",
@@ -65,7 +65,7 @@ test_that("fails if x, status, and suffix are not character vectors", {
     )
   )
   expect_error(
-    str_suffix_match(
+    suffix_match(
       c("tag1", "tag2"),
       c("dead", "whatever"),
       "dead",
@@ -74,7 +74,7 @@ test_that("fails if x, status, and suffix are not character vectors", {
   )
 
   expect_warning(
-    str_suffix_match(
+    suffix_match(
       c("tag1", "tag2"),
       c("dead", "whatever"),
       "D",
@@ -85,12 +85,20 @@ test_that("fails if x, status, and suffix are not character vectors", {
 
 
 
-context("str_to_tidy_names")
+context("to_tidy_names")
 
 test_that("works as unnamed character string", {
   skip_if_not_installed("fgeo.tool")
 
   string <- "Hi mE"
-  expect_equal(fgeo.tool::nms_tidy(string), str_to_tidy_names(string))
-  expect_equal(str_to_tidy_names(string), "hi_me")
+  expect_equal(fgeo.tool::nms_tidy(string), to_tidy_names(string))
+  expect_equal(to_tidy_names(string), "hi_me")
+})
+
+
+
+context("enline")
+
+test_that("outputs the expected string", {
+  expect_equal(enline(letters[1:3]), c("^a$", "^b$", "^c$"))
 })

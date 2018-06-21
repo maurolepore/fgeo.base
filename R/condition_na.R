@@ -19,7 +19,7 @@ condition_na <- function(.f) {
     has_na <- out
     if (any(has_na)) {
       .f(
-        "Detected missing values in: ", commas(names(x)[has_na]),
+        "Detected missing values in: ", glue_comma(names(x)[has_na]),
         call. = FALSE
       )
     }
