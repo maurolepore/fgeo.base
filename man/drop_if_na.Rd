@@ -23,6 +23,8 @@ drop_if_na(dfm, "b")
 drop_if_na(dfm, "a")
 }
 \seealso{
+\code{tidyr::drop_na()}.
+
 Other functions to filter dataframes.: \code{\link{pick_drop}},
   \code{\link{pick_plotname}}
 }

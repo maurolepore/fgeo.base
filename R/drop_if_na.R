@@ -5,6 +5,8 @@
 #' @param dfm A dataframe.
 #' @param x String giving a column name of `dfm`.
 #'
+#' @seealso `tidyr::drop_na()`.
+#'
 #' @family functions to filter dataframes.
 #'
 #' @return A dataframe.

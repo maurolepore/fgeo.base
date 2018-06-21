@@ -139,39 +139,25 @@ censuses. It is particularly useful to avoid duplicated tree tags on maps.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: 'dplyr'</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:stats':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from 'package:base':</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'>
-<span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>tribble</a></span>(
-  ~<span class='no'>CensusID</span>, ~<span class='no'>Tag</span>, ~<span class='no'>Status</span>,
-        <span class='st'>"1"</span>,  <span class='st'>"1"</span>, <span class='st'>"alive"</span>,
-        <span class='st'>"1"</span>,  <span class='st'>"1"</span>,  <span class='st'>"dead"</span>,
-        <span class='st'>"1"</span>,  <span class='st'>"2"</span>,  <span class='st'>"dead"</span>,
-        <span class='st'>"1"</span>,  <span class='st'>"2"</span>,  <span class='st'>"dead"</span>,
-        <span class='st'>"2"</span>,  <span class='st'>"1"</span>, <span class='st'>"alive"</span>,
-        <span class='st'>"2"</span>,  <span class='st'>"1"</span>, <span class='st'>"alive"</span>,
-        <span class='st'>"2"</span>,  <span class='st'>"2"</span>, <span class='st'>"alive"</span>,
-        <span class='st'>"2"</span>,  <span class='st'>"2"</span>,  <span class='st'>"dead"</span>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+  <span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>2</span>),
+  <span class='kw'>Tag</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>),
+  <span class='kw'>Status</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"alive"</span>, <span class='st'>"dead"</span>, <span class='st'>"dead"</span>, <span class='st'>"dead"</span>, <span class='st'>"alive"</span>, <span class='st'>"alive"</span>, <span class='st'>"alive"</span>, <span class='st'>"dead"</span>),
+  <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
 )
-
-<span class='fu'>collapse_censusid</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
-#&gt;   CensusID Tag   Status
-#&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt; 
-#&gt; 1 1, 2     1     alive 
-#&gt; 2 1, 2     1     dead  
-#&gt; 3 1, 2     2     dead  
-#&gt; 4 1, 2     2     alive </div><div class='input'>
-<span class='no'>with_status_tree</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.tool</span><span class='kw ns'>::</span><span class='fu'><a href='http://www.rdocumentation.org/packages/fgeo.tool/topics/add_status_tree'>add_status_tree</a></span>(<span class='no'>x</span>, <span class='st'>"alive"</span>, <span class='st'>"dead"</span>)
-<span class='no'>collapsed_cns</span> <span class='kw'>&lt;-</span> <span class='fu'>collapse_censusid</span>(<span class='no'>with_status_tree</span>)
-<span class='fu'>unique</span>(<span class='fu'><a href='http://dplyr.tidyverse.org/reference/select.html'>select</a></span>(<span class='no'>collapsed_cns</span>, -<span class='no'>Status</span>))</div><div class='output co'>#&gt; # A tibble: 3 x 3
-#&gt;   CensusID Tag   status_tree
-#&gt;   &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;      
-#&gt; 1 1, 2     1     alive      
-#&gt; 2 1, 2     2     dead       
-#&gt; 3 1, 2     2     alive      </div></pre>
+<span class='no'>x</span></div><div class='output co'>#&gt;   CensusID Tag Status
+#&gt; 1        1   1  alive
+#&gt; 2        1   1   dead
+#&gt; 3        1   2   dead
+#&gt; 4        1   2   dead
+#&gt; 5        2   1  alive
+#&gt; 6        2   1  alive
+#&gt; 7        2   2  alive
+#&gt; 8        2   2   dead</div><div class='input'><span class='fu'>collapse_censusid</span>(<span class='no'>x</span>)</div><div class='output co'>#&gt;   CensusID Tag Status
+#&gt; 1     1, 2   1  alive
+#&gt; 2     1, 2   1   dead
+#&gt; 3     1, 2   2   dead
+#&gt; 7     1, 2   2  alive</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

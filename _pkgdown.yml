@@ -34,10 +34,68 @@ navbar:
 
 reference:
 
-  - title: Functions
+  - title: Pick/drop rows with matching conditions
+    desc: General (not specific to ForestGEO)
     contents:
-      - -matches("luquillo_")
+      - drop_if_na
 
-  - title: Datasets
+  - title: Pick/drop rows with matching conditions
+    desc: Specific to ForestGEO
     contents:
-      - matches("luquillo_")
+      - drop_status
+      - pick_status
+      - pick_plotname
+      - starts_with("pick_dbh")
+
+  - title: Edit data in place
+    desc: Specific to ForestGEO
+    contents:
+      - collapse_censusid
+
+  - title: Edit data in place
+    desc: General (not specific to ForestGEO)
+    contents:
+      - fill_na
+      - str_suffix_match
+      - str_to_tidy_names
+      - commas
+      - or
+      - regex_line
+
+  - title: Assert
+    desc: General (not specific to ForestGEO)
+    contents:
+      - abort_na
+      - inform_na
+      - warn_na
+      - check_crucial_names
+      - check_unique
+      - check_unique_vector
+      - exists_in_pkg
+      - is_named
+
+  - title: Find or approximate
+    desc: General (not specific to ForestGEO)
+    contents:
+      - round_any
+      - guess_max
+      - guess_plotdim
+      - find_datasets
+
+  - title: Deal with objects' names
+    desc: General (not specific to ForestGEO)
+    contents:
+      - name_df_lst
+      - nms_extract_match
+
+  - title: Construct or restructure data
+    desc: General (not specific to ForestGEO)
+    contents:
+      - gather_matrix
+      - gather_matrix_ls
+
+  - title: Access data
+    desc: Specific to ForestGEO
+    contents:
+      - luquillo_stem_random_tiny
+      - luquillo_vft_4quad
