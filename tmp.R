@@ -6,14 +6,12 @@ fgeo.base::pick_status()
 fgeo.base::pick_plotname()
 fgeo.base::pick_dbh
 
-# Data (fgeo)
-fgeo.base::luquillo_stem_random_tiny
-fgeo.base::luquillo_vft_4quad
-
 # Edit dataframe columns or vectors
 fgeo.base::collapse_censusid()
 
-
+# Data (fgeo)
+fgeo.base::luquillo_stem_random_tiny
+fgeo.base::luquillo_vft_4quad
 
 # gral --------------------------------------------------------------------
 
@@ -22,7 +20,8 @@ fgeo.base::abort_na()
 fgeo.base::inform_na()
 fgeo.base::warn_na()
 # df, list, matrix, vector
-fgeo.base::fill_na()
+
+
 
 # Check
 fgeo.base::check_crucial_names()
@@ -35,11 +34,13 @@ fgeo.base::check_unique_vector()
 fgeo.base::drop_if_na()  # rename to drop_na()
 
 
-# Edit dataframe columns or vectors
-# Edit strings
-fgeo.base::str_suffix_match()  # remove str_
-fgeo.base::str_to_tidy_names()  # remove str_
-# Collapse add collapse_ or synonym.
+
+# Edit data (dataframe columns, vectors, lists or matrice).
+fgeo.base::fill_na()
+# Edit strings (add str_ to all or remove)
+fgeo.base::str_suffix_match()  # TODO: remove str_?
+fgeo.base::str_to_tidy_names()  # TODO: remove str_? compare to tibble::set_tidy_names()?
+# Collapse add collapse_ or TODO: Search for a short synonym.
 fgeo.base::commas()
 fgeo.base::or()
 fgeo.base::regex_line()
