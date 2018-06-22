@@ -33,6 +33,3 @@ Other functions for fgeo census.: \code{\link{pick_drop}}
 Other functions for fgeo vft.: \code{\link{pick_drop}},
   \code{\link{pick_plotname}}
 }
-\concept{functions for fgeo census and vft.}
-\concept{functions for fgeo census.}
-\concept{functions for fgeo vft.}

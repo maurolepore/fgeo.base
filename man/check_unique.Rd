@@ -50,5 +50,3 @@ Other functions to check inputs.: \code{\link{check_crucial_names}}
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{exists_in_pkg}}, \code{\link{round_any}}
 }
-\concept{functions for developers.}
-\concept{functions to check inputs.}
