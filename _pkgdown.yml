@@ -94,6 +94,11 @@ reference:
       - gather_mat
       - gather_mats
 
+  - title: Miscellaneous
+    desc: General (not specific to ForestGEO)
+    contents:
+      - print_all
+
   - title: Access data
     desc: Specific to ForestGEO
     contents:

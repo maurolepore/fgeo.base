@@ -60,9 +60,8 @@ var_cond_x <- function(var, cond) {
   force(var)
   force(cond)
   function(dfm, x, na.rm = FALSE) {
-    stopifnot(
-      is.data.frame(dfm), !missing(x), is.logical(na.rm), length(x) == 1
-    )
+    stopifnot(is.data.frame(dfm))
+    stopifnot(!missing(x), is.logical(na.rm), length(x) == 1)
 
     old <- names(dfm)
     names(dfm) <- tolower(names(dfm))
