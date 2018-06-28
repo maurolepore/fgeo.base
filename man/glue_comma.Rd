@@ -22,7 +22,7 @@ glue_pipe(...)
 String.
 }
 \description{
-These functions are a shortcut for paste0(..., collapse = "<somethig>").
+These functions are a shortcut for paste0(..., collapse = "SOMETHING").
 }
 \examples{
 glue_comma(1:3)

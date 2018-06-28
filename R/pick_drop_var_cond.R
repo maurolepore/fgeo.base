@@ -1,4 +1,4 @@
-#' Pick and drop rows of a ForestGEO census or viewfull table.
+#' Pick and drop rows of a ForestGEO ViewFullTable or census table.
 #'
 #' These functions provide an expressive and convenient way to filter
 #' ForestGEO's data. They let you remove missing values (with `na.rm = TRUE`)

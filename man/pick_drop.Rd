@@ -8,7 +8,7 @@
 \alias{pick_dbh_over}
 \alias{pick_status}
 \alias{drop_status}
-\title{Pick and drop rows of a ForestGEO census or viewfull table.}
+\title{Pick and drop rows of a ForestGEO ViewFullTable or census table.}
 \usage{
 pick_dbh_min(dfm, x, na.rm = FALSE)
 
@@ -88,3 +88,7 @@ Other functions for fgeo vft.: \code{\link{guess_plotdim}},
 Other functions to filter dataframes.: \code{\link{drop_if_na}},
   \code{\link{pick_plotname}}
 }
+\concept{functions for fgeo census and vft.}
+\concept{functions for fgeo census.}
+\concept{functions for fgeo vft.}
+\concept{functions to filter dataframes.}

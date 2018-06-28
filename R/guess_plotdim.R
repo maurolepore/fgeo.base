@@ -93,7 +93,7 @@ nms_extract_match <- function(x, .match) {
 #' round_any(135, 25, ceiling)
 #' @family functions for developers.
 #' @family functions to manipulate names.
-#' @family functions for developers with no depenciencies.
+#' @family functions for developers with no dependencies.
 round_any <- function(x, accuracy, f = round) {
   f(x / accuracy) * accuracy
 }

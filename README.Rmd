@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# <img src="https://i.imgur.com/m8FNhQR.png" align="right" height=88 /> General functions with no external depencency
+# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> General functions with no external depencency
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/fgeo.base)](https://cran.r-project.org/package=fgeo.base)

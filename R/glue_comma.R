@@ -1,6 +1,6 @@
 #' Collapse strings into a single one.
 #'
-#' These functions are a shortcut for paste0(..., collapse = "<somethig>").
+#' These functions are a shortcut for paste0(..., collapse = "SOMETHING").
 #'
 #' @inheritDotParams base::paste
 #'
