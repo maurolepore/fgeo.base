@@ -87,6 +87,7 @@ reference:
     contents:
       - name_dfs
       - nms_extract_match
+      - insensitive
 
   - title: Construct or restructure data
     desc: General (not specific to ForestGEO)
@@ -98,6 +99,7 @@ reference:
     desc: General (not specific to ForestGEO)
     contents:
       - print_all
+
 
   - title: Access data
     desc: Specific to ForestGEO
