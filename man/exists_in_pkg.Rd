@@ -23,6 +23,10 @@ exists_in_pkg("cars", "datasets")
 }
 \seealso{
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{check_unique}}, \code{\link{round_any}}
+  \code{\link{check_unique}},
+  \code{\link{extract_insensitive}},
+  \code{\link{insensitive}},
+  \code{\link{nms_restore_matching}},
+  \code{\link{round_any}}
 }
 \concept{functions for developers.}

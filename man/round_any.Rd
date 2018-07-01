@@ -32,7 +32,10 @@ round_any(135, 25, ceiling)
 \code{plyr::round_any()} and \url{http://bit.ly/2JrBQK3}.
 
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{check_unique}}, \code{\link{exists_in_pkg}}
+  \code{\link{check_unique}}, \code{\link{exists_in_pkg}},
+  \code{\link{extract_insensitive}},
+  \code{\link{insensitive}},
+  \code{\link{nms_restore_matching}}
 }
 \concept{functions for developers with no dependencies.}
 \concept{functions for developers.}

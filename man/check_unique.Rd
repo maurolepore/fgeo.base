@@ -48,7 +48,11 @@ check_unique(.df, "b", "warning", "do this")
 Other functions to check inputs.: \code{\link{check_crucial_names}}
 
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{exists_in_pkg}}, \code{\link{round_any}}
+  \code{\link{exists_in_pkg}},
+  \code{\link{extract_insensitive}},
+  \code{\link{insensitive}},
+  \code{\link{nms_restore_matching}},
+  \code{\link{round_any}}
 }
 \concept{functions for developers.}
 \concept{functions to check inputs.}

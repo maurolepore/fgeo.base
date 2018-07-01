@@ -12,6 +12,12 @@ insensitive(x)
 \description{
 Create a vector or dataframe with case insensitive name matching.
 }
+\section{Acknowledgment}{
+
+Thanks to Neil Richardson for recommending this function
+(https://twitter.com/enpiar).
+}
+
 \examples{
 x <- c("abc" = 1, "def" = 2)
 x["ABC"]
@@ -37,8 +43,16 @@ transform(insensitive(vft), new = treeid)
 }
 \seealso{
 \code{httr::insensitive()}.
+
+Other functions for developers.: \code{\link{check_crucial_names}},
+  \code{\link{check_unique}}, \code{\link{exists_in_pkg}},
+  \code{\link{extract_insensitive}},
+  \code{\link{nms_restore_matching}},
+  \code{\link{round_any}}
 }
 \author{
 Hadley Wickham (see \code{httr::insensitive()}).
 (https://twitter.com/hadleywickham)
 }
+\concept{functions for developers.}
+\keyword{internal}

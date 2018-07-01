@@ -25,6 +25,9 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/exists_in_pkg.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/extract_insensitive.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/fgeo.base-package.html</loc>
   </url>
   <url>
@@ -59,6 +62,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/nms_extract_match.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/nms_restore_matching.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/pick_drop.html</loc>

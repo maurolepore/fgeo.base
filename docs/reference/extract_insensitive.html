@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>. — round_any • fgeo.base</title>
+<title>Detect and extract matching strings ignoring case. — extract_insensitive • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>. — round_any" />
+<meta property="og:title" content="Detect and extract matching strings ignoring case. — extract_insensitive" />
 
-<meta property="og:description" content="Round to multiple of any number. Copied from plyr:::round_any.numeric()." />
+<meta property="og:description" content="Detect and extract matching strings ignoring case." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,55 +106,62 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/guess_plotdim.R'><code>R/guess_plotdim.R</code></a></small>
-    <div class="hidden name"><code>round_any.Rd</code></div>
+    <h1>Detect and extract matching strings ignoring case.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/nms_restore_matching.R'><code>R/nms_restore_matching.R</code></a></small>
+    <div class="hidden name"><code>extract_insensitive.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Round to multiple of any number. Copied from <code>plyr:::round_any.numeric()</code>.</p>
+    <p>Detect and extract matching strings ignoring case.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>round_any</span>(<span class='no'>x</span>, <span class='no'>accuracy</span>, <span class='kw'>f</span> <span class='kw'>=</span> <span class='no'>round</span>)</pre>
+    <pre class="usage"><span class='fu'>extract_insensitive</span>(<span class='no'>x</span>, <span class='no'>ref</span>)
+
+<span class='fu'>detect_insensitive</span>(<span class='no'>x</span>, <span class='no'>ref</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>Numeric vector to round.</p></td>
+      <td><p>A string to be muted as in <code>ref</code>, it a case insensitive match is
+found.</p></td>
     </tr>
     <tr>
-      <th>accuracy</th>
-      <td><p>Number to round to.</p></td>
-    </tr>
-    <tr>
-      <th>f</th>
-      <td><p>Rounding function: floor, ceiling or round.</p></td>
+      <th>ref</th>
+      <td><p>A string to use as a reference to match <code>x</code>.</p></td>
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>detect_*</code> and <code>extract_*</code> return a logical vector and a string.</p>
+    
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/plyr/topics/round_any'>plyr::round_any()</a></code> and <a href='http://bit.ly/2JrBQK3'>http://bit.ly/2JrBQK3</a>.</p>
-<p>Other functions for developers.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
+    <div class='dont-index'><p>Other functions for developers.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
   <code><a href='check_unique.html'>check_unique</a></code>, <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
-  <code><a href='extract_insensitive.html'>extract_insensitive</a></code>,
   <code><a href='insensitive.html'>insensitive</a></code>,
-  <code><a href='nms_restore_matching.html'>nms_restore_matching</a></code></p></div>
+  <code><a href='nms_restore_matching.html'>nms_restore_matching</a></code>,
+  <code><a href='round_any.html'>round_any</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># From pryr::round_any()</span>
-<span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>10</span>)</div><div class='output co'>#&gt; [1] 140</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>100</span>)</div><div class='output co'>#&gt; [1] 100</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>25</span>)</div><div class='output co'>#&gt; [1] 125</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>10</span>, <span class='no'>floor</span>)</div><div class='output co'>#&gt; [1] 130</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>100</span>, <span class='no'>floor</span>)</div><div class='output co'>#&gt; [1] 100</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>25</span>, <span class='no'>floor</span>)</div><div class='output co'>#&gt; [1] 125</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>10</span>, <span class='no'>ceiling</span>)</div><div class='output co'>#&gt; [1] 140</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>100</span>, <span class='no'>ceiling</span>)</div><div class='output co'>#&gt; [1] 200</div><div class='input'><span class='fu'>round_any</span>(<span class='fl'>135</span>, <span class='fl'>25</span>, <span class='no'>ceiling</span>)</div><div class='output co'>#&gt; [1] 150</div></pre>
+    <pre class="examples"><div class='input'><span class='no'>new</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"stemid"</span>, <span class='st'>"n"</span>)
+<span class='no'>reference</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"StemID"</span>, <span class='st'>"treeID"</span>)
+<span class='fu'>detect_insensitive</span>(<span class='no'>new</span>, <span class='no'>reference</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='no'>new</span>, <span class='no'>reference</span>)</div><div class='output co'>#&gt; [1] "StemID"</div><div class='input'>
+<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>TreeID</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Status</span> <span class='kw'>=</span> <span class='fl'>1</span>)
+<span class='fu'>extract_insensitive</span>(<span class='fu'>tolower</span>(<span class='fu'>names</span>(<span class='no'>vft</span>)), <span class='fu'>names</span>(<span class='no'>vft</span>))</div><div class='output co'>#&gt; [1] "TreeID" "Status"</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='fu'>names</span>(<span class='no'>vft</span>), <span class='fu'>tolower</span>(<span class='fu'>names</span>(<span class='no'>vft</span>)))</div><div class='output co'>#&gt; [1] "treeid" "status"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>

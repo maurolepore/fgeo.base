@@ -1,5 +1,6 @@
 x <- data.frame(
   CensusID = c(1, 1, 1, 1, 2, 2, 2, 2),
+  TreeID = c(1, 1, 2, 2, 1, 1, 2, 2),
   Tag = c(1, 1, 2, 2, 1, 1, 2, 2),
   Status = c("alive", "dead", "dead", "dead", "alive", "alive", "alive", "dead"),
   stringsAsFactors = FALSE

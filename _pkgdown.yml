@@ -87,7 +87,10 @@ reference:
     contents:
       - name_dfs
       - nms_extract_match
+      - nms_restore_matching
       - insensitive
+      - detect_insensitive
+      - extract_insensitive
 
   - title: Construct or restructure data
     desc: General (not specific to ForestGEO)
