@@ -16,7 +16,6 @@
 #' @author Hadley Wickham (see `httr::insensitive()`).
 #' (https://twitter.com/hadleywickham)
 #'
-#' @keywords internal
 #' @export
 #'
 #' @examples

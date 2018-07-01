@@ -3,29 +3,29 @@
 \name{extract_insensitive}
 \alias{extract_insensitive}
 \alias{detect_insensitive}
-\title{Detect and extract matching strings ignoring case.}
+\title{Detect and extract matching strings -- ignoring case.}
 \usage{
-extract_insensitive(x, ref)
+extract_insensitive(x, y)
 
-detect_insensitive(x, ref)
+detect_insensitive(x, y)
 }
 \arguments{
-\item{x}{A string to be muted as in \code{ref}, it a case insensitive match is
+\item{x}{A string to be muted as in \code{y}, it a case insensitive match is
 found.}
 
-\item{ref}{A string to use as a reference to match \code{x}.}
+\item{y}{A string to use as a reference to match \code{x}.}
 }
 \value{
 \code{detect_*} and \code{extract_*} return a logical vector and a string.
 }
 \description{
-Detect and extract matching strings ignoring case.
+Detect and extract matching strings -- ignoring case.
 }
 \examples{
-new <- c("stemid", "n")
-reference <- c("StemID", "treeID")
-detect_insensitive(new, reference)
-extract_insensitive(new, reference)
+x <- c("stemid", "n")
+y <- c("StemID", "treeID")
+detect_insensitive(x, y)
+extract_insensitive(x, y)
 
 vft <- data.frame(TreeID = 1, Status = 1)
 extract_insensitive(tolower(names(vft)), names(vft))

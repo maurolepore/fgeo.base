@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Detect and extract matching strings ignoring case. — extract_insensitive • fgeo.base</title>
+<title>Detect and extract matching strings -- ignoring case. — extract_insensitive • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Detect and extract matching strings ignoring case. — extract_insensitive" />
+<meta property="og:title" content="Detect and extract matching strings -- ignoring case. — extract_insensitive" />
 
-<meta property="og:description" content="Detect and extract matching strings ignoring case." />
+<meta property="og:description" content="Detect and extract matching strings -- ignoring case." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,31 +106,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Detect and extract matching strings ignoring case.</h1>
+    <h1>Detect and extract matching strings -- ignoring case.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/nms_restore_matching.R'><code>R/nms_restore_matching.R</code></a></small>
     <div class="hidden name"><code>extract_insensitive.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Detect and extract matching strings ignoring case.</p>
+    <p>Detect and extract matching strings -- ignoring case.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>extract_insensitive</span>(<span class='no'>x</span>, <span class='no'>ref</span>)
+    <pre class="usage"><span class='fu'>extract_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)
 
-<span class='fu'>detect_insensitive</span>(<span class='no'>x</span>, <span class='no'>ref</span>)</pre>
+<span class='fu'>detect_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A string to be muted as in <code>ref</code>, it a case insensitive match is
+      <td><p>A string to be muted as in <code>y</code>, it a case insensitive match is
 found.</p></td>
     </tr>
     <tr>
-      <th>ref</th>
+      <th>y</th>
       <td><p>A string to use as a reference to match <code>x</code>.</p></td>
     </tr>
     </table>
@@ -149,9 +149,9 @@ found.</p></td>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>new</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"stemid"</span>, <span class='st'>"n"</span>)
-<span class='no'>reference</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"StemID"</span>, <span class='st'>"treeID"</span>)
-<span class='fu'>detect_insensitive</span>(<span class='no'>new</span>, <span class='no'>reference</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='no'>new</span>, <span class='no'>reference</span>)</div><div class='output co'>#&gt; [1] "StemID"</div><div class='input'>
+    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"stemid"</span>, <span class='st'>"n"</span>)
+<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"StemID"</span>, <span class='st'>"treeID"</span>)
+<span class='fu'>detect_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "StemID"</div><div class='input'>
 <span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>TreeID</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Status</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 <span class='fu'>extract_insensitive</span>(<span class='fu'>tolower</span>(<span class='fu'>names</span>(<span class='no'>vft</span>)), <span class='fu'>names</span>(<span class='no'>vft</span>))</div><div class='output co'>#&gt; [1] "TreeID" "Status"</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='fu'>names</span>(<span class='no'>vft</span>), <span class='fu'>tolower</span>(<span class='fu'>names</span>(<span class='no'>vft</span>)))</div><div class='output co'>#&gt; [1] "treeid" "status"</div></pre>
   </div>

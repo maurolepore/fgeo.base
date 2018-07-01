@@ -1,4 +1,4 @@
-context("test-insensitive")
+context("insensitive")
 
 test_that("[, [[, and $ extract elements of named objects ignoring case", {
   x <- c("abc" = 1, "def" = 2)

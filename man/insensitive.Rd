@@ -55,4 +55,3 @@ Hadley Wickham (see \code{httr::insensitive()}).
 (https://twitter.com/hadleywickham)
 }
 \concept{functions for developers.}
-\keyword{internal}

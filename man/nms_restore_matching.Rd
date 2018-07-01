@@ -4,12 +4,12 @@
 \alias{nms_restore_matching}
 \title{Rename an object based on case-insensitive match of the names of a reference.}
 \usage{
-nms_restore_matching(new, ref)
+nms_restore_matching(new, old)
 }
 \arguments{
 \item{new}{New object which names to restored if they match the reference.}
 
-\item{ref}{Named object to use as reference.}
+\item{old}{Named object to use as reference.}
 }
 \value{
 The output is \code{new} with as many names changed as case-insensitive
