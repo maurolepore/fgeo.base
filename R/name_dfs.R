@@ -6,6 +6,8 @@
 #' @param dfs A list of dataframes.
 #' @param name Names of the columns that store the names and values.
 #'
+#' @family functions dealing with names.
+#'
 #' @return A list of dataframes.
 #' @export
 #'

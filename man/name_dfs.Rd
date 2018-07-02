@@ -27,3 +27,9 @@ name_dfs(dfs, "custom_name")
 dfs2 <- list(data.frame(x = 1), data.frame(x = 1))
 name_dfs(dfs2)
 }
+\seealso{
+Other functions dealing with names.: \code{\link{insensitive}},
+  \code{\link{nms_extract_match}},
+  \code{\link{rename_matches}}
+}
+\concept{functions dealing with names.}

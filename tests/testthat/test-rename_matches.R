@@ -1,19 +1,19 @@
-context("nms_restore_matching")
+context("rename_matches")
 
 test_that("works as expected", {
   x <- data.frame(col1 = 5, col2 = 1, n = 5)
 
   y <- data.frame(COL1 = 1, COL2 = 1, COL3 = 1)
-  expect_named(nms_restore_matching(x, y), c("COL1", "COL2", "n"))
+  expect_named(rename_matches(x, y), c("COL1", "COL2", "n"))
 
   y <- data.frame(COL1 = 1)
-  expect_named(nms_restore_matching(x, y), c("COL1", "col2", "n"))
+  expect_named(rename_matches(x, y), c("COL1", "col2", "n"))
 
   y <- data.frame(NOMATCH = 1)
-  expect_named(nms_restore_matching(x, y), c("col1", "col2", "n"))
+  expect_named(rename_matches(x, y), c("col1", "col2", "n"))
 
   y <- data.frame(1)
-  expect_named(nms_restore_matching(x, y), c("col1", "col2", "n"))
+  expect_named(rename_matches(x, y), c("col1", "col2", "n"))
 })
 
 

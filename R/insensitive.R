@@ -12,6 +12,7 @@
 #' @seealso `httr::insensitive()`.
 #'
 #' @family functions for developers.
+#' @family functions dealing with names.
 #'
 #' @author Hadley Wickham (see `httr::insensitive()`).
 #' (https://twitter.com/hadleywickham)

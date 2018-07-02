@@ -58,6 +58,8 @@ guess_max <- function(x, accuracy) {
 #' @param x A named object.
 #' @param .match A character vector giving names to match.
 #'
+#' @family functions dealing with names.
+#'
 #' @return A character vector.
 #' @export
 #'

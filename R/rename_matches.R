@@ -1,22 +1,23 @@
 #' Rename an object based on case-insensitive match of the names of a reference.
 #'
-#' @param old Named object to use as reference.
-#' @param new New object which names to restored if they match the reference.
+#' @param y Named object to use as reference.
+#' @param x x object which names to restored if they match the reference.
 #'
 #' @family functions for developers.
+#' @family functions dealing with names.
 #'
-#' @return The output is `new` with as many names changed as case-insensitive
+#' @return The output is `x` with as many names changed as case-insensitive
 #'   matches there are with the reference.
 #' @export
 #'
 #' @examples
 #' ref <- data.frame(COL1 = 1, COL2 = 1)
-#' new <- data.frame(col1 = 5, col2 = 1, n = 5)
-#' nms_restore_matching(new, ref)
-nms_restore_matching <- function(new, old) {
-  in_ref <- detect_insensitive(names(new), names(old))
-  names(new)[in_ref] <- extract_insensitive(names(new), names(old))
-  new
+#' x <- data.frame(col1 = 5, col2 = 1, n = 5)
+#' rename_matches(x, ref)
+rename_matches <- function(x, y) {
+  in_ref <- detect_insensitive(names(x), names(y))
+  names(x)[in_ref] <- extract_insensitive(names(x), names(y))
+  x
 }
 
 #' Detect and extract matching strings -- ignoring case.

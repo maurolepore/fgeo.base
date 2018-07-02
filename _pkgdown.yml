@@ -87,7 +87,7 @@ reference:
     contents:
       - name_dfs
       - nms_extract_match
-      - nms_restore_matching
+      - rename_matches
       - insensitive
       - detect_insensitive
       - extract_insensitive

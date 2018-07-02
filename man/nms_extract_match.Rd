@@ -21,3 +21,8 @@ Extract names that match a character vector.
 nms_extract_match(luquillo_stem_random_tiny, c("x", "PX", "gx"))
 nms_extract_match(luquillo_vft_4quad, c("x", "PX", "gx"))
 }
+\seealso{
+Other functions dealing with names.: \code{\link{insensitive}},
+  \code{\link{name_dfs}}, \code{\link{rename_matches}}
+}
+\concept{functions dealing with names.}
