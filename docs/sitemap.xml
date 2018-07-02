@@ -64,9 +64,6 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/nms_extract_match.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/nms_restore_matching.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/pick_drop.html</loc>
   </url>
   <url>
@@ -74,6 +71,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/print_all.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/rename_matches.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/round_any.html</loc>
