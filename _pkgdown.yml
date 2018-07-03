@@ -86,7 +86,7 @@ reference:
     desc: General (not specific to ForestGEO)
     contents:
       - name_dfs
-      - nms_extract_match
+      - pull_name_matches
       - rename_matches
       - insensitive
       - detect_insensitive

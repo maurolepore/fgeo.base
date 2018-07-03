@@ -52,3 +52,4 @@ detect_insensitive <- function(x, y) {
   matches <- lapply(fgeo.base::enline(x), grepl, y, ignore.case = TRUE)
   vapply(matches, any, logical(1))
 }
+

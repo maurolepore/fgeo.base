@@ -27,10 +27,11 @@ rename_matches(x, ref)
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{check_unique}}, \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
-  \code{\link{insensitive}}, \code{\link{round_any}}
+  \code{\link{insensitive}},
+  \code{\link{pull_name_matches}}, \code{\link{round_any}}
 
 Other functions dealing with names.: \code{\link{insensitive}},
-  \code{\link{name_dfs}}, \code{\link{nms_extract_match}}
+  \code{\link{name_dfs}}, \code{\link{pull_name_matches}}
 }
 \concept{functions dealing with names.}
 \concept{functions for developers.}

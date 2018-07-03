@@ -23,7 +23,7 @@ guess_plotdim <- function(x, accuracy = 20) {
 
   names(x) <- tolower(names(x))
   .match <- c("x", "gx", "y", "gy", "x", "px")
-  matched <- nms_extract_match(x, .match)
+  matched <- pull_name_matches(x, .match)
 
   n_nms <- length(matched)
   if (n_nms != 2) {
@@ -52,25 +52,6 @@ guess_max <- function(x, accuracy) {
   max_x <- max(x, na.rm = TRUE)
   round_any(max_x, f = ceiling, accuracy = accuracy)
 }
-
-#' Extract names that match a character vector.
-#'
-#' @param x A named object.
-#' @param .match A character vector giving names to match.
-#'
-#' @family functions dealing with names.
-#'
-#' @return A character vector.
-#' @export
-#'
-#' @examples
-#' nms_extract_match(luquillo_stem_random_tiny, c("x", "PX", "gx"))
-#' nms_extract_match(luquillo_vft_4quad, c("x", "PX", "gx"))
-nms_extract_match <- function(x, .match) {
-  names(x)[grepl(glue_pipe(enline(.match)), names(x))]
-}
-
-
 
 #' Round to multiple of any number. Copied from `plyr:::round_any.numeric()`.
 #'

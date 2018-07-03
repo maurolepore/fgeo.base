@@ -47,10 +47,11 @@ transform(insensitive(vft), new = treeid)
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{check_unique}}, \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
+  \code{\link{pull_name_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 
 Other functions dealing with names.: \code{\link{name_dfs}},
-  \code{\link{nms_extract_match}},
+  \code{\link{pull_name_matches}},
   \code{\link{rename_matches}}
 }
 \author{

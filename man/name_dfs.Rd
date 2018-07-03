@@ -29,7 +29,7 @@ name_dfs(dfs2)
 }
 \seealso{
 Other functions dealing with names.: \code{\link{insensitive}},
-  \code{\link{nms_extract_match}},
+  \code{\link{pull_name_matches}},
   \code{\link{rename_matches}}
 }
 \concept{functions dealing with names.}
