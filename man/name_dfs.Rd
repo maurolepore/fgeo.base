@@ -30,6 +30,6 @@ name_dfs(dfs2)
 \seealso{
 Other functions dealing with names.: \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
-  \code{\link{rename_matches}}
+  \code{\link{rename_matches}}, \code{\link{round_any}}
 }
 \concept{functions dealing with names.}

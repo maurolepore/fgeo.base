@@ -37,7 +37,11 @@ Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}
+
+Other functions dealing with names.: \code{\link{insensitive}},
+  \code{\link{name_dfs}}, \code{\link{nms_pull_matches}},
+  \code{\link{rename_matches}}
 }
+\concept{functions dealing with names.}
 \concept{functions for developers with no dependencies.}
 \concept{functions for developers.}
-\concept{functions to manipulate names.}

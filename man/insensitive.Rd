@@ -52,7 +52,7 @@ Other functions for developers.: \code{\link{check_crucial_names}},
 
 Other functions dealing with names.: \code{\link{name_dfs}},
   \code{\link{nms_pull_matches}},
-  \code{\link{rename_matches}}
+  \code{\link{rename_matches}}, \code{\link{round_any}}
 }
 \author{
 Hadley Wickham (see \code{httr::insensitive()}).

@@ -75,7 +75,7 @@ guess_max <- function(x, accuracy) {
 #' round_any(135, 100, ceiling)
 #' round_any(135, 25, ceiling)
 #' @family functions for developers.
-#' @family functions to manipulate names.
+#' @family functions dealing with names.
 #' @family functions for developers with no dependencies.
 round_any <- function(x, accuracy, f = round) {
   f(x / accuracy) * accuracy
