@@ -2,7 +2,7 @@ context("test-nms_pull_matches")
 
 describe("nms_pull_matches", {
   it("pulls the expected names", {
-    vft <- fgeo.data::luquillo_stem_random_tiny
+    vft <- luquillo_stem_random_tiny
     expected <-  c("gx", "gy")
     expect_equal(nms_pull_matches(vft, c("x", "PX", "gx", "gy")), expected)
   })
