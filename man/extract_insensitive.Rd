@@ -35,7 +35,7 @@ extract_insensitive(names(vft), tolower(names(vft)))
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{check_unique}}, \code{\link{exists_in_pkg}},
   \code{\link{insensitive}},
-  \code{\link{pull_name_matches}},
+  \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 }
 \concept{functions for developers.}

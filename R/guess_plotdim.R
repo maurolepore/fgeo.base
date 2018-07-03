@@ -23,7 +23,7 @@ guess_plotdim <- function(x, accuracy = 20) {
 
   names(x) <- tolower(names(x))
   .match <- c("x", "gx", "y", "gy", "x", "px")
-  matched <- pull_name_matches(x, .match)
+  matched <- nms_pull_matches(x, .match)
 
   n_nms <- length(matched)
   if (n_nms != 2) {
