@@ -35,7 +35,10 @@ suffix_match <- function(string, to_match, .match, suffix) {
   )
 
   if (!.match %in% to_match) {
-    warning("No `string` matches `", .match, "`. Is this what you expect?")
+    warning(
+      "No `string` matches `", .match, "`. Is this what you expect?",
+      call. = FALSE
+    )
   }
 
   is_match <- to_match == .match
