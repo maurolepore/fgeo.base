@@ -3,6 +3,7 @@
 S3method("$",insensitive)
 S3method("[",insensitive)
 S3method("[[",insensitive)
+export("%||%")
 export(abort_na)
 export(check_crucial_names)
 export(check_unique)
