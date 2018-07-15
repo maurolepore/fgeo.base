@@ -25,7 +25,7 @@ exists_in_pkg("cars", "datasets")
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{check_unique}},
   \code{\link{extract_insensitive}},
-  \code{\link{insensitive}},
+  \code{\link{insensitive}}, \code{\link{multiple_var}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 }

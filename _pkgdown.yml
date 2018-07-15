@@ -85,7 +85,6 @@ reference:
   - title: Deal with objects' names
     desc: General (not specific to ForestGEO)
     contents:
-      - detect_insensitive
       - extract_insensitive
       - insensitive
       - name_dfs
@@ -98,12 +97,16 @@ reference:
       - gather_mat
       - gather_mats
 
+  - title: Predicates
+    desc: General (not specific to ForestGEO)
+      - detect_insensitive
+      - multiple_var
+
   - title: Miscellaneous
     desc: General (not specific to ForestGEO)
     contents:
       - print_all
       - "`%||%`"
-
 
   - title: Access data
     desc: Specific to ForestGEO

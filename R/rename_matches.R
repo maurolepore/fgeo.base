@@ -27,6 +27,7 @@ rename_matches <- function(x, y) {
 #' @param y A string to use as a reference to match `x`.
 #'
 #' @family functions for developers.
+#' @family predicates.
 #'
 #' @return `detect_*` and `extract_*` return a logical vector and a string.
 #' @export

@@ -43,9 +43,6 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/glue_comma.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/grapes-or-or-grapes.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/guess_max.html</loc>
   </url>
   <url>
@@ -61,6 +58,9 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/luquillo.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/multiple_var.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/name_dfs.html</loc>
   </url>
   <url>
@@ -71,6 +71,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/pick_plotname.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/pipe.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/print_all.html</loc>

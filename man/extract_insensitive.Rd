@@ -34,8 +34,11 @@ extract_insensitive(names(vft), tolower(names(vft)))
 \seealso{
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{check_unique}}, \code{\link{exists_in_pkg}},
-  \code{\link{insensitive}},
+  \code{\link{insensitive}}, \code{\link{multiple_var}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
+
+Other predicates.: \code{\link{multiple_var}}
 }
 \concept{functions for developers.}
+\concept{predicates.}
