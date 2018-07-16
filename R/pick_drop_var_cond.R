@@ -17,7 +17,8 @@
 #' @family functions for fgeo census and vft.
 #' @family functions for fgeo census.
 #' @family functions for fgeo vft.
-#' @family functions to filter dataframes.
+#'
+#' @family functions to pick or drop rows of a dataframe.
 #'
 #' @return Dataframe rows with matching conditions.
 #'
