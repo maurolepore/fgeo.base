@@ -45,9 +45,9 @@ transform(insensitive(vft), new = treeid)
 \code{httr::insensitive()}.
 
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{check_unique}}, \code{\link{exists_in_pkg}},
+  \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
-  \code{\link{multiple_var}},
+  \code{\link{flag_multiple}}, \code{\link{multiple_var}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 

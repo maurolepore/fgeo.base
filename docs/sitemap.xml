@@ -7,9 +7,6 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/check_crucial_names.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/check_unique.html</loc>
-  </url>
-  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/collapse_censusid.html</loc>
   </url>
   <url>
@@ -35,6 +32,9 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/find_datasets.html</loc>
+  </url>
+  <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/flag_multiple.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/gather_mat.html</loc>
