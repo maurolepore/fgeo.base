@@ -19,35 +19,54 @@
 #' unique_v <- rep(1, 3)
 #' num <- c(1:3)
 #' chr <- c(letters[1:3])
-#' check_unique_vector(unique_v, "warning")
-#' check_unique_vector(num, "warning")
-#' check_unique_vector(chr, "message", "Do something")
+#' flag_multiple_vector(unique_v, warning)
+#' flag_multiple_vector(num, warning)
+#' flag_multiple_vector(chr, message, "Hello world.")
 #'
 #' # On a dataframe
 #' .df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
 #'
-#' check_unique(.df, "a")
-#' check_unique(.df, "a", "message", "do this")
+#' flag_multiple(.df, "a")
+#' flag_multiple(.df, "a", message, "Hello world.")
 #' # Silent
-#' check_unique(.df, "b", "warning", "do this")
-check_unique <- function(x, x_var, cond = "warning", msg = NULL) {
+#' flag_multiple(.df, "b", warning, "Hello world")
+#'
+#' \dontrun{
+#' # Dealing with grouped data
+#' if (!requireNamespace("dplyr")) {
+#'   # `b` is single within groups but multiple accross entire dataset
+#'   .df <- data.frame(
+#'     a = c(1, 1, 2, 2), b = c(1, 1, 2, 2),
+#'     stringsAsFactors = FALSE
+#'   )
+#'
+#'   by_x <- dplyr::group_by(.df, a)
+#'   # Works accross entire dataset
+#'   flag_multiple(by_x, "b")
+#'   # Works within groups entire dataset
+#'   dplyr::do(by_x, (flag_multiple(., "b")))
+#'   # Also consider tidyr::nest() + dplyr::mutate() + dpyr::map())
+#' }
+#' }
+flag_multiple <- function(x, x_var, cond = warning, msg = NULL) {
   stopifnot(is.data.frame(x))
-  if (!x_var  %in% names(x)) stop(x_var, " is an invalid name")
+  if (!x_var  %in% names(x)) stop(x_var, " is an invalid name", call. = FALSE)
 
   x_var <- x[[x_var]]
-  check_unique_vector(v = x_var, cond = cond, msg = msg)
+  flag_multiple_vector(v = x_var, cond = cond, msg = msg)
+
   invisible(x)
 }
 
-#' @rdname check_unique
+#' @rdname flag_multiple
 #' @export
-check_unique_vector <- function(v, cond, msg = NULL) {
+flag_multiple_vector <- function(v, cond, msg = NULL) {
   stopifnot(length(cond) == 1)
-  stopifnot(cond %in% c("warning", "stop", "message"))
 
-  customized <- c("Duplicated values were detected\n", msg)
+  customized <- c("Multiple values were detected.\n", msg)
   if (length(unique(v)) > 1) {
-    do.call(cond, list(customized))
+    cond(msg %||% customized)
   }
+
   invisible(v)
 }

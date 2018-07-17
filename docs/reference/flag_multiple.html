@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Report if a vector or a variable of a dataframe is duplicated. — check_unique • fgeo.base</title>
+<title>Report if a vector or a variable of a dataframe is duplicated. — flag_multiple • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Report if a vector or a variable of a dataframe is duplicated. — check_unique" />
+<meta property="og:title" content="Report if a vector or a variable of a dataframe is duplicated. — flag_multiple" />
 
 <meta property="og:description" content="Report if a vector or a variable of a dataframe is duplicated." />
 <meta name="twitter:card" content="summary" />
@@ -108,7 +108,7 @@
     <div class="page-header">
     <h1>Report if a vector or a variable of a dataframe is duplicated.</h1>
     <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/check.R'><code>R/check.R</code></a></small>
-    <div class="hidden name"><code>check_unique.Rd</code></div>
+    <div class="hidden name"><code>flag_multiple.Rd</code></div>
     </div>
 
     <div class="ref-description">
@@ -117,9 +117,9 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>check_unique</span>(<span class='no'>x</span>, <span class='no'>x_var</span>, <span class='kw'>cond</span> <span class='kw'>=</span> <span class='st'>"warning"</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
+    <pre class="usage"><span class='fu'>flag_multiple</span>(<span class='no'>x</span>, <span class='no'>x_var</span>, <span class='kw'>cond</span> <span class='kw'>=</span> <span class='no'>warning</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
 
-<span class='fu'>check_unique_vector</span>(<span class='no'>v</span>, <span class='no'>cond</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+<span class='fu'>flag_multiple_vector</span>(<span class='no'>v</span>, <span class='no'>cond</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -167,15 +167,29 @@
 <span class='no'>unique_v</span> <span class='kw'>&lt;-</span> <span class='fu'>rep</span>(<span class='fl'>1</span>, <span class='fl'>3</span>)
 <span class='no'>num</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>1</span>:<span class='fl'>3</span>)
 <span class='no'>chr</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='no'>letters</span>[<span class='fl'>1</span>:<span class='fl'>3</span>])
-<span class='fu'>check_unique_vector</span>(<span class='no'>unique_v</span>, <span class='st'>"warning"</span>)
-<span class='fu'>check_unique_vector</span>(<span class='no'>num</span>, <span class='st'>"warning"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Duplicated values were detected</span></div><div class='input'><span class='fu'>check_unique_vector</span>(<span class='no'>chr</span>, <span class='st'>"message"</span>, <span class='st'>"Do something"</span>)</div><div class='output co'>#&gt; <span class='message'>Duplicated values were detected</span>
-#&gt; <span class='message'>Do something</span></div><div class='input'>
+<span class='fu'>flag_multiple_vector</span>(<span class='no'>unique_v</span>, <span class='no'>warning</span>)
+<span class='fu'>flag_multiple_vector</span>(<span class='no'>num</span>, <span class='no'>warning</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Multiple values were detected.</span></div><div class='input'><span class='fu'>flag_multiple_vector</span>(<span class='no'>chr</span>, <span class='no'>message</span>, <span class='st'>"Hello world."</span>)</div><div class='output co'>#&gt; <span class='message'>Hello world.</span></div><div class='input'>
 <span class='co'># On a dataframe</span>
 <span class='no'>.df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
 
-<span class='fu'>check_unique</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Duplicated values were detected</span></div><div class='input'><span class='fu'>check_unique</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='st'>"message"</span>, <span class='st'>"do this"</span>)</div><div class='output co'>#&gt; <span class='message'>Duplicated values were detected</span>
-#&gt; <span class='message'>do this</span></div><div class='input'><span class='co'># Silent</span>
-<span class='fu'>check_unique</span>(<span class='no'>.df</span>, <span class='st'>"b"</span>, <span class='st'>"warning"</span>, <span class='st'>"do this"</span>)</div></pre>
+<span class='fu'>flag_multiple</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Multiple values were detected.</span></div><div class='input'><span class='fu'>flag_multiple</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>message</span>, <span class='st'>"Hello world."</span>)</div><div class='output co'>#&gt; <span class='message'>Hello world.</span></div><div class='input'><span class='co'># Silent</span>
+<span class='fu'>flag_multiple</span>(<span class='no'>.df</span>, <span class='st'>"b"</span>, <span class='no'>warning</span>, <span class='st'>"Hello world"</span>)</div><span class='co'># NOT RUN {</span>
+<span class='co'># Dealing with grouped data</span>
+<span class='kw'>if</span> (!<span class='fu'>requireNamespace</span>(<span class='st'>"dplyr"</span>)) {
+  <span class='co'># `b` is single within groups but multiple accross entire dataset</span>
+  <span class='no'>.df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(
+    <span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>), <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>2</span>),
+    <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  )
+
+  <span class='no'>by_x</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>.df</span>, <span class='no'>a</span>)
+  <span class='co'># Works accross entire dataset</span>
+  <span class='fu'>flag_multiple</span>(<span class='no'>by_x</span>, <span class='st'>"b"</span>)
+  <span class='co'># Works within groups entire dataset</span>
+  <span class='kw pkg'>dplyr</span><span class='kw ns'>::</span><span class='fu'><a href='http://dplyr.tidyverse.org/reference/do.html'>do</a></span>(<span class='no'>by_x</span>, (<span class='fu'>flag_multiple</span>(<span class='no'>.</span>, <span class='st'>"b"</span>)))
+  <span class='co'># Also consider tidyr::nest() + dplyr::mutate() + dpyr::map())</span>
+}
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
