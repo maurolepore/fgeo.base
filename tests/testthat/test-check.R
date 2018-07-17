@@ -27,6 +27,7 @@ test_that("returns the expected messages and output x", {
 })
 
 test_that("doesn't deqal directly with grouped data to work within groups", {
+  skip_if_not_installed("dplyr")
   # Single within groups but multiple accross entire dataset
   .df <- data.frame(
     a = c(1, 1, 2, 2), b = c(1, 1, 2, 2),
