@@ -23,7 +23,7 @@ exists_in_pkg("cars", "datasets")
 }
 \seealso{
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{extract_insensitive}},
+  \code{\link{extract_insensitive}}, \code{\link{flag_if}},
   \code{\link{flag_multiple}}, \code{\link{insensitive}},
   \code{\link{multiple_var}},
   \code{\link{nms_pull_matches}},
