@@ -78,29 +78,34 @@ describe("rename_matches()", {
   it("outputs correct names", {
 
     # Problematic datasets
-    out <- tibble::tribble(
-       ~plotname, ~year, ~family, ~species, ~n,
-           "luq",  2001,     "f", "Gn spp", 2L,
-           "luq",  2002,     "f", "Gn spp", 1L
-       )
-
-    ref <- data.frame(stringsAsFactors = FALSE,
-               plotname = c("luq", "luq"),
-               censusid = c(1L, 1L),
-                 treeid = c(2L, 1L),
-                 stemid = c(2.2, 1.1),
-                 status = c("alive", "alive"),
-                    dbh = c(3L, 1L),
-                  genus = c("Gn", "Gn"),
-            speciesname = c("spp", "spp"),
-              exactdate = c("2001-01-01", "2001-01-01"),
-       plotcensusnumber = c(1L, 1L),
-                 family = c("f", "f"),
-                    tag = c(2L, 1L),
-            status_tree = c("alive", "alive"),
-                   year = c(2001, 2001),
-                species = c("Gn spp", "Gn spp")
+    out <- data.frame(
+      stringsAsFactors = FALSE,
+      plotname = c("luq", "luq"),
+      year = c(2001, 2002),
+      family = c("f", "f"),
+      species = c("Gn spp", "Gn spp"),
+      n = c(2L, 1L)
     )
+
+    ref <- data.frame(
+      stringsAsFactors = FALSE,
+      plotname = c("luq", "luq"),
+      censusid = c(1L, 1L),
+      treeid = c(2L, 1L),
+      stemid = c(2.2, 1.1),
+      status = c("alive", "alive"),
+      dbh = c(3L, 1L),
+      genus = c("Gn", "Gn"),
+      speciesname = c("spp", "spp"),
+      exactdate = c("2001-01-01", "2001-01-01"),
+      plotcensusnumber = c(1L, 1L),
+      family = c("f", "f"),
+      tag = c(2L, 1L),
+      status_tree = c("alive", "alive"),
+      year = c(2001, 2001),
+      species = c("Gn spp", "Gn spp")
+    )
+
     expect_equal(rename_matches(out, ref)$year, c(2001, 2002))
     expect_equal(rename_matches(out, ref)$family, c("f", "f"))
   })
