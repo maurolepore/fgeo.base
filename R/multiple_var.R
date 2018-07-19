@@ -20,6 +20,7 @@
 #' multiple_censusid <- multiple_var("CENSUSID")
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
 #' @keywords internal
+#' @noMd
 multiple_var <- function(var) {
   force(var)
   var <- tolower(var)

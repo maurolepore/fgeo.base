@@ -10,10 +10,10 @@ multiple_var(var)
 \item{var}{Character string giving the name of a single variable.}
 }
 \value{
-A single \code{TRUE} or \code{FALSE}. Insensitive to upper- lower-case.
+A single `TRUE` or `FALSE`. Insensitive to upper- lower-case.
 }
 \description{
-Useful in \code{if()} statements.
+Useful in `if()` statements.
 }
 \examples{
 multiple_censusid <- multiple_var("censusid")
