@@ -1,6 +1,4 @@
-# Check -------------------------------------------------------------------
-
-#' Report if a vector or a variable of a dataframe is duplicated.
+#' Report if a vector or a variable of a dataframe has muliple distinct values.
 #'
 #' @param x A dataframe.
 #' @param x_var String; the name of a variable of `x`.
@@ -86,8 +84,6 @@ flag_multiple_vector <- function(v, cond, msg = NULL) {
 #' @family functions for developers.
 #'
 #' @return Throws a condition determined by `.flag` or invisible.
-#' @export
-#'
 #' @examples
 #' dupl <- c(1, 1)
 #' # Flags
@@ -126,6 +122,8 @@ flag_multiple_vector <- function(v, cond, msg = NULL) {
 #' # Flags
 #' flag_if(mult_df, "mult", is_multiple(mult), message)
 #' flag_if(mult_df, "mult", is_multiple(mult), message, "Multiple values.")
+#' @keywords internal
+#' @noRd
 flag_if <- function(.x, .x_var, .if, .flag = warning, msg = NULL) {
   stopifnot(is.data.frame(.x))
   if (!.x_var  %in% names(.x)) {

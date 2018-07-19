@@ -33,7 +33,7 @@ round_any(135, 25, ceiling)
 
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{exists_in_pkg}},
-  \code{\link{extract_insensitive}}, \code{\link{flag_if}},
+  \code{\link{extract_insensitive}},
   \code{\link{flag_multiple}}, \code{\link{insensitive}},
   \code{\link{multiple_var}},
   \code{\link{nms_pull_matches}},

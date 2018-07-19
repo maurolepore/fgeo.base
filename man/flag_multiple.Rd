@@ -3,7 +3,7 @@
 \name{flag_multiple}
 \alias{flag_multiple}
 \alias{flag_multiple_vector}
-\title{Report if a vector or a variable of a dataframe is duplicated.}
+\title{Report if a vector or a variable of a dataframe has muliple distinct values.}
 \usage{
 flag_multiple(x, x_var, cond = warning, msg = NULL)
 
@@ -25,7 +25,7 @@ flag_multiple_vector(v, cond, msg = NULL)
 Invisible \code{v} or a condition and a message.
 }
 \description{
-Report if a vector or a variable of a dataframe is duplicated.
+Report if a vector or a variable of a dataframe has muliple distinct values.
 }
 \examples{
 # On a vector
@@ -67,7 +67,7 @@ Other functions to check inputs.: \code{\link{check_crucial_names}}
 
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{exists_in_pkg}},
-  \code{\link{extract_insensitive}}, \code{\link{flag_if}},
+  \code{\link{extract_insensitive}},
   \code{\link{insensitive}}, \code{\link{multiple_var}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
