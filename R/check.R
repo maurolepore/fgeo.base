@@ -71,11 +71,6 @@ flag_multiple_vector <- function(v, cond, msg = NULL) {
   invisible(v)
 }
 
-
-
-# FIXME: Replace flag multiple.
-# FIXME: Test based on examples.
-
 #' Flag if a vector or dataframe column meets a condition.
 #'
 #' These funcitons are useful to create messagees, warnings and error messages
