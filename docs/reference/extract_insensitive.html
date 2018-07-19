@@ -32,7 +32,8 @@
 
 <meta property="og:title" content="Detect and extract matching strings -- ignoring case. — extract_insensitive" />
 
-<meta property="og:description" content="Detect and extract matching strings -- ignoring case." />
+<meta property="og:description" content="Detect and extract matching strings -- ignoring case.
+Return TRUE in position where name of x is in y; FALSE otherwise." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -114,6 +115,7 @@
     <div class="ref-description">
     
     <p>Detect and extract matching strings -- ignoring case.</p>
+<p>Return TRUE in position where name of x is in y; FALSE otherwise.</p>
     
     </div>
 
@@ -152,7 +154,7 @@ found.</p></td>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"stemid"</span>, <span class='st'>"n"</span>)
 <span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"StemID"</span>, <span class='st'>"treeID"</span>)
-<span class='fu'>detect_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "StemID"</div><div class='input'>
+<span class='fu'>detect_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "StemID" "n"     </div><div class='input'>
 <span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>TreeID</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Status</span> <span class='kw'>=</span> <span class='fl'>1</span>)
 <span class='fu'>extract_insensitive</span>(<span class='fu'>tolower</span>(<span class='fu'>names</span>(<span class='no'>vft</span>)), <span class='fu'>names</span>(<span class='no'>vft</span>))</div><div class='output co'>#&gt; [1] "TreeID" "Status"</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='fu'>names</span>(<span class='no'>vft</span>), <span class='fu'>tolower</span>(<span class='fu'>names</span>(<span class='no'>vft</span>)))</div><div class='output co'>#&gt; [1] "treeid" "status"</div></pre>
   </div>
