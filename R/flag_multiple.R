@@ -1,4 +1,4 @@
-#' Report if a vector or a variable of a dataframe has muliple distinct values.
+#' Report if a vector or a variable of a dataframe has multiple distinct values.
 #'
 #' @param x A dataframe.
 #' @param x_var String; the name of a variable of `x`.

@@ -3,7 +3,7 @@
 \name{flag_multiple}
 \alias{flag_multiple}
 \alias{flag_multiple_vector}
-\title{Report if a vector or a variable of a dataframe has muliple distinct values.}
+\title{Report if a vector or a variable of a dataframe has multiple distinct values.}
 \usage{
 flag_multiple(x, x_var, cond = warning, msg = NULL)
 
@@ -25,7 +25,7 @@ flag_multiple_vector(v, cond, msg = NULL)
 Invisible \code{v} or a condition and a message.
 }
 \description{
-Report if a vector or a variable of a dataframe has muliple distinct values.
+Report if a vector or a variable of a dataframe has multiple distinct values.
 }
 \examples{
 # On a vector

@@ -10,10 +10,10 @@ multiple_var(var)
 \item{var}{Character string giving the name of a single variable.}
 }
 \value{
-A single `TRUE` or `FALSE`. Insensitive to upper- lower-case.
+A single \code{TRUE} or \code{FALSE}. Insensitive to upper- lower-case.
 }
 \description{
-Useful in `if()` statements.
+Useful in \code{if()} statements.
 }
 \examples{
 multiple_censusid <- multiple_var("censusid")
@@ -38,4 +38,3 @@ Other predicates.: \code{\link{extract_insensitive}}
 }
 \concept{functions for developers.}
 \concept{predicates.}
-\keyword{internal}
