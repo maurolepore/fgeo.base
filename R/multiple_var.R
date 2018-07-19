@@ -8,7 +8,6 @@
 #' @family predicates.
 #'
 #' @return A single `TRUE` or `FALSE`. Insensitive to upper- lower-case.
-#' @export
 #'
 #' @examples
 #' multiple_censusid <- multiple_var("censusid")
@@ -20,6 +19,7 @@
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
 #' multiple_censusid <- multiple_var("CENSUSID")
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
+#' @keywords internal
 multiple_var <- function(var) {
   force(var)
   var <- tolower(var)

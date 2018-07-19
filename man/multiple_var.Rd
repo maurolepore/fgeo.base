@@ -38,3 +38,4 @@ Other predicates.: \code{\link{extract_insensitive}}
 }
 \concept{functions for developers.}
 \concept{predicates.}
+\keyword{internal}
