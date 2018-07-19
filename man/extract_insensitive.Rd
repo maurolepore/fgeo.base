@@ -20,6 +20,8 @@ found.}
 }
 \description{
 Detect and extract matching strings -- ignoring case.
+
+Return TRUE in position where name of x is in y; FALSE otherwise.
 }
 \examples{
 x <- c("stemid", "n")

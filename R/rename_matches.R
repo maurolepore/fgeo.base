@@ -15,8 +15,7 @@
 #' x <- data.frame(col1 = 5, col2 = 1, n = 5)
 #' rename_matches(x, ref)
 rename_matches <- function(x, y) {
-  in_ref <- detect_insensitive(names(x), names(y))
-  names(x)[in_ref] <- extract_insensitive(names(x), names(y))
+  names(x) <- extract_insensitive(names(x), names(y))
   x
 }
 
@@ -42,10 +41,30 @@ rename_matches <- function(x, y) {
 #' extract_insensitive(tolower(names(vft)), names(vft))
 #' extract_insensitive(names(vft), tolower(names(vft)))
 extract_insensitive <- function(x, y) {
-  stopifnot(is.character(x), is.character(y))
-  y[detect_insensitive(y, x)]
+  x <- as.character(x)
+  y <- as.character(y)
+  # stopifnot(is.character(x), is.character(y))
+
+  # Is the element of x in y?
+  pull_replacement <- function(x, y) {
+    stopifnot(length(x) == 1)
+    if (is.na(x)) {
+      return(x)
+    }
+
+    in_x <- detect_insensitive(y, x)
+    replacement <- y[in_x]
+    if (length(replacement) == 0) {
+      return(x)
+    }
+
+    unique(replacement)
+  }
+  unname(vapply(x, pull_replacement, character(1), y))
 }
 
+#' Return TRUE in position where name of x is in y; FALSE otherwise.
+#'
 #' @export
 #' @rdname extract_insensitive
 detect_insensitive <- function(x, y) {

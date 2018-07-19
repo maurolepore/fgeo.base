@@ -8,6 +8,7 @@
 #' @family predicates.
 #'
 #' @return A single `TRUE` or `FALSE`. Insensitive to upper- lower-case.
+#'
 #' @export
 #'
 #' @examples
