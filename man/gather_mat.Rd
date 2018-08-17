@@ -5,9 +5,11 @@
 \alias{gather_mats}
 \title{Gather matrix columns into a long-format dataframe.}
 \usage{
-gather_mat(mat, rownm = "rownames", colnm = "colnames", value = "value")
+gather_mat(mat, rownm = "rownames", colnm = "colnames",
+  value = "value")
 
-gather_mats(mat, rownm = "rownames", colnm = "colnames", value = "value")
+gather_mats(mat, rownm = "rownames", colnm = "colnames",
+  value = "value")
 }
 \arguments{
 \item{mat}{A matrix.}
