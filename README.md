@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> General functions with no external depencency
+# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> General functions with no external dependency
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
@@ -12,9 +12,9 @@ status](https://travis-ci.org/forestgeo/fgeo.base.svg?branch=master)](https://tr
 status](https://coveralls.io/repos/github/forestgeo/fgeo.base/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.base?branch=master)
 
 The goal of **fgeo.base** is to provide functions with no external
-depencency. This makes it easy to import into any **fgeo** package
-withouth carrying any dependency, which helps keep each **fgeo** package
-as small and independent as possible.
+dependency. This makes it easy to import its functions into any **fgeo**
+package without carrying any dependency, which helps keep each **fgeo**
+package as small and independent as possible.
 
 ## Installation
 
@@ -28,8 +28,6 @@ For details on how to install packages from GitHub, see [this
 article](https://goo.gl/dQKEeg).
 
 ## Example
-
-This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(fgeo.base)
@@ -55,4 +53,4 @@ drop_if_na(dfm, "a")
 
 ## Acknowledgements
 
-Thanks to all partners of ForestGEO, for sharing their ideas and code.
+Thanks to all partners of ForestGEO for sharing their ideas and code.
