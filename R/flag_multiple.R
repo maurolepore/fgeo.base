@@ -1,4 +1,8 @@
-#' Flag if a vector or a variable of a dataframe has multiple distinct values.
+#' Detect and flag multiple values of a variable.
+#'
+#' * `detect_multiple()` is a predicate function that returns `TRUE` if it
+#' detects multiple different values of a variable.
+#' * `flag_multiple()` throws a condition and, invisibly, the input data.
 #'
 #' @param .data A dataframe.
 #' @param name String; the name of a variable of `.data`.
@@ -6,12 +10,25 @@
 #'   e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.
 #' @param msg String; a custom message.
 #'
-#' @return Invisible.
+#' @seealso [detect_multiple_f()], [flag_multiple_f()].
+#'
 #' @family functions to check inputs.
 #' @family functions for developers.
+#' @family predicates.
+#'
+#' @return
+#' * `detect_multiple()`:A single `TRUE` or `FALSE`. Insensitive to upper-
+#' lower-case.
+#'
 #' @export
 #'
 #' @examples
+#' # DETECT -----------------------------------------------------------------
+#' detect_multiple(c(1, 2))
+#' detect_multiple(c(1, 1))
+#' detect_multiple(c(1, NA))
+#'
+#' # FLAG -------------------------------------------------------------------
 #' # On a vector
 #' # Silent
 #' single_value <- c(1, 1, 1)
@@ -21,7 +38,50 @@
 #' flag_multiple(num, warning)
 #' chr <- c(letters[1:3])
 #' flag_multiple(chr, message, "Hello world.")
+detect_multiple <- function(.data) {
+  length(unique(stats::na.omit(.data))) > 1
+}
+
+#' @rdname detect_multiple
+#' @export
+flag_multiple <- function(.data, cond, msg = NULL) {
+  stopifnot(length(cond) == 1)
+
+  customized <- c("Multiple values were detected.\n", msg)
+  if (detect_multiple(.data)) cond(msg %||% customized)
+
+  invisible(.data)
+}
+
+
+
+#' Factories of predicates to detect and flag multiple values of a variable.
 #'
+#' * `detect_multiple_f()` is a factory of predicate functions that are specific
+#' to a particular variable. It's goal is to create expressive and short
+#' predicates that can be used in, for example, `if()` statements.
+#'
+#' @inheritParams detect_multiple
+#' @seealso [detect_multiple()], [flag_multiple()].
+#'
+#' @family functions for developers.
+#' @family predicates.
+#'
+#' @export
+#'
+#' @examples
+#' # DETECT ------------------------------------------------------------------
+#' multiple_censusid <- detect_multiple_f("censusid")
+#' multiple_censusid(data.frame(CensusID = c(1, 2, NA)))
+#' multiple_censusid(data.frame(CensusID = c(1, 1, NA)))
+#'
+#' # Insensitive to upper/lowercase
+#' multiple_censusid <- detect_multiple_f("censusid")
+#' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
+#' multiple_censusid <- detect_multiple_f("CENSUSID")
+#' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
+#'
+#' # FLAG --------------------------------------------------------------------
 #' # On a dataframe
 #' .df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
 #'
@@ -48,6 +108,19 @@
 #'   # Also consider tidyr::nest() + dplyr::mutate() + dpyr::map())
 #' }
 #' }
+detect_multiple_f <- function(name) {
+  force(name)
+  name <- tolower(name)
+  function(.data) {
+    stopifnot(is.data.frame(.data))
+    .data <- stats::setNames(.data, tolower(names(.data)))
+    .var <- .data[[name]]
+    stopifnot_has_name(.data, name)
+    detect_multiple(.var)
+  }
+}
+
+#' @rdname detect_multiple_f
 flag_multiple_f <- function(name, cond = warning) {
   force(name)
   force(cond)
@@ -63,22 +136,30 @@ flag_multiple_f <- function(name, cond = warning) {
   }
 }
 
-#' @rdname flag_multiple
-#' @export
-flag_multiple <- function(.data, cond, msg = NULL) {
-  stopifnot(length(cond) == 1)
 
-  customized <- c("Multiple values were detected.\n", msg)
-  if (detect_multiple(.data)) cond(msg %||% customized)
-
-  invisible(.data)
+stopifnot_has_name <- function(.data, name) {
+  if (!hasName(.data, name)) stop(name, " is an invalid name", call. = FALSE)
 }
 
 
 
-detect_multiple <- function(.data) {
-  length(unique(stats::na.omit(.data))) > 1
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -154,43 +235,4 @@ flag_vector_if <- function(x, .if, .flag, msg = NULL) {
     .flag(msg %||% customized)
   }
   invisible(x)
-}
-
-#' Factory of predicate functions to check for multiple values of a variable.
-#'
-#' Useful in `if()` statements.
-#'
-#' @param var Character string giving the name of a single variable.
-#'
-#' @family functions for developers.
-#' @family predicates.
-#'
-#' @return A single `TRUE` or `FALSE`. Insensitive to upper- lower-case.
-#'
-#' @export
-#'
-#' @examples
-#' multiple_censusid <- detect_multiple_f("censusid")
-#' multiple_censusid(data.frame(CensusID = c(1, 2, NA)))
-#' multiple_censusid(data.frame(CensusID = c(1, 1, NA)))
-#'
-#' # Insensitive to upper/lowercase
-#' multiple_censusid <- detect_multiple_f("censusid")
-#' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
-#' multiple_censusid <- detect_multiple_f("CENSUSID")
-#' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
-detect_multiple_f <- function(name) {
-  force(name)
-  name <- tolower(name)
-  function(.data) {
-    stopifnot(is.data.frame(.data))
-    .data <- stats::setNames(.data, tolower(names(.data)))
-    .var <- .data[[name]]
-    stopifnot_has_name(.data, name)
-    detect_multiple(.var)
-  }
-}
-
-stopifnot_has_name <- function(.data, name) {
-  if (!hasName(.data, name)) stop(name, " is an invalid name", call. = FALSE)
 }

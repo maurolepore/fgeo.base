@@ -2,20 +2,28 @@
 % Please edit documentation in R/flag_multiple.R
 \name{detect_multiple_f}
 \alias{detect_multiple_f}
-\title{Factory of predicate functions to check for multiple values of a variable.}
+\alias{flag_multiple_f}
+\title{Factories of predicates to detect and flag multiple values of a variable.}
 \usage{
 detect_multiple_f(name)
+
+flag_multiple_f(name, cond = warning)
 }
 \arguments{
-\item{var}{Character string giving the name of a single variable.}
-}
-\value{
-A single \code{TRUE} or \code{FALSE}. Insensitive to upper- lower-case.
+\item{name}{String; the name of a variable of \code{.data}.}
+
+\item{cond}{Symbol; the bare name of a function that outputs a condition:
+e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.}
 }
 \description{
-Useful in \code{if()} statements.
+\itemize{
+\item \code{detect_multiple_f()} is a factory of predicate functions that are specific
+to a particular variable. It's goal is to create expressive and short
+predicates that can be used in, for example, \code{if()} statements.
+}
 }
 \examples{
+# DETECT ------------------------------------------------------------------
 multiple_censusid <- detect_multiple_f("censusid")
 multiple_censusid(data.frame(CensusID = c(1, 2, NA)))
 multiple_censusid(data.frame(CensusID = c(1, 1, NA)))
@@ -25,16 +33,48 @@ multiple_censusid <- detect_multiple_f("censusid")
 multiple_censusid(data.frame(censusid = c(1, 2, NA)))
 multiple_censusid <- detect_multiple_f("CENSUSID")
 multiple_censusid(data.frame(censusid = c(1, 2, NA)))
+
+# FLAG --------------------------------------------------------------------
+# On a dataframe
+.df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
+
+flag_multiple_f("a")(.df)
+flag_multiple_f("a", message)(.df, "Hello world.")
+# Silent
+flag_multiple_f("b", warning)(.df, "Hello world")
+
+\dontrun{
+# Dealing with grouped data
+if (!requireNamespace("dplyr")) {
+  library(dplyr)
+  # `b` is single within groups but multiple accross entire dataset
+  .df <- tibble(a = c(1, 1, 2, 2), b = c(1, 1, 2, 2))
+
+  by_x <- group_by(.df, a)
+  # Works accross entire dataset -- expect warning
+  flag_if_multiple_b <- flag_multiple_f("b")
+  flag_if_multiple_b(by_x)
+  # Works within groups -- expect silent
+  do(by_x, (flag_if_multiple_b(.)))
+  # Same, with interface similar to lapply() and purrr::map()
+  fgeo.tool::by_group(by_x, flag_if_multiple_b)
+  # Also consider tidyr::nest() + dplyr::mutate() + dpyr::map())
+}
+}
 }
 \seealso{
+\code{\link[=detect_multiple]{detect_multiple()}}, \code{\link[=flag_multiple]{flag_multiple()}}.
+
 Other functions for developers.: \code{\link{check_crucial_names}},
+  \code{\link{detect_multiple}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
-  \code{\link{flag_multiple_f}}, \code{\link{insensitive}},
+  \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 
-Other predicates.: \code{\link{extract_insensitive}}
+Other predicates.: \code{\link{detect_multiple}},
+  \code{\link{extract_insensitive}}
 }
 \concept{functions for developers.}
 \concept{predicates.}
