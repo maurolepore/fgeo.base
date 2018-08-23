@@ -1,22 +1,24 @@
-context("detect_duplicated")
+context("detect_multiple")
 
-describe("detect_duplicated", {
-  it("returns true if any value of a variable is duplicated", {
-    expect_true(detect_duplicated(c(1, 1)))
-    expect_false(detect_duplicated(c(1, NA)))
-    expect_false(detect_duplicated(c(1, 2)))
-  })
+test_that("detects multiple different values of a variable", {
+  expect_true(detect_multiple(c(1, 2)))
+  expect_false(detect_multiple(c(1, NA)))
+  expect_false(detect_multiple(c(1, 1)))
 })
 
-describe("flag_duplicated", {
-  it("returns `cond`", {
-    msg <- "Duplicated values were detected"
-    expect_warning(flag_duplicated(c(1, 1), warning), msg)
-    expect_message(flag_duplicated(c(1, 1), rlang::inform), msg)
-    expect_error(flag_duplicated(c(1, 1), stop, "Custom msg"), "Custom msg")
-    expect_silent(flag_duplicated(c(1, NA), warning))
-    expect_silent(flag_duplicated(c(1, 2), warning))
-  })
+
+
+context("detect_multiple_f")
+
+test_that("multiple_censusid() works as epxected with any case", {
+  multiple_censusid <- detect_multiple_f("censusid")
+  expect_true(multiple_censusid(data.frame(CensusID = c(1, 2, NA))))
+  expect_true(multiple_censusid(data.frame(censusid = c(1, 2, NA))))
+})
+
+test_that("rejects invalid var", {
+  dfm <- data.frame(CensusID = c(1, 2, NA))
+  expect_error(detect_multiple_f("bad")(dfm), "invalid name")
 })
 
 
@@ -70,15 +72,68 @@ test_that("doesn't deal directly with grouped data to work within groups", {
 
 
 
-context("detect_multiple_f")
+# duplicated --------------------------------------------------------------
 
-test_that("multiple_censusid() works as epxected with any case", {
-  multiple_censusid <- detect_multiple_f("censusid")
-  expect_true(multiple_censusid(data.frame(CensusID = c(1, 2, NA))))
-  expect_true(multiple_censusid(data.frame(censusid = c(1, 2, NA))))
+describe("detect_duplicated", {
+  it("returns true if any value of a variable is duplicated", {
+    expect_true(detect_duplicated(c(1, 1)))
+    expect_false(detect_duplicated(c(1, NA)))
+    expect_false(detect_duplicated(c(1, 2)))
+  })
 })
 
-test_that("rejects invalid var", {
-  dfm <- data.frame(CensusID = c(1, 2, NA))
-  expect_error(detect_multiple_f("bad")(dfm), "invalid name")
+
+
+describe("flag_duplicated", {
+  it("returns `cond`", {
+    msg <- "Duplicated values were detected"
+    expect_warning(flag_duplicated(c(1, 1), warning), msg)
+    expect_message(flag_duplicated(c(1, 1), message), msg)
+    expect_error(flag_duplicated(c(1, 1), stop, "Custom msg"), "Custom msg")
+    expect_silent(flag_duplicated(c(1, NA), warning))
+    expect_silent(flag_duplicated(c(1, 2), warning))
+  })
 })
+
+
+
+describe("detect_duplicated_f", {
+  dfm <- function(x) data.frame(Name = x, stringsAsFactors = TRUE)
+  it("creates a function that detects duplicates on a specific variable", {
+    expect_true(detect_duplicated_f("Name")(dfm(c(1, 1))))
+    expect_false(detect_duplicated_f("Name")(dfm(c(1, NA))))
+    expect_false(detect_duplicated_f("Name")(dfm(c(1, 2))))
+  })
+
+  it("works with upper or lowercase name", {
+    expect_true(detect_duplicated_f("name")(dfm(c(1, 1))))
+    expect_false(detect_duplicated_f("name")(dfm(c(1, 2))))
+  })
+
+  it("ignores groups but groups can be handled via map(nest()$data)", {
+    skip_if_not_installed("tidyr")
+    skip_if_not_installed("dplyr")
+    skip_if_not_installed("purrr")
+    library(tidyr)
+    library(dplyr)
+    library(purrr)
+
+    dfm <- data.frame(x = c(1, 1), g = c(1, 2), stringsAsFactors = TRUE)
+    expect_true(detect_duplicated_f("x")(group_by(dfm, g)))
+    grouped <- group_by(dfm, g)
+    expect_false(any(map_lgl(nest(grouped)$data, detect_duplicated_f("x"))))
+  })
+})
+
+describe("flag_duplicated_f", {
+  it("returns `cond`", {
+    msg <- "Duplicated values were detected"
+    dfm <- function(x) data.frame(Name = x, stringsAsFactors = TRUE)
+    .data <- dfm(c(1, 1))
+    expect_warning(flag_duplicated_f("Name", warning)(.data), msg)
+    expect_error(flag_duplicated_f("Name", stop)(.data), msg)
+    .data <- dfm(c(1, 2))
+    expect_silent(flag_duplicated_f("Name", stop)(.data))
+  })
+})
+

@@ -2,12 +2,18 @@
 % Please edit documentation in R/detect_multiple.R
 \name{detect_multiple_f}
 \alias{detect_multiple_f}
+\alias{detect_duplicated_f}
 \alias{flag_multiple_f}
+\alias{flag_duplicated_f}
 \title{Factories of predicates to detect and flag multiple values of a variable.}
 \usage{
 detect_multiple_f(name)
 
+detect_duplicated_f(name)
+
 flag_multiple_f(name, cond = warning)
+
+flag_duplicated_f(name, cond = warning)
 }
 \arguments{
 \item{name}{String; the name of a variable of \code{.data}.}

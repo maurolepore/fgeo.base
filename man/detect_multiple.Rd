@@ -2,10 +2,16 @@
 % Please edit documentation in R/detect_multiple.R
 \name{detect_multiple}
 \alias{detect_multiple}
+\alias{detect_duplicated}
+\alias{flag_duplicated}
 \alias{flag_multiple}
 \title{Detect and flag multiple values of a variable.}
 \usage{
 detect_multiple(.data)
+
+detect_duplicated(.data)
+
+flag_duplicated(.data, cond, msg = NULL)
 
 flag_multiple(.data, cond, msg = NULL)
 }
@@ -28,8 +34,12 @@ lower-case.
 \description{
 \itemize{
 \item \code{detect_multiple()} is a predicate function that returns \code{TRUE} if it
-detects multiple different values of a variable.
-\item \code{flag_multiple()} throws a condition and, invisibly, the input data.
+detects multiple different values of a variable  (e.g. c(1, 2)`).
+\item \code{detect_duplicated()} is a predicate function that returns \code{TRUE} if it
+detects duplicated values of a variable (e.g. c(1, 1)`).
+\item \code{flag_multiple()} and \code{flag_duplicated()} throw a condition when
+\code{detect_multiple()} and \code{detect_duplicated()} would return \code{TRUE}. They also
+return the main input, invisibly.
 }
 }
 \examples{
@@ -38,16 +48,16 @@ detect_multiple(c(1, 2))
 detect_multiple(c(1, 1))
 detect_multiple(c(1, NA))
 
-# FLAG -------------------------------------------------------------------
-# On a vector
-# Silent
-single_value <- c(1, 1, 1)
-flag_multiple(single_value, warning)
+detect_duplicated(c(1, 2))
+detect_duplicated(c(1, 1))
+detect_duplicated(c(1, NA))
 
-num <- c(1:3)
-flag_multiple(num, warning)
-chr <- c(letters[1:3])
-flag_multiple(chr, message, "Hello world.")
+# FLAG -------------------------------------------------------------------
+duplicated_not_multiple <- c(1, 1, 1)
+flag_multiple(duplicated_not_multiple, warning)
+flag_duplicated(duplicated_not_multiple, warning)
+
+flag_duplicated(duplicated_not_multiple, warning, "Custom message")
 }
 \seealso{
 \code{\link[=detect_multiple_f]{detect_multiple_f()}}, \code{\link[=flag_multiple_f]{flag_multiple_f()}}.
