@@ -48,26 +48,52 @@
 #'   # Also consider tidyr::nest() + dplyr::mutate() + dpyr::map())
 #' }
 #' }
-flag_multiple <- function(x, x_var, cond = warning, msg = NULL) {
-  stopifnot(is.data.frame(x))
-  stopifnot_has_name(x, x_var)
+flag_multiple <- function(.data, name, cond = warning, msg = NULL) {
+  stopifnot(is.data.frame(.data))
+  stopifnot_has_name(.data, name)
 
-  x_var <- x[[x_var]]
-  flag_multiple_vector(v = x_var, cond = cond, msg = msg)
+  x <- .data[[name]]
+  flag_multiple_vector(.data = x, cond = cond, msg = msg)
 
-  invisible(x)
+  invisible(.data)
 }
+
+
+flag_multiple_f <- function(name, cond = warning) {
+  force(name)
+  force(cond)
+  name <- tolower(name)
+  function(.data, msg = NULL) {
+    stopifnot(is.data.frame(.data))
+    .data <- stats::setNames(.data, tolower(names(.data)))
+    .var <- .data[[name]]
+    stopifnot_has_name(.data, name)
+    flag_multiple_vector(.data = x, cond = cond, msg = msg)
+
+    invisible(.data)
+  }
+}
+
+
 
 #' @rdname flag_multiple
 #' @export
-flag_multiple_vector <- function(v, cond, msg = NULL) {
+flag_multiple_vector <- function(.data, cond, msg = NULL) {
   stopifnot(length(cond) == 1)
 
   customized <- c("Multiple values were detected.\n", msg)
-  if (detect_multiple(v)) cond(msg %||% customized)
+  if (detect_multiple(.data)) cond(msg %||% customized)
 
-  invisible(v)
+  invisible(.data)
 }
+
+
+
+detect_multiple <- function(.data) {
+  length(unique(stats::na.omit(.data))) > 1
+}
+
+
 
 #' Flag if a vector or dataframe column meets a condition.
 #'
@@ -124,14 +150,14 @@ flag_multiple_vector <- function(v, cond, msg = NULL) {
 #' flag_if(mult_df, "mult", multiple_values(mult), message, "Multiple values.")
 #' @keywords internal
 #' @noRd
-flag_if <- function(.x, .x_var, .if, .flag = warning, msg = NULL) {
-  stopifnot(is.data.frame(.x))
-  stopifnot_has_name(.x, .x_var)
+flag_if <- function(.data, name, .if, .flag = warning, msg = NULL) {
+  stopifnot(is.data.frame(.data))
+  stopifnot_has_name(.data, name)
 
-  .x_var <- .x[[.x_var]]
-  flag_vector_if(.x_var, .if, .flag, msg)
+  name <- .data[[name]]
+  flag_vector_if(name, .if, .flag, msg)
 
-  invisible(.x)
+  invisible(.data)
 }
 
 flag_vector_if <- function(x, .if, .flag, msg = NULL) {
@@ -166,22 +192,18 @@ flag_vector_if <- function(x, .if, .flag, msg = NULL) {
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
 #' multiple_censusid <- detect_multiple_f("CENSUSID")
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
-detect_multiple_f <- function(var) {
-  force(var)
-  var <- tolower(var)
+detect_multiple_f <- function(name) {
+  force(name)
+  name <- tolower(name)
   function(.data) {
+    stopifnot(is.data.frame(.data))
     .data <- stats::setNames(.data, tolower(names(.data)))
-    .var <- .data[[var]]
-    stopifnot_has_name(.data, var)
+    .var <- .data[[name]]
+    stopifnot_has_name(.data, name)
     detect_multiple(.var)
   }
 }
 
-
-detect_multiple <- function(x) {
-  length(unique(stats::na.omit(x))) > 1
-}
-
-stopifnot_has_name <- function(.x, .x_var) {
-  if (!hasName(.x, .x_var)) stop(.x_var, " is an invalid name", call. = FALSE)
+stopifnot_has_name <- function(.data, name) {
+  if (!hasName(.data, name)) stop(name, " is an invalid name", call. = FALSE)
 }
