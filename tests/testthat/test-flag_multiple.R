@@ -1,5 +1,3 @@
-# Check inputs ------------------------------------------------------------
-
 context("flag_multiple_vector")
 
 single <- rep(1, 3)
@@ -11,6 +9,8 @@ test_that("behaves as expected", {
   expect_warning(flag_multiple_vector(num, warning))
   expect_error(flag_multiple_vector(chr, stop, "Do something"), "Do something")
 })
+
+
 
 context("flag_multiple")
 
@@ -26,7 +26,7 @@ test_that("returns the expected messages and output x", {
   expect_identical(.df, out)
 })
 
-test_that("doesn't deqal directly with grouped data to work within groups", {
+test_that("doesn't deal directly with grouped data to work within groups", {
   skip_if_not_installed("dplyr")
   # Single within groups but multiple accross entire dataset
   .df <- data.frame(
@@ -34,9 +34,24 @@ test_that("doesn't deqal directly with grouped data to work within groups", {
     stringsAsFactors = FALSE
   )
 
-  by_x <- dplyr::group_by(.df, a)
-  expect_warning(flag_multiple(by_x, "b"), "Multiple values")
+  by_a <- dplyr::group_by(.df, a)
+  expect_warning(flag_multiple(by_a, "b"), "Multiple values")
 
   # To deal with grouped data, apply flag_multiple to each group
-  expect_silent(fgeo.tool::by_group(by_x, flag_multiple, "b"))
+  expect_silent(fgeo.tool::by_group(by_a, flag_multiple, "b"))
+})
+
+
+
+context("multiple_var")
+
+test_that("multiple_censusid() works as epxected with any case", {
+  multiple_censusid <- multiple_var("censusid")
+  expect_true(multiple_censusid(data.frame(CensusID = c(1, 2, NA))))
+  expect_true(multiple_censusid(data.frame(censusid = c(1, 2, NA))))
+})
+
+test_that("rejects invalid var", {
+  dfm <- data.frame(CensusID = c(1, 2, NA))
+  expect_error(multiple_var("bad")(dfm), "invalid name")
 })

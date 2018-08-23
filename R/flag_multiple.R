@@ -1,4 +1,4 @@
-#' Report if a vector or a variable of a dataframe has multiple distinct values.
+#' Flag if a vector or a variable of a dataframe has multiple distinct values.
 #'
 #' @param x A dataframe.
 #' @param x_var String; the name of a variable of `x`.
@@ -91,9 +91,9 @@ flag_multiple_vector <- function(v, cond, msg = NULL) {
 #' flag_vector_if(dupl, is_duplicated(dupl), message)
 #' flag_vector_if(dupl, is_duplicated(dupl), message, "Duplicated values.")
 #' # Silent
-#' is_multiple <- function(x) length(unique(x)) > 1
-#' flag_vector_if(dupl, is_multiple(dupl), message)
-#' flag_vector_if(dupl, is_multiple(dupl), message, "Multiple values.")
+#' multiple_values <- function(x) length(unique(x)) > 1
+#' flag_vector_if(dupl, multiple_values(dupl), message)
+#' flag_vector_if(dupl, multiple_values(dupl), message, "Multiple values.")
 #'
 #' mult <- c(1, 2)
 #' # Silent
@@ -101,8 +101,8 @@ flag_multiple_vector <- function(v, cond, msg = NULL) {
 #' flag_vector_if(mult, is_duplicated(mult), message, "Duplicated values.")
 #'
 #' # Flags
-#' flag_vector_if(mult, is_multiple(mult), message)
-#' flag_vector_if(mult, is_multiple(mult), message, "Multiple values.")
+#' flag_vector_if(mult, multiple_values(mult), message)
+#' flag_vector_if(mult, multiple_values(mult), message, "Multiple values.")
 #'
 #' dupl <- c(1, 1)
 #' dupl_df <- data.frame(dupl)
@@ -111,17 +111,17 @@ flag_multiple_vector <- function(v, cond, msg = NULL) {
 #' flag_if(dupl_df, "dupl", is_duplicated(dupl), message)
 #' flag_if(dupl_df, "dupl", is_duplicated(dupl), message, "Duplicated values.")
 #' # Silent
-#' is_multiple <- function(x) length(unique(x)) > 1
-#' flag_if(dupl_df, "dupl", is_multiple(dupl), message)
-#' flag_if(dupl_df, "dupl", is_multiple(dupl), message, "Multiple values.")
+#' multiple_values <- function(x) length(unique(x)) > 1
+#' flag_if(dupl_df, "dupl", multiple_values(dupl), message)
+#' flag_if(dupl_df, "dupl", multiple_values(dupl), message, "Multiple values.")
 #'
 #' mult_df <- data.frame(mult)
 #' # Silent
 #' flag_if(mult_df, "mult", is_duplicated(mult), message)
 #' flag_if(mult_df, "mult", is_duplicated(mult), message, "Duplicated values.")
 #' # Flags
-#' flag_if(mult_df, "mult", is_multiple(mult), message)
-#' flag_if(mult_df, "mult", is_multiple(mult), message, "Multiple values.")
+#' flag_if(mult_df, "mult", multiple_values(mult), message)
+#' flag_if(mult_df, "mult", multiple_values(mult), message, "Multiple values.")
 #' @keywords internal
 #' @noRd
 flag_if <- function(.x, .x_var, .if, .flag = warning, msg = NULL) {
@@ -143,4 +143,38 @@ flag_vector_if <- function(x, .if, .flag, msg = NULL) {
     .flag(msg %||% customized)
   }
   invisible(x)
+}
+
+#' Factory of predicate functions to check for multiple values of a variable.
+#'
+#' Useful in `if()` statements.
+#'
+#' @param var Character string giving the name of a single variable.
+#'
+#' @family functions for developers.
+#' @family predicates.
+#'
+#' @return A single `TRUE` or `FALSE`. Insensitive to upper- lower-case.
+#'
+#' @export
+#'
+#' @examples
+#' multiple_censusid <- multiple_var("censusid")
+#' multiple_censusid(data.frame(CensusID = c(1, 2, NA)))
+#' multiple_censusid(data.frame(CensusID = c(1, 1, NA)))
+#'
+#' # Insensitive to upper/lowercase
+#' multiple_censusid <- multiple_var("censusid")
+#' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
+#' multiple_censusid <- multiple_var("CENSUSID")
+#' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
+multiple_var <- function(var) {
+  force(var)
+  var <- tolower(var)
+  function(.data) {
+    .data <- stats::setNames(.data, tolower(names(.data)))
+    .var <- .data[[var]]
+    flag_if(.data, var, .if = !var %in% names(.data))
+    length(unique(stats::na.omit(.var))) > 1
+  }
 }
