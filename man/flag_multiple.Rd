@@ -5,19 +5,19 @@
 \alias{flag_multiple_vector}
 \title{Flag if a vector or a variable of a dataframe has multiple distinct values.}
 \usage{
-flag_multiple(x, x_var, cond = warning, msg = NULL)
+flag_multiple(.data, name, cond = warning, msg = NULL)
 
-flag_multiple_vector(v, cond, msg = NULL)
+flag_multiple_vector(.data, cond, msg = NULL)
 }
 \arguments{
-\item{x}{A dataframe.}
-
-\item{x_var}{String; the name of a variable of \code{x}.}
-
 \item{cond}{String; the name of a function that outputs a condition: one of
 "warning", "stop", "message".}
 
 \item{msg}{String; a custom message.}
+
+\item{x}{A dataframe.}
+
+\item{x_var}{String; the name of a variable of \code{x}.}
 
 \item{v}{A vector.}
 }

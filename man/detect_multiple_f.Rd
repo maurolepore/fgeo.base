@@ -4,7 +4,7 @@
 \alias{detect_multiple_f}
 \title{Factory of predicate functions to check for multiple values of a variable.}
 \usage{
-detect_multiple_f(var)
+detect_multiple_f(name)
 }
 \arguments{
 \item{var}{Character string giving the name of a single variable.}

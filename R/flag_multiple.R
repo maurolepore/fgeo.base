@@ -59,6 +59,7 @@ flag_multiple <- function(.data, name, cond = warning, msg = NULL) {
 }
 
 
+# TODO REMOVE DUPLICATION WITH DETECT_MULTIPLE_F
 flag_multiple_f <- function(name, cond = warning) {
   force(name)
   force(cond)
@@ -66,7 +67,7 @@ flag_multiple_f <- function(name, cond = warning) {
   function(.data, msg = NULL) {
     stopifnot(is.data.frame(.data))
     .data <- stats::setNames(.data, tolower(names(.data)))
-    .var <- .data[[name]]
+    x <- .data[[name]]
     stopifnot_has_name(.data, name)
     flag_multiple_vector(.data = x, cond = cond, msg = msg)
 

@@ -16,6 +16,39 @@ test_that("ommits NAs", {
 
 
 
+context("flag_multiple_f")
+
+.df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
+
+test_that("returns the expected messages and output", {
+  expect_silent(flag_multiple_f("b")(.df))
+  expect_warning(flag_multiple_f("a")(.df), "Multiple values")
+  expect_warning(flag_multiple_f("a", warning)(.df, "Custom msg"), "Custom msg")
+  expect_warning(flag_multiple_f("a", rlang::warn)(.df, "Custom"), "Custom")
+  expect_error(flag_multiple_f("a", stop)(.df, "do this"), "do this")
+  expect_silent(out <- flag_multiple_f("b", stop)(.df, "do this"))
+  expect_identical(.df, out)
+})
+
+test_that("doesn't deal directly with grouped data to work within groups", {
+  skip_if_not_installed("dplyr")
+  library(dplyr)
+
+  # Single within groups but multiple accross entire dataset
+  .df <- tibble(a = c(1, 1, 2, 2), b = c(1, 1, 2, 2))
+
+  by_a <- group_by(.df, a)
+  expect_warning(flag_multiple_f("b")(by_a), "Multiple values")
+
+  # To deal with grouped data, apply flag_multiple_f to each group
+  flag_if_multiple_b <- flag_multiple_f("b")
+  expect_silent(fgeo.tool::by_group(by_a, flag_if_multiple_b))
+})
+
+
+
+
+
 context("flag_multiple")
 
 .df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
