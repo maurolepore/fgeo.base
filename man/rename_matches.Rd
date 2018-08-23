@@ -25,7 +25,7 @@ rename_matches(x, ref)
 }
 \seealso{
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{detect_multiple_var}},
+  \code{\link{detect_multiple_f}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
   \code{\link{flag_multiple}}, \code{\link{insensitive}},

@@ -47,15 +47,15 @@ test_that("doesn't deal directly with grouped data to work within groups", {
 
 
 
-context("detect_multiple_var")
+context("detect_multiple_f")
 
 test_that("multiple_censusid() works as epxected with any case", {
-  multiple_censusid <- detect_multiple_var("censusid")
+  multiple_censusid <- detect_multiple_f("censusid")
   expect_true(multiple_censusid(data.frame(CensusID = c(1, 2, NA))))
   expect_true(multiple_censusid(data.frame(censusid = c(1, 2, NA))))
 })
 
 test_that("rejects invalid var", {
   dfm <- data.frame(CensusID = c(1, 2, NA))
-  expect_error(detect_multiple_var("bad")(dfm), "invalid name")
+  expect_error(detect_multiple_f("bad")(dfm), "invalid name")
 })

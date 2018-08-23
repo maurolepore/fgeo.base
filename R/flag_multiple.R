@@ -157,16 +157,16 @@ flag_vector_if <- function(x, .if, .flag, msg = NULL) {
 #' @export
 #'
 #' @examples
-#' multiple_censusid <- detect_multiple_var("censusid")
+#' multiple_censusid <- detect_multiple_f("censusid")
 #' multiple_censusid(data.frame(CensusID = c(1, 2, NA)))
 #' multiple_censusid(data.frame(CensusID = c(1, 1, NA)))
 #'
 #' # Insensitive to upper/lowercase
-#' multiple_censusid <- detect_multiple_var("censusid")
+#' multiple_censusid <- detect_multiple_f("censusid")
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
-#' multiple_censusid <- detect_multiple_var("CENSUSID")
+#' multiple_censusid <- detect_multiple_f("CENSUSID")
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
-detect_multiple_var <- function(var) {
+detect_multiple_f <- function(var) {
   force(var)
   var <- tolower(var)
   function(.data) {

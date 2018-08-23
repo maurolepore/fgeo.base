@@ -27,7 +27,7 @@ check_crucial_names(dfm, "x")
 \seealso{
 Other functions to check inputs.: \code{\link{flag_multiple}}
 
-Other functions for developers.: \code{\link{detect_multiple_var}},
+Other functions for developers.: \code{\link{detect_multiple_f}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
   \code{\link{flag_multiple}}, \code{\link{insensitive}},
