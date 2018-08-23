@@ -62,8 +62,7 @@ Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 
-Other predicates.: \code{\link{detect_multiple_f}},
-  \code{\link{extract_insensitive}}
+Other predicates.: \code{\link{extract_insensitive}}
 }
 \concept{functions for developers.}
 \concept{functions to check inputs.}

@@ -72,9 +72,6 @@ Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
-
-Other predicates.: \code{\link{detect_multiple}},
-  \code{\link{extract_insensitive}}
 }
+\concept{function factories.}
 \concept{functions for developers.}
-\concept{predicates.}

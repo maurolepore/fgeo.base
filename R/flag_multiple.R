@@ -65,7 +65,7 @@ flag_multiple <- function(.data, cond, msg = NULL) {
 #' @seealso [detect_multiple()], [flag_multiple()].
 #'
 #' @family functions for developers.
-#' @family predicates.
+#' @family function factories.
 #'
 #' @export
 #'
@@ -112,11 +112,7 @@ detect_multiple_f <- function(name) {
   force(name)
   name <- tolower(name)
   function(.data) {
-    stopifnot(is.data.frame(.data))
-    .data <- stats::setNames(.data, tolower(names(.data)))
-    .var <- .data[[name]]
-    stopifnot_has_name(.data, name)
-    detect_multiple(.var)
+    detect_multiple(extract_column(.data, name))
   }
 }
 
@@ -126,16 +122,17 @@ flag_multiple_f <- function(name, cond = warning) {
   force(cond)
   name <- tolower(name)
   function(.data, msg = NULL) {
-    stopifnot(is.data.frame(.data))
-    .data <- stats::setNames(.data, tolower(names(.data)))
-    x <- .data[[name]]
-    stopifnot_has_name(.data, name)
-    flag_multiple(.data = x, cond = cond, msg = msg)
-
+    flag_multiple(extract_column(.data, name), cond = cond, msg = msg)
     invisible(.data)
   }
 }
 
+extract_column <- function(.data, name) {
+  stopifnot(is.data.frame(.data))
+  .data <- stats::setNames(.data, tolower(names(.data)))
+  stopifnot_has_name(.data, name)
+  .data[[name]]
+}
 
 stopifnot_has_name <- function(.data, name) {
   if (!hasName(.data, name)) stop(name, " is an invalid name", call. = FALSE)
