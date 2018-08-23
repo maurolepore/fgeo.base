@@ -14,11 +14,13 @@
 #'
 #' @examples
 #' # On a vector
-#' unique_v <- rep(1, 3)
+#' # Silent
+#' single_value <- c(1, 1, 1)
+#' flag_multiple_vector(single_value, warning)
+#'
 #' num <- c(1:3)
-#' chr <- c(letters[1:3])
-#' flag_multiple_vector(unique_v, warning)
 #' flag_multiple_vector(num, warning)
+#' chr <- c(letters[1:3])
 #' flag_multiple_vector(chr, message, "Hello world.")
 #'
 #' # On a dataframe
@@ -48,7 +50,7 @@
 #' }
 flag_multiple <- function(x, x_var, cond = warning, msg = NULL) {
   stopifnot(is.data.frame(x))
-  if (!x_var  %in% names(x)) stop(x_var, " is an invalid name", call. = FALSE)
+  stopifnot_has_name(x, x_var)
 
   x_var <- x[[x_var]]
   flag_multiple_vector(v = x_var, cond = cond, msg = msg)
@@ -62,9 +64,7 @@ flag_multiple_vector <- function(v, cond, msg = NULL) {
   stopifnot(length(cond) == 1)
 
   customized <- c("Multiple values were detected.\n", msg)
-  if (length(unique(v)) > 1) {
-    cond(msg %||% customized)
-  }
+  if (detect_multiple(v)) cond(msg %||% customized)
 
   invisible(v)
 }
@@ -126,9 +126,7 @@ flag_multiple_vector <- function(v, cond, msg = NULL) {
 #' @noRd
 flag_if <- function(.x, .x_var, .if, .flag = warning, msg = NULL) {
   stopifnot(is.data.frame(.x))
-  if (!.x_var  %in% names(.x)) {
-    stop(.x_var, " is an invalid name", call. = FALSE)
-  }
+  stopifnot_has_name(.x, .x_var)
 
   .x_var <- .x[[.x_var]]
   flag_vector_if(.x_var, .if, .flag, msg)
@@ -159,22 +157,31 @@ flag_vector_if <- function(x, .if, .flag, msg = NULL) {
 #' @export
 #'
 #' @examples
-#' multiple_censusid <- multiple_var("censusid")
+#' multiple_censusid <- detect_multiple_var("censusid")
 #' multiple_censusid(data.frame(CensusID = c(1, 2, NA)))
 #' multiple_censusid(data.frame(CensusID = c(1, 1, NA)))
 #'
 #' # Insensitive to upper/lowercase
-#' multiple_censusid <- multiple_var("censusid")
+#' multiple_censusid <- detect_multiple_var("censusid")
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
-#' multiple_censusid <- multiple_var("CENSUSID")
+#' multiple_censusid <- detect_multiple_var("CENSUSID")
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
-multiple_var <- function(var) {
+detect_multiple_var <- function(var) {
   force(var)
   var <- tolower(var)
   function(.data) {
     .data <- stats::setNames(.data, tolower(names(.data)))
     .var <- .data[[var]]
-    flag_if(.data, var, .if = !var %in% names(.data))
-    length(unique(stats::na.omit(.var))) > 1
+    stopifnot_has_name(.data, var)
+    detect_multiple(.var)
   }
+}
+
+
+detect_multiple <- function(x) {
+  length(unique(stats::na.omit(x))) > 1
+}
+
+stopifnot_has_name <- function(.x, .x_var) {
+  if (!hasName(.x, .x_var)) stop(.x_var, " is an invalid name", call. = FALSE)
 }

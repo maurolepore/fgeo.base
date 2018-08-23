@@ -10,6 +10,10 @@ test_that("behaves as expected", {
   expect_error(flag_multiple_vector(chr, stop, "Do something"), "Do something")
 })
 
+test_that("ommits NAs", {
+  expect_silent(flag_multiple_vector(c(1, NA), warning))
+})
+
 
 
 context("flag_multiple")
@@ -43,15 +47,15 @@ test_that("doesn't deal directly with grouped data to work within groups", {
 
 
 
-context("multiple_var")
+context("detect_multiple_var")
 
 test_that("multiple_censusid() works as epxected with any case", {
-  multiple_censusid <- multiple_var("censusid")
+  multiple_censusid <- detect_multiple_var("censusid")
   expect_true(multiple_censusid(data.frame(CensusID = c(1, 2, NA))))
   expect_true(multiple_censusid(data.frame(censusid = c(1, 2, NA))))
 })
 
 test_that("rejects invalid var", {
   dfm <- data.frame(CensusID = c(1, 2, NA))
-  expect_error(multiple_var("bad")(dfm), "invalid name")
+  expect_error(detect_multiple_var("bad")(dfm), "invalid name")
 })
