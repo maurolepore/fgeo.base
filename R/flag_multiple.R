@@ -1,13 +1,12 @@
 #' Flag if a vector or a variable of a dataframe has multiple distinct values.
 #'
-#' @param x A dataframe.
-#' @param x_var String; the name of a variable of `x`.
-#' @param v A vector.
-#' @param cond String; the name of a function that outputs a condition: one of
-#'   "warning", "stop", "message".
+#' @param .data A dataframe.
+#' @param name String; the name of a variable of `.data`.
+#' @param cond Symbol; the bare name of a function that outputs a condition:
+#'   e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.
 #' @param msg String; a custom message.
 #'
-#' @return Invisible `v` or a condition and a message.
+#' @return Invisible.
 #' @family functions to check inputs.
 #' @family functions for developers.
 #' @export
@@ -16,50 +15,39 @@
 #' # On a vector
 #' # Silent
 #' single_value <- c(1, 1, 1)
-#' flag_multiple_vector(single_value, warning)
+#' flag_multiple(single_value, warning)
 #'
 #' num <- c(1:3)
-#' flag_multiple_vector(num, warning)
+#' flag_multiple(num, warning)
 #' chr <- c(letters[1:3])
-#' flag_multiple_vector(chr, message, "Hello world.")
+#' flag_multiple(chr, message, "Hello world.")
 #'
 #' # On a dataframe
 #' .df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
 #'
-#' flag_multiple(.df, "a")
-#' flag_multiple(.df, "a", message, "Hello world.")
+#' flag_multiple_f("a")(.df)
+#' flag_multiple_f("a", message)(.df, "Hello world.")
 #' # Silent
-#' flag_multiple(.df, "b", warning, "Hello world")
+#' flag_multiple_f("b", warning)(.df, "Hello world")
 #'
 #' \dontrun{
 #' # Dealing with grouped data
 #' if (!requireNamespace("dplyr")) {
+#'   library(dplyr)
 #'   # `b` is single within groups but multiple accross entire dataset
-#'   .df <- data.frame(
-#'     a = c(1, 1, 2, 2), b = c(1, 1, 2, 2),
-#'     stringsAsFactors = FALSE
-#'   )
+#'   .df <- tibble(a = c(1, 1, 2, 2), b = c(1, 1, 2, 2))
 #'
-#'   by_x <- dplyr::group_by(.df, a)
-#'   # Works accross entire dataset
-#'   flag_multiple(by_x, "b")
-#'   # Works within groups entire dataset
-#'   dplyr::do(by_x, (flag_multiple(., "b")))
+#'   by_x <- group_by(.df, a)
+#'   # Works accross entire dataset -- expect warning
+#'   flag_if_multiple_b <- flag_multiple_f("b")
+#'   flag_if_multiple_b(by_x)
+#'   # Works within groups -- expect silent
+#'   do(by_x, (flag_if_multiple_b(.)))
+#'   # Same, with interface similar to lapply() and purrr::map()
+#'   fgeo.tool::by_group(by_x, flag_if_multiple_b)
 #'   # Also consider tidyr::nest() + dplyr::mutate() + dpyr::map())
 #' }
 #' }
-flag_multiple <- function(.data, name, cond = warning, msg = NULL) {
-  stopifnot(is.data.frame(.data))
-  stopifnot_has_name(.data, name)
-
-  x <- .data[[name]]
-  flag_multiple_vector(.data = x, cond = cond, msg = msg)
-
-  invisible(.data)
-}
-
-
-# TODO REMOVE DUPLICATION WITH DETECT_MULTIPLE_F
 flag_multiple_f <- function(name, cond = warning) {
   force(name)
   force(cond)
@@ -69,17 +57,15 @@ flag_multiple_f <- function(name, cond = warning) {
     .data <- stats::setNames(.data, tolower(names(.data)))
     x <- .data[[name]]
     stopifnot_has_name(.data, name)
-    flag_multiple_vector(.data = x, cond = cond, msg = msg)
+    flag_multiple(.data = x, cond = cond, msg = msg)
 
     invisible(.data)
   }
 }
 
-
-
 #' @rdname flag_multiple
 #' @export
-flag_multiple_vector <- function(.data, cond, msg = NULL) {
+flag_multiple <- function(.data, cond, msg = NULL) {
   stopifnot(length(cond) == 1)
 
   customized <- c("Multiple values were detected.\n", msg)

@@ -35,7 +35,7 @@ Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{detect_multiple_f}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
-  \code{\link{flag_multiple}}, \code{\link{insensitive}},
+  \code{\link{flag_multiple_f}}, \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}
 
