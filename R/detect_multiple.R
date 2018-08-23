@@ -55,6 +55,40 @@ flag_multiple <- function(.data, cond, msg = NULL) {
 
 
 
+
+#' @rdname detect_multiple
+#' @export
+detect_duplicated <- function(.data) {
+  any(duplicated(.data))
+}
+
+# TODO: Remove duplication with fgeo.base::flag_multiple?
+# TODO: Document
+#' @rdname detect_multiple
+#' @export
+flag_duplicated <- function(.data, cond, msg = NULL) {
+  flag_predicate_f(detect_duplicated, "Duplicated")(.data, cond = cond, msg = msg)
+}
+
+flag_predicate_f <- function(predicate, prefix) {
+  function(.data, cond, msg = NULL) {
+    stopifnot(length(cond) == 1)
+    customized <- c(paste0(prefix, " values were detected.\n"), msg)
+    if (predicate(.data)) cond(msg %||% customized)
+
+    invisible(.data)
+  }
+}
+
+
+
+
+
+
+
+
+
+
 #' Factories of predicates to detect and flag multiple values of a variable.
 #'
 #' * `detect_multiple_f()` is a factory of predicate functions that are specific
@@ -117,6 +151,7 @@ detect_multiple_f <- function(name) {
 }
 
 #' @rdname detect_multiple_f
+#' @export
 flag_multiple_f <- function(name, cond = warning) {
   force(name)
   force(cond)
@@ -136,100 +171,4 @@ extract_column <- function(.data, name) {
 
 stopifnot_has_name <- function(.data, name) {
   if (!hasName(.data, name)) stop(name, " is an invalid name", call. = FALSE)
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#' Flag if a vector or dataframe column meets a condition.
-#'
-#' These funcitons are useful to create messagees, warnings and error messages
-#' based on a condition.
-#'
-#' @param x,.x A vector or dataframe.
-#' @param .x_var String giving a column name of `.x`.
-#' @param .if A condition on `x` or .x_var.
-#' @param .flag A function that throws a condition e.g. `stop`, `warning`,
-#'   `message`, `rlang::abort`, `rlang::warn`, `rlang::inform`.
-#' @param msg An optional custom message.
-#'
-#' @family functions for developers.
-#'
-#' @return Throws a condition determined by `.flag` or invisible.
-#' @examples
-#' dupl <- c(1, 1)
-#' # Flags
-#' is_duplicated <- function(x) any(duplicated(x))
-#' flag_vector_if(dupl, is_duplicated(dupl), message)
-#' flag_vector_if(dupl, is_duplicated(dupl), message, "Duplicated values.")
-#' # Silent
-#' multiple_values <- function(x) length(unique(x)) > 1
-#' flag_vector_if(dupl, multiple_values(dupl), message)
-#' flag_vector_if(dupl, multiple_values(dupl), message, "Multiple values.")
-#'
-#' mult <- c(1, 2)
-#' # Silent
-#' flag_vector_if(mult, is_duplicated(mult), message)
-#' flag_vector_if(mult, is_duplicated(mult), message, "Duplicated values.")
-#'
-#' # Flags
-#' flag_vector_if(mult, multiple_values(mult), message)
-#' flag_vector_if(mult, multiple_values(mult), message, "Multiple values.")
-#'
-#' dupl <- c(1, 1)
-#' dupl_df <- data.frame(dupl)
-#' # Flags
-#' is_duplicated <- function(x) any(duplicated(x))
-#' flag_if(dupl_df, "dupl", is_duplicated(dupl), message)
-#' flag_if(dupl_df, "dupl", is_duplicated(dupl), message, "Duplicated values.")
-#' # Silent
-#' multiple_values <- function(x) length(unique(x)) > 1
-#' flag_if(dupl_df, "dupl", multiple_values(dupl), message)
-#' flag_if(dupl_df, "dupl", multiple_values(dupl), message, "Multiple values.")
-#'
-#' mult_df <- data.frame(mult)
-#' # Silent
-#' flag_if(mult_df, "mult", is_duplicated(mult), message)
-#' flag_if(mult_df, "mult", is_duplicated(mult), message, "Duplicated values.")
-#' # Flags
-#' flag_if(mult_df, "mult", multiple_values(mult), message)
-#' flag_if(mult_df, "mult", multiple_values(mult), message, "Multiple values.")
-#' @keywords internal
-#' @noRd
-flag_if <- function(.data, name, .if, .flag = warning, msg = NULL) {
-  stopifnot(is.data.frame(.data))
-  stopifnot_has_name(.data, name)
-
-  name <- .data[[name]]
-  flag_vector_if(name, .if, .flag, msg)
-
-  invisible(.data)
-}
-
-flag_vector_if <- function(x, .if, .flag, msg = NULL) {
-  stopifnot(length(.flag) == 1)
-  customized <- c("Flagged values were detected.\n", msg)
-  if (.if) {
-    .flag(msg %||% customized)
-  }
-  invisible(x)
 }

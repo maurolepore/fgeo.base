@@ -1,3 +1,26 @@
+context("detect_duplicated")
+
+describe("detect_duplicated", {
+  it("returns true if any value of a variable is duplicated", {
+    expect_true(detect_duplicated(c(1, 1)))
+    expect_false(detect_duplicated(c(1, NA)))
+    expect_false(detect_duplicated(c(1, 2)))
+  })
+})
+
+describe("flag_duplicated", {
+  it("returns `cond`", {
+    msg <- "Duplicated values were detected"
+    expect_warning(flag_duplicated(c(1, 1), warning), msg)
+    expect_message(flag_duplicated(c(1, 1), rlang::inform), msg)
+    expect_error(flag_duplicated(c(1, 1), stop, "Custom msg"), "Custom msg")
+    expect_silent(flag_duplicated(c(1, NA), warning))
+    expect_silent(flag_duplicated(c(1, 2), warning))
+  })
+})
+
+
+
 context("flag_multiple")
 
 single <- rep(1, 3)
