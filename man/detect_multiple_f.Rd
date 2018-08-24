@@ -83,22 +83,21 @@ if (!requireNamespace("dplyr")) {
 }
 }
 \seealso{
-\code{\link[=detect_multiple]{detect_multiple()}}, \code{\link[=flag_multiple]{flag_multiple()}}, \code{\link[=detect_duplicated]{detect_duplicated()}},
+\code{\link[=is_multiple]{is_multiple()}}, \code{\link[=flag_multiple]{flag_multiple()}}, \code{\link[=is_duplicated]{is_duplicated()}},
 \code{\link[=flag_duplicated]{flag_duplicated()}}.
 
 Other functions to check inputs.: \code{\link{check_crucial_names}},
-  \code{\link{detect_multiple}}
+  \code{\link{is_multiple}}
 
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{detect_multiple}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
-  \code{\link{insensitive}},
+  \code{\link{insensitive}}, \code{\link{is_multiple}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 
-Other predicates.: \code{\link{detect_multiple}},
-  \code{\link{extract_insensitive}}
+Other predicates.: \code{\link{extract_insensitive}},
+  \code{\link{is_multiple}}
 }
 \concept{function factories.}
 \concept{functions for developers.}

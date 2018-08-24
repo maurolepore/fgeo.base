@@ -1,9 +1,41 @@
+context("flag_if")
+
+test_that("flag_if flaggs if predicate is true", {
+  dupl <- c(1, 1)
+  expect_warning(flag_if(dupl, is_duplicated))
+  expect_silent(flag_if(dupl, is_multiple))
+
+  mult <- c(1, 2)
+  expect_message(flag_if(mult, is_multiple, message, "Custom"), "Custom")
+  expect_silent(flag_if(mult, is_duplicated))
+
+  expect_silent(flag_if(c(1, NA), is_multiple))
+  expect_silent(flag_if(c(1, NA), is_duplicated))
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 context("detect_multiple")
 
 test_that("detects multiple different values of a variable", {
-  expect_true(detect_multiple(c(1, 2)))
-  expect_false(detect_multiple(c(1, NA)))
-  expect_false(detect_multiple(c(1, 1)))
+  expect_true(is_multiple(c(1, 2)))
+  expect_false(is_multiple(c(1, NA)))
+  expect_false(is_multiple(c(1, 1)))
 })
 
 
@@ -83,9 +115,9 @@ test_that("doesn't deal directly with grouped data to work within groups", {
 
 describe("detect_duplicated", {
   it("returns true if any value of a variable is duplicated", {
-    expect_true(detect_duplicated(c(1, 1)))
-    expect_false(detect_duplicated(c(1, NA)))
-    expect_false(detect_duplicated(c(1, 2)))
+    expect_true(is_duplicated(c(1, 1)))
+    expect_false(is_duplicated(c(1, NA)))
+    expect_false(is_duplicated(c(1, 2)))
   })
 })
 

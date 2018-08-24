@@ -1,10 +1,10 @@
 #' Detect and flag duplicated and multiple values of a variable.
 #'
-#' * `detect_multiple()` and `detect_duplicated()` return `TRUE` if they detect,
+#' * `is_multiple()` and `is_duplicated()` return `TRUE` if they detect,
 #' respectively, multiple different values of a variable (e.g. c(1, 2)`), or
 #' duplicated values of a variable (e.g. c(1, 1)`).
 #' * `flag_multiple()` and `flag_duplicated()` throw a condition (message,
-#' warning, or error) when `detect_multiple()` and `detect_duplicated()` would
+#' warning, or error) when `is_multiple()` and `is_duplicated()` would
 #' return `TRUE`. They also return the main input, invisibly.
 #'
 #' @param .data A vector.
@@ -26,13 +26,13 @@
 #'
 #' @examples
 #' # DETECT -----------------------------------------------------------------
-#' detect_multiple(c(1, 2))
-#' detect_multiple(c(1, 1))
-#' detect_multiple(c(1, NA))
+#' is_multiple(c(1, 2))
+#' is_multiple(c(1, 1))
+#' is_multiple(c(1, NA))
 #'
-#' detect_duplicated(c(1, 2))
-#' detect_duplicated(c(1, 1))
-#' detect_duplicated(c(1, NA))
+#' is_duplicated(c(1, 2))
+#' is_duplicated(c(1, 1))
+#' is_duplicated(c(1, NA))
 #'
 #' # FLAG -------------------------------------------------------------------
 #' duplicated_not_multiple <- c(1, 1, 1)
@@ -40,17 +40,48 @@
 #'
 #' flag_duplicated(duplicated_not_multiple, warning)
 #' flag_duplicated(duplicated_not_multiple, warning, "Custom message")
-detect_multiple <- function(.data) {
+is_multiple <- function(.data) {
   length(unique(stats::na.omit(.data))) > 1
 }
 
-#' @rdname detect_multiple
+#' @rdname is_multiple
 #' @export
-detect_duplicated <- function(.data) {
+is_duplicated <- function(.data) {
   any(duplicated(.data))
 }
 
-flag_predicate_f <- function(predicate, prefix) {
+
+
+#' Flag if a predicate returns TRUE and throw a condtion with optional message.
+#'
+#' @param .data Vector or FIXME dataframe
+#' @param pred
+#' @param cond
+#' @param prefix
+#' @param msg
+#'
+#' @return
+#' @export
+#'
+#' flag_if
+#'
+#' @examples
+flag_if <- function(.data, pred, cond = warning, msg = NULL) {
+  stopifnot(length(cond) == 1)
+  if (pred(.data)) cond(msg %||% "Flagged values were detected.")
+  invisible(.data)
+}
+
+
+
+
+
+
+
+
+
+
+flag_predicate_f <- function(predicate, prefix = "Flagged") {
   function(.data, cond, msg = NULL) {
     stopifnot(length(cond) == 1)
 
@@ -61,13 +92,13 @@ flag_predicate_f <- function(predicate, prefix) {
   }
 }
 
-#' @rdname detect_multiple
+#' @rdname is_multiple
 #' @export
-flag_duplicated <- flag_predicate_f(detect_duplicated, "Duplicated")
+flag_duplicated <- flag_predicate_f(is_duplicated, "Duplicated")
 
-#' @rdname detect_multiple
+#' @rdname is_multiple
 #' @export
-flag_multiple <- flag_predicate_f(detect_multiple, "Multiple")
+flag_multiple <- flag_predicate_f(is_multiple, "Multiple")
 
 
 
@@ -87,7 +118,7 @@ flag_multiple <- flag_predicate_f(detect_multiple, "Multiple")
 #' * `msg`: String; an optional custom
 #'   message.
 #'
-#' @seealso [detect_multiple()], [flag_multiple()], [detect_duplicated()],
+#' @seealso [is_multiple()], [flag_multiple()], [is_duplicated()],
 #' [flag_duplicated()].
 #'
 #' @family functions to check inputs.
@@ -144,7 +175,7 @@ flag_multiple <- flag_predicate_f(detect_multiple, "Multiple")
 detect_multiple_f <- function(name) {
   force(name)
   name <- tolower(name)
-  function(.data) detect_multiple(extract_column(.data, name))
+  function(.data) is_multiple(extract_column(.data, name))
 }
 
 #' @rdname detect_multiple_f
@@ -152,8 +183,12 @@ detect_multiple_f <- function(name) {
 detect_duplicated_f <- function(name) {
  force(name)
  name <- tolower(name)
- function(.data) detect_duplicated(extract_column(.data, name))
+ function(.data) is_duplicated(extract_column(.data, name))
 }
+
+
+
+
 
 flag_predicate <- function(name, cond = warning, predicate, prefix) {
   force(name)
