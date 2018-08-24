@@ -1,43 +1,3 @@
-#' Flag if a predicate returns TRUE and throw a condtion with optional message.
-#'
-#' @param .data Vector.
-#' @param predicate A predicate function.
-#' @param condition A condition function (e.g. [stop()], [warning()],
-#'   `rlang::inform()`).
-#' @param msg String. An optional custom message.
-#'
-#' @return A condition (and `.data` invisibly).
-#' @export
-#'
-#' @examples
-#' dupl <- c(1, 1)
-#' flag_if(dupl, is_duplicated)
-#' # Silent
-#' flag_if(dupl, is_multiple)
-#'
-#' mult <- c(1, 2)
-#' flag_if(mult, is_multiple, message, "Custom")
-#' # Silent
-#' flag_if(mult, is_duplicated)
-#'
-#' # Both silent
-#' flag_if(c(1, NA), is_multiple)
-#' flag_if(c(1, NA), is_duplicated)
-flag_if <- function(.data, predicate, condition = warning, msg = NULL) {
-  stopifnot(length(condition) == 1)
-  if (predicate(.data)) condition(msg %||% "Flagged values were detected.")
-  invisible(.data)
-}
-
-
-
-
-
-
-
-
-
-
 flag_predicate_f <- function(predicate, prefix = "Flagged") {
   function(.data, cond, msg = NULL) {
     stopifnot(length(cond) == 1)
@@ -48,16 +8,6 @@ flag_predicate_f <- function(predicate, prefix = "Flagged") {
     invisible(.data)
   }
 }
-
-#' @rdname is_multiple
-#' @export
-flag_duplicated <- flag_predicate_f(is_duplicated, "Duplicated")
-
-#' @rdname is_multiple
-#' @export
-flag_multiple <- flag_predicate_f(is_multiple, "Multiple")
-
-
 
 #' Factories to detect and flag duplicated and multiple values of a variable.
 #'
@@ -169,6 +119,21 @@ flag_multiple_f <- function(name, cond = warning) {
 flag_duplicated_f <- function(name, cond = warning) {
   flag_predicate(name, cond, flag_duplicated, "Duplicated")
 }
+
+flag_duplicated <- function(.data, condition, msg = NULL) {
+  msg <- msg %||% "Duplicated values were detected."
+  flag_if(.data, is_duplicated, condition, msg)
+}
+
+flag_multiple <- function(.data, condition, msg = NULL) {
+  msg <- msg %||% "Multiple values were detected."
+  flag_if(.data, is_multiple, condition, msg)
+}
+
+
+
+
+
 
 extract_column <- function(.data, name) {
   stopifnot(is.data.frame(.data))

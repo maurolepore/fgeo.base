@@ -1,20 +1,3 @@
-context("flag_if")
-
-test_that("flag_if flaggs if predicate is true", {
-  dupl <- c(1, 1)
-  expect_warning(flag_if(dupl, is_duplicated))
-  expect_silent(flag_if(dupl, is_multiple))
-
-  mult <- c(1, 2)
-  expect_message(flag_if(mult, is_multiple, message, "Custom"), "Custom")
-  expect_silent(flag_if(mult, is_duplicated))
-
-  expect_silent(flag_if(c(1, NA), is_multiple))
-  expect_silent(flag_if(c(1, NA), is_duplicated))
-})
-
-
-
 context("detect_multiple_f")
 
 test_that("multiple_censusid() works as epxected with any case", {
@@ -29,22 +12,6 @@ test_that("rejects invalid var", {
 })
 
 
-
-context("flag_multiple")
-
-single <- rep(1, 3)
-num <- c(1:3)
-chr <- c(letters[1:3])
-
-test_that("behaves as expected", {
-  expect_silent(flag_multiple(single, warning))
-  expect_warning(flag_multiple(num, warning))
-  expect_error(flag_multiple(chr, stop, "Do something"), "Do something")
-})
-
-test_that("ommits NAs", {
-  expect_silent(flag_multiple(c(1, NA), warning))
-})
 
 
 
@@ -82,25 +49,6 @@ test_that("doesn't deal directly with grouped data to work within groups", {
   # To deal with grouped data, apply flag_multiple_f to each group
   flag_if_multiple_b <- flag_multiple_f("b")
   expect_silent(fgeo.tool::by_group(by_a, flag_if_multiple_b))
-})
-
-
-
-# duplicated --------------------------------------------------------------
-
-
-
-
-
-describe("flag_duplicated", {
-  it("returns `cond`", {
-    msg <- "Duplicated values were detected"
-    expect_warning(flag_duplicated(c(1, 1), warning), msg)
-    expect_message(flag_duplicated(c(1, 1), message), msg)
-    expect_error(flag_duplicated(c(1, 1), stop, "Custom msg"), "Custom msg")
-    expect_silent(flag_duplicated(c(1, NA), warning))
-    expect_silent(flag_duplicated(c(1, 2), warning))
-  })
 })
 
 
