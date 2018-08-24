@@ -18,10 +18,7 @@ condition_na <- function(.f) {
     out <- vapply(x, function(x) any(is.na(x)), logical(1))
     has_na <- out
     if (any(has_na)) {
-      .f(
-        "Detected missing values in: ", glue_comma(names(x)[has_na]),
-        call. = FALSE
-      )
+      .f("Detected missing values in: ", glue_comma(names(x)[has_na]))
     }
     invisible(x)
   }

@@ -87,17 +87,17 @@ if (!requireNamespace("dplyr")) {
 \code{\link[=flag_duplicated]{flag_duplicated()}}.
 
 Other functions to check inputs.: \code{\link{check_crucial_names}},
-  \code{\link{is_multiple}}
+  \code{\link{flag_duplicated}}
 
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
-  \code{\link{insensitive}}, \code{\link{is_multiple}},
+  \code{\link{flag_duplicated}}, \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 
 Other predicates.: \code{\link{extract_insensitive}},
-  \code{\link{is_multiple}}
+  \code{\link{flag_duplicated}}
 }
 \concept{function factories.}
 \concept{functions for developers.}

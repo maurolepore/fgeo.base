@@ -1,74 +1,20 @@
-#' Detect and flag duplicated and multiple values of a variable.
-#'
-#' * `is_multiple()` and `is_duplicated()` return `TRUE` if they detect,
-#' respectively, multiple different values of a variable (e.g. c(1, 2)`), or
-#' duplicated values of a variable (e.g. c(1, 1)`).
-#' * `flag_multiple()` and `flag_duplicated()` throw a condition (message,
-#' warning, or error) when `is_multiple()` and `is_duplicated()` would
-#' return `TRUE`. They also return the main input, invisibly.
-#'
-#' @param .data A vector.
-#' @param cond Symbol; the bare name of a function that outputs a condition:
-#'   e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.
-#' @param msg (Argument to the resulting function) String; an optional custom
-#'   message.
-#'
-#' @seealso [detect_multiple_f()], [flag_multiple_f()], [detect_duplicated_f()],
-#' [flag_duplicated_f()].
-#'
-#' @family functions to check inputs.
-#' @family functions for developers.
-#' @family predicates.
-#'
-#' @return See description.
-#'
-#' @export
-#'
-#' @examples
-#' # DETECT -----------------------------------------------------------------
-#' is_multiple(c(1, 2))
-#' is_multiple(c(1, 1))
-#' is_multiple(c(1, NA))
-#'
-#' is_duplicated(c(1, 2))
-#' is_duplicated(c(1, 1))
-#' is_duplicated(c(1, NA))
-#'
-#' # FLAG -------------------------------------------------------------------
-#' duplicated_not_multiple <- c(1, 1, 1)
-#' flag_multiple(duplicated_not_multiple, warning)
-#'
-#' flag_duplicated(duplicated_not_multiple, warning)
-#' flag_duplicated(duplicated_not_multiple, warning, "Custom message")
-is_multiple <- function(.data) {
-  length(unique(stats::na.omit(.data))) > 1
-}
-
-#' @rdname is_multiple
-#' @export
-is_duplicated <- function(.data) {
-  any(duplicated(.data))
-}
-
-
-
 #' Flag if a predicate returns TRUE and throw a condtion with optional message.
 #'
-#' @param .data Vector or FIXME dataframe
-#' @param pred
-#' @param cond
-#' @param prefix
-#' @param msg
+#' @param .data Vector.
+#' @param predicate A predicate function.
+#' @param condition A condition function (e.g. [stop()], [warning()],
+#'   `rlang::inform()`).
+#' @param msg String. An optional custom message.
 #'
-#' @return
+#' @return A condition (and `.data` invisibly).
 #' @export
 #'
 #' flag_if
 #'
 #' @examples
-flag_if <- function(.data, pred, cond = warning, msg = NULL) {
-  stopifnot(length(cond) == 1)
-  if (pred(.data)) cond(msg %||% "Flagged values were detected.")
+flag_if <- function(.data, predicate, condition = warning, msg = NULL) {
+  stopifnot(length(condition) == 1)
+  if (predicate(.data)) condition(msg %||% "Flagged values were detected.")
   invisible(.data)
 }
 

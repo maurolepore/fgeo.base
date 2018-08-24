@@ -70,10 +70,11 @@ reference:
       - warn_na
       - check_crucial_names
       - flag_multiple
-      - multiple_var
-      - flag_multiple_vector
       - exists_in_pkg
       - is_named
+      - detect_insensitive
+      - is_multiple
+      - is_duplicated
 
   - title: Find or approximate
     desc: General (not specific to ForestGEO)
@@ -97,12 +98,6 @@ reference:
     contents:
       - gather_mat
       - gather_mats
-
-  - title: Predicates
-    desc: General (not specific to ForestGEO)
-    contents:
-      - detect_insensitive
-      - multiple_var
 
   - title: Miscellaneous
     desc: General (not specific to ForestGEO)

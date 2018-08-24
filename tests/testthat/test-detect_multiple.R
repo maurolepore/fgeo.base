@@ -15,31 +15,6 @@ test_that("flag_if flaggs if predicate is true", {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-context("detect_multiple")
-
-test_that("detects multiple different values of a variable", {
-  expect_true(is_multiple(c(1, 2)))
-  expect_false(is_multiple(c(1, NA)))
-  expect_false(is_multiple(c(1, 1)))
-})
-
-
-
 context("detect_multiple_f")
 
 test_that("multiple_censusid() works as epxected with any case", {
@@ -113,13 +88,7 @@ test_that("doesn't deal directly with grouped data to work within groups", {
 
 # duplicated --------------------------------------------------------------
 
-describe("detect_duplicated", {
-  it("returns true if any value of a variable is duplicated", {
-    expect_true(is_duplicated(c(1, 1)))
-    expect_false(is_duplicated(c(1, NA)))
-    expect_false(is_duplicated(c(1, 2)))
-  })
-})
+
 
 
 

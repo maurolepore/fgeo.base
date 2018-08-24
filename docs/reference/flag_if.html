@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Detect and extract matching strings -- ignoring case. — extract_insensitive • fgeo.base</title>
+<title>Flag if a predicate returns TRUE and throw a condtion with optional message. — flag_if • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Detect and extract matching strings -- ignoring case. — extract_insensitive" />
+<meta property="og:title" content="Flag if a predicate returns TRUE and throw a condtion with optional message. — flag_if" />
 
-<meta property="og:description" content="Detect and extract matching strings -- ignoring case.
-Return TRUE in position where name of x is in y; FALSE otherwise." />
+<meta property="og:description" content="Flag if a predicate returns TRUE and throw a condtion with optional message." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -107,58 +106,46 @@ Return TRUE in position where name of x is in y; FALSE otherwise." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Detect and extract matching strings -- ignoring case.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/rename_matches.R'><code>R/rename_matches.R</code></a></small>
-    <div class="hidden name"><code>extract_insensitive.Rd</code></div>
+    <h1>Flag if a predicate returns TRUE and throw a condtion with optional message.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/detect_multiple.R'><code>R/detect_multiple.R</code></a></small>
+    <div class="hidden name"><code>flag_if.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Detect and extract matching strings -- ignoring case.</p>
-<p>Return TRUE in position where name of x is in y; FALSE otherwise.</p>
+    <p>Flag if a predicate returns TRUE and throw a condtion with optional message.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>extract_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)
-
-<span class='fu'>detect_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</pre>
+    <pre class="usage"><span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warning</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A string to be muted as in <code>y</code>, it a case insensitive match is
-found.</p></td>
+      <th>.data</th>
+      <td><p>Vector.</p></td>
     </tr>
     <tr>
-      <th>y</th>
-      <td><p>A string to use as a reference to match <code>x</code>.</p></td>
+      <th>predicate</th>
+      <td><p>A predicate function.</p></td>
+    </tr>
+    <tr>
+      <th>condition</th>
+      <td><p>A condition function (e.g. <code>stop()</code>, <code>warning()</code>,
+<code><a href='http://www.rdocumentation.org/packages/rlang/topics/abort'>rlang::inform()</a></code>).</p></td>
+    </tr>
+    <tr>
+      <th>msg</th>
+      <td><p>String. An optional custom message.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>detect_*</code> and <code>extract_*</code> return a logical vector and a string.</p>
-    
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Other functions for developers.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
-  <code><a href='detect_multiple_f.html'>detect_multiple_f</a></code>,
-  <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
-  <code><a href='is_multiple.html'>flag_duplicated</a></code>, <code><a href='insensitive.html'>insensitive</a></code>,
-  <code><a href='nms_pull_matches.html'>nms_pull_matches</a></code>,
-  <code><a href='rename_matches.html'>rename_matches</a></code>, <code><a href='round_any.html'>round_any</a></code></p>
-<p>Other predicates.: <code><a href='detect_multiple_f.html'>detect_multiple_f</a></code>,
-  <code><a href='is_multiple.html'>flag_duplicated</a></code></p></div>
+    <p>A condition (and <code>.data</code> invisibly).</p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>x</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"stemid"</span>, <span class='st'>"n"</span>)
-<span class='no'>y</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='st'>"StemID"</span>, <span class='st'>"treeID"</span>)
-<span class='fu'>detect_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1]  TRUE FALSE</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='no'>x</span>, <span class='no'>y</span>)</div><div class='output co'>#&gt; [1] "StemID" "n"     </div><div class='input'>
-<span class='no'>vft</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>TreeID</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>Status</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>extract_insensitive</span>(<span class='fu'>tolower</span>(<span class='fu'>names</span>(<span class='no'>vft</span>)), <span class='fu'>names</span>(<span class='no'>vft</span>))</div><div class='output co'>#&gt; [1] "TreeID" "Status"</div><div class='input'><span class='fu'>extract_insensitive</span>(<span class='fu'>names</span>(<span class='no'>vft</span>), <span class='fu'>tolower</span>(<span class='fu'>names</span>(<span class='no'>vft</span>)))</div><div class='output co'>#&gt; [1] "treeid" "status"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -166,11 +153,7 @@ found.</p></td>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
-      
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+          </ul>
 
   </div>
 </div>

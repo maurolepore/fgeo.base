@@ -13,6 +13,9 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/condition_na.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/detect_multiple_f.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/drop_if_na.html</loc>
   </url>
   <url>
@@ -34,7 +37,7 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/find_datasets.html</loc>
   </url>
   <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/flag_multiple.html</loc>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/flag_if.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/gather_mat.html</loc>
@@ -52,13 +55,13 @@
     <loc>https://forestgeo.github.io/fgeo.base//reference/insensitive.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/is_multiple.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/is_named.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/luquillo.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/multiple_var.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/name_dfs.html</loc>
