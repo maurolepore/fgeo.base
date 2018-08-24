@@ -55,6 +55,13 @@ test_that("returns the expected messages and output", {
   expect_identical(.df, out)
 })
 
+test_that("includes in the message the name of the variable being tested", {
+  tree <- data.frame(treeID = c(1, 2), stringsAsFactors = FALSE)
+  expect_warning(flag_multiple_f("treeID")(tree), "treeid")
+  tree <- data.frame(treeID = c(1, 1), stringsAsFactors = FALSE)
+  expect_warning(flag_duplicated_f("treeID")(tree), "treeid")
+})
+
 test_that("doesn't deal directly with grouped data to work within groups", {
   skip_if_not_installed("dplyr")
   library(dplyr)

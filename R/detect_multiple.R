@@ -150,12 +150,14 @@ flag_multiple_f <- function(name, cond = warning) {
   force(cond)
   name <- tolower(name)
   function(.data, msg = NULL) {
+    msg <- msg %||% paste0(name, ": Multiple values were detected.")
     flag_multiple(extract_column(.data, name), cond = cond, msg = msg)
     invisible(.data)
   }
 }
 
 # TODO: Document
+# TODO: Remove duplication
 #' @rdname detect_multiple_f
 #' @export
 flag_duplicated_f <- function(name, cond = warning) {
@@ -163,6 +165,7 @@ flag_duplicated_f <- function(name, cond = warning) {
   force(cond)
   name <- tolower(name)
   function(.data, msg = NULL) {
+    msg <- msg %||% paste0(name, ": Duplicated values were detected.")
     flag_duplicated(extract_column(.data, name), cond = cond, msg = msg)
     invisible(.data)
   }
