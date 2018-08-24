@@ -54,7 +54,7 @@ detect_duplicated <- function(.data) {
   any(duplicated(.data))
 }
 
-flag_predicate_f <- function(predicate, prefix) {
+construct_flag_predicate <- function(predicate, prefix) {
   function(.data, cond, msg = NULL) {
     stopifnot(length(cond) == 1)
 
@@ -67,11 +67,11 @@ flag_predicate_f <- function(predicate, prefix) {
 
 #' @rdname detect_multiple
 #' @export
-flag_duplicated <- flag_predicate_f(detect_duplicated, "Duplicated")
+flag_duplicated <- construct_flag_predicate(detect_duplicated, "Duplicated")
 
 #' @rdname detect_multiple
 #' @export
-flag_multiple <- flag_predicate_f(detect_multiple, "Multiple")
+flag_multiple <- construct_flag_predicate(detect_multiple, "Multiple")
 
 
 
@@ -143,32 +143,27 @@ detect_duplicated_f <- function(name) {
  function(.data) detect_duplicated(extract_column(.data, name))
 }
 
-#' @rdname detect_multiple_f
-#' @export
-flag_multiple_f <- function(name, cond = warning) {
+construct_flag_predicate_f <- function(name, cond = warning, predicate, prefix) {
   force(name)
   force(cond)
   name <- tolower(name)
   function(.data, msg = NULL) {
-    msg <- msg %||% paste0(name, ": Multiple values were detected.")
-    flag_multiple(extract_column(.data, name), cond = cond, msg = msg)
+    msg <- msg %||% paste0(name, ": ", prefix, " values were detected.")
+    predicate(extract_column(.data, name), cond = cond, msg = msg)
     invisible(.data)
   }
 }
 
-# TODO: Document
-# TODO: Remove duplication
+#' @rdname detect_multiple_f
+#' @export
+flag_multiple_f <- function(name, cond = warning) {
+  construct_flag_predicate_f(name, cond, flag_multiple, "Multiple")
+}
+
 #' @rdname detect_multiple_f
 #' @export
 flag_duplicated_f <- function(name, cond = warning) {
-  force(name)
-  force(cond)
-  name <- tolower(name)
-  function(.data, msg = NULL) {
-    msg <- msg %||% paste0(name, ": Duplicated values were detected.")
-    flag_duplicated(extract_column(.data, name), cond = cond, msg = msg)
-    invisible(.data)
-  }
+  construct_flag_predicate_f(name, cond, flag_duplicated, "Duplicated")
 }
 
 extract_column <- function(.data, name) {
