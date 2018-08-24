@@ -5,7 +5,7 @@
 \alias{detect_duplicated_f}
 \alias{flag_multiple_f}
 \alias{flag_duplicated_f}
-\title{Factories of functions to detect and flag multiple values of a variable.}
+\title{Factories to detect and flag duplicated and multiple values of a variable.}
 \usage{
 detect_multiple_f(name)
 
@@ -21,12 +21,19 @@ flag_duplicated_f(name, cond = warning)
 \item{cond}{Symbol; the bare name of a function that outputs a condition:
 e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.}
 
-\item{.data}{A dataframe.}
+\item{.data}{(Argument to the resulting function) A dataframe.}
+
+\item{msg}{(Argument to the resulting function) String; an optional custom
+message.}
+}
+\value{
+A function.
 }
 \description{
-These funcions create funcitons to detect and flag multiple values of a
-specific variable. Their goal is to create expressive predicates that can be
-used in, for example, \code{if()} statements.
+These functions create other functions to detect and flag multiple values of a
+specific variable. Their goal is to create expressive predicates
+(\code{detect_*()}) that can be used in, for example, \code{if()} statements; and
+expressive functions to create messages when a condition is true (\code{flag_*()}).
 }
 \examples{
 # DETECT ------------------------------------------------------------------

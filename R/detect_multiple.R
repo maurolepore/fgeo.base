@@ -1,4 +1,4 @@
-#' Detect and flag multiple values of a variable.
+#' Detect and flag duplicated and multiple values of a variable.
 #'
 #' * `detect_multiple()` and `detect_duplicated()` return `TRUE` if they detect,
 #' respectively, multiple different values of a variable (e.g. c(1, 2)`), or
@@ -10,7 +10,8 @@
 #' @param .data A vector.
 #' @param cond Symbol; the bare name of a function that outputs a condition:
 #'   e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.
-#' @param msg String; a custom message.
+#' @param msg (Argument to the resulting function) String; an optional custom
+#'   message.
 #'
 #' @seealso [detect_multiple_f()], [flag_multiple_f()], [detect_duplicated_f()],
 #' [flag_duplicated_f()].
@@ -70,15 +71,19 @@ flag_multiple <- flag_predicate_f(detect_multiple, "Multiple")
 
 
 
-#' Factories of functions to detect and flag multiple values of a variable.
+#' Factories to detect and flag duplicated and multiple values of a variable.
 #'
-#' These funcions create funcitons to detect and flag multiple values of a
-#' specific variable. Their goal is to create expressive predicates that can be
-#' used in, for example, `if()` statements.
+#' These functions create other functions to detect and flag multiple values of a
+#' specific variable. Their goal is to create expressive predicates
+#' (`detect_*()`) that can be used in, for example, `if()` statements; and
+#' expressive functions to create messages when a condition is true (`flag_*()`).
 #'
-#' @param .data A dataframe.
 #' @param name String; the name of a variable of `.data`.
-#' @inheritParams detect_multiple
+#' @param cond Symbol; the bare name of a function that outputs a condition:
+#'   e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.
+#' @param .data (Argument to the resulting function) A dataframe.
+#' @param msg (Argument to the resulting function) String; an optional custom
+#'   message.
 #'
 #' @seealso [detect_multiple()], [flag_multiple()], [detect_duplicated()],
 #' [flag_duplicated()].
@@ -89,6 +94,8 @@ flag_multiple <- flag_predicate_f(detect_multiple, "Multiple")
 #' @family function factories.
 #'
 #' @export
+#'
+#' @return A function.
 #'
 #' @examples
 #' # DETECT ------------------------------------------------------------------

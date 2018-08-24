@@ -5,7 +5,7 @@
 \alias{detect_duplicated}
 \alias{flag_duplicated}
 \alias{flag_multiple}
-\title{Detect and flag multiple values of a variable.}
+\title{Detect and flag duplicated and multiple values of a variable.}
 \usage{
 detect_multiple(.data)
 
@@ -21,7 +21,8 @@ flag_multiple(.data, cond, msg = NULL)
 \item{cond}{Symbol; the bare name of a function that outputs a condition:
 e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.}
 
-\item{msg}{String; a custom message.}
+\item{msg}{(Argument to the resulting function) String; an optional custom
+message.}
 }
 \value{
 See description.
