@@ -23,8 +23,56 @@
 #' # Both silent
 #' flag_if(c(1, NA), is_multiple)
 #' flag_if(c(1, NA), is_duplicated)
-flag_if <- function(.data, predicate, condition = warning, msg = NULL) {
+#'
+#'
+#'
+flag_if <- function(.data, ...) {
+  UseMethod("flag_if")
+}
+
+flag_if.default <- function(.data, predicate, condition = warning, msg = NULL) {
   stopifnot(length(condition) == 1)
   if (predicate(.data)) condition(msg %||% "Flagged values were detected.")
   invisible(.data)
 }
+
+flag_name_if <- function(.data, name, predicate, condition = warning, msg = NULL) {
+  name <- tolower(name)
+  msg <- msg %||% paste0(name, ": Flagged values were detected.")
+  flag_if(extract_column(.data, name), predicate, condition, msg)
+  invisible(.data)
+}
+
+extract_column <- function(.data, name) {
+  stopifnot(is.data.frame(.data))
+  .data <- stats::setNames(.data, tolower(names(.data)))
+  stopifnot_has_name(.data, name)
+  .data[[name]]
+}
+
+stopifnot_has_name <- function(.data, name) {
+  if (!utils::hasName(.data, name)) {
+    stop(name, " is an invalid name", call. = FALSE)
+  }
+}
+
+
+
+
+
+
+#' Title
+#'
+#' @param name
+#' @param cond
+#' @param predicate
+#'
+#' @return
+#' @export
+#'
+#' @examples
+detect_if <- function(.data, name, predicate) {
+  name <- tolower(name)
+  predicate(extract_column(.data, name))
+}
+

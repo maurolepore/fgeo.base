@@ -29,19 +29,16 @@ is_duplicated(c(1, 1))
 is_duplicated(c(1, NA))
 }
 \seealso{
-Other functions to check inputs.: \code{\link{check_crucial_names}},
-  \code{\link{detect_multiple_f}}
+Other functions to check inputs.: \code{\link{check_crucial_names}}
 
 Other functions for developers.: \code{\link{check_crucial_names}},
-  \code{\link{detect_multiple_f}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
   \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 
-Other predicates.: \code{\link{detect_multiple_f}},
-  \code{\link{extract_insensitive}}
+Other predicates.: \code{\link{extract_insensitive}}
 }
 \concept{functions for developers.}
 \concept{functions to check inputs.}
