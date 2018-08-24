@@ -1,30 +1,25 @@
-# TODO: Add functions to documentation.
-
 #' Detect and flag multiple values of a variable.
 #'
-#' * `detect_multiple()` is a predicate function that returns `TRUE` if it
-#' detects multiple different values of a variable  (e.g. c(1, 2)`).
-#' * `detect_duplicated()` is a predicate function that returns `TRUE` if it
-#' detects duplicated values of a variable (e.g. c(1, 1)`).
-#' * `flag_multiple()` and `flag_duplicated()` throw a condition when
-#' `detect_multiple()` and `detect_duplicated()` would return `TRUE`. They also
-#' return the main input, invisibly.
+#' * `detect_multiple()` and `detect_duplicated()` return `TRUE` if they detect,
+#' respectively, multiple different values of a variable (e.g. c(1, 2)`), or
+#' duplicated values of a variable (e.g. c(1, 1)`).
+#' * `flag_multiple()` and `flag_duplicated()` throw a condition (message,
+#' warning, or error) when `detect_multiple()` and `detect_duplicated()` would
+#' return `TRUE`. They also return the main input, invisibly.
 #'
-#' @param .data A dataframe.
-#' @param name String; the name of a variable of `.data`.
+#' @param .data A vector.
 #' @param cond Symbol; the bare name of a function that outputs a condition:
 #'   e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.
 #' @param msg String; a custom message.
 #'
-#' @seealso [detect_multiple_f()], [flag_multiple_f()].
+#' @seealso [detect_multiple_f()], [flag_multiple_f()], [detect_duplicated_f()],
+#' [flag_duplicated_f()].
 #'
 #' @family functions to check inputs.
 #' @family functions for developers.
 #' @family predicates.
 #'
-#' @return
-#' * `detect_multiple()`:A single `TRUE` or `FALSE`. Insensitive to upper-
-#' lower-case.
+#' @return See description.
 #'
 #' @export
 #'
@@ -41,8 +36,8 @@
 #' # FLAG -------------------------------------------------------------------
 #' duplicated_not_multiple <- c(1, 1, 1)
 #' flag_multiple(duplicated_not_multiple, warning)
-#' flag_duplicated(duplicated_not_multiple, warning)
 #'
+#' flag_duplicated(duplicated_not_multiple, warning)
 #' flag_duplicated(duplicated_not_multiple, warning, "Custom message")
 detect_multiple <- function(.data) {
   length(unique(stats::na.omit(.data))) > 1
@@ -54,7 +49,7 @@ detect_duplicated <- function(.data) {
   any(duplicated(.data))
 }
 
-construct_flag_predicate <- function(predicate, prefix) {
+flag_predicate_f <- function(predicate, prefix) {
   function(.data, cond, msg = NULL) {
     stopifnot(length(cond) == 1)
 
@@ -67,33 +62,41 @@ construct_flag_predicate <- function(predicate, prefix) {
 
 #' @rdname detect_multiple
 #' @export
-flag_duplicated <- construct_flag_predicate(detect_duplicated, "Duplicated")
+flag_duplicated <- flag_predicate_f(detect_duplicated, "Duplicated")
 
 #' @rdname detect_multiple
 #' @export
-flag_multiple <- construct_flag_predicate(detect_multiple, "Multiple")
+flag_multiple <- flag_predicate_f(detect_multiple, "Multiple")
 
 
 
-#' Factories of predicates to detect and flag multiple values of a variable.
+#' Factories of functions to detect and flag multiple values of a variable.
 #'
-#' * `detect_multiple_f()` is a factory of predicate functions that are specific
-#' to a particular variable. It's goal is to create expressive and short
-#' predicates that can be used in, for example, `if()` statements.
+#' These funcions create funcitons to detect and flag multiple values of a
+#' specific variable. Their goal is to create expressive predicates that can be
+#' used in, for example, `if()` statements.
 #'
+#' @param .data A dataframe.
+#' @param name String; the name of a variable of `.data`.
 #' @inheritParams detect_multiple
-#' @seealso [detect_multiple()], [flag_multiple()].
 #'
+#' @seealso [detect_multiple()], [flag_multiple()], [detect_duplicated()],
+#' [flag_duplicated()].
+#'
+#' @family functions to check inputs.
 #' @family functions for developers.
+#' @family predicates.
 #' @family function factories.
 #'
 #' @export
 #'
 #' @examples
 #' # DETECT ------------------------------------------------------------------
-#' multiple_censusid <- detect_multiple_f("censusid")
-#' multiple_censusid(data.frame(CensusID = c(1, 2, NA)))
-#' multiple_censusid(data.frame(CensusID = c(1, 1, NA)))
+#' dfm <- data.frame(CensusID = c(1, 2, NA))
+#' censusid_has_multiple_values <- detect_multiple_f("censusid")
+#' if (censusid_has_multiple_values(dfm)) "Hello world"
+#'
+#' censusid_has_multiple_values(data.frame(CensusID = c(1, 1, NA)))
 #'
 #' # Insensitive to upper/lowercase
 #' multiple_censusid <- detect_multiple_f("censusid")
@@ -102,13 +105,14 @@ flag_multiple <- construct_flag_predicate(detect_multiple, "Multiple")
 #' multiple_censusid(data.frame(censusid = c(1, 2, NA)))
 #'
 #' # FLAG --------------------------------------------------------------------
-#' # On a dataframe
 #' .df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
-#'
 #' flag_multiple_f("a")(.df)
 #' flag_multiple_f("a", message)(.df, "Hello world.")
+#'
 #' # Silent
-#' flag_multiple_f("b", warning)(.df, "Hello world")
+#' flag_duplicated_f("a")(.df)
+#' .df2 <- data.frame(a = c(1, 1, 1), stringsAsFactors = FALSE)
+#' flag_duplicated_f("a")(.df2)
 #'
 #' \dontrun{
 #' # Dealing with grouped data
@@ -134,7 +138,6 @@ detect_multiple_f <- function(name) {
   function(.data) detect_multiple(extract_column(.data, name))
 }
 
-# TODO: Document
 #' @rdname detect_multiple_f
 #' @export
 detect_duplicated_f <- function(name) {
@@ -143,7 +146,7 @@ detect_duplicated_f <- function(name) {
  function(.data) detect_duplicated(extract_column(.data, name))
 }
 
-construct_flag_predicate_f <- function(name, cond = warning, predicate, prefix) {
+flag_predicate <- function(name, cond = warning, predicate, prefix) {
   force(name)
   force(cond)
   name <- tolower(name)
@@ -157,13 +160,13 @@ construct_flag_predicate_f <- function(name, cond = warning, predicate, prefix) 
 #' @rdname detect_multiple_f
 #' @export
 flag_multiple_f <- function(name, cond = warning) {
-  construct_flag_predicate_f(name, cond, flag_multiple, "Multiple")
+  flag_predicate(name, cond, flag_multiple, "Multiple")
 }
 
 #' @rdname detect_multiple_f
 #' @export
 flag_duplicated_f <- function(name, cond = warning) {
-  construct_flag_predicate_f(name, cond, flag_duplicated, "Duplicated")
+  flag_predicate(name, cond, flag_duplicated, "Duplicated")
 }
 
 extract_column <- function(.data, name) {

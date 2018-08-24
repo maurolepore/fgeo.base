@@ -1,5 +1,3 @@
-# TODO: Move to fgeo.base
-
 #' Pick the given or first (alpha sorted) plot from a ViewFullTable.
 #'
 #' @param vft Dataframe; particularly a ForestGEO ViewFullTable.

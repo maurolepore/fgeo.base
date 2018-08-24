@@ -5,7 +5,7 @@
 \alias{detect_duplicated_f}
 \alias{flag_multiple_f}
 \alias{flag_duplicated_f}
-\title{Factories of predicates to detect and flag multiple values of a variable.}
+\title{Factories of functions to detect and flag multiple values of a variable.}
 \usage{
 detect_multiple_f(name)
 
@@ -20,19 +20,21 @@ flag_duplicated_f(name, cond = warning)
 
 \item{cond}{Symbol; the bare name of a function that outputs a condition:
 e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.}
+
+\item{.data}{A dataframe.}
 }
 \description{
-\itemize{
-\item \code{detect_multiple_f()} is a factory of predicate functions that are specific
-to a particular variable. It's goal is to create expressive and short
-predicates that can be used in, for example, \code{if()} statements.
-}
+These funcions create funcitons to detect and flag multiple values of a
+specific variable. Their goal is to create expressive predicates that can be
+used in, for example, \code{if()} statements.
 }
 \examples{
 # DETECT ------------------------------------------------------------------
-multiple_censusid <- detect_multiple_f("censusid")
-multiple_censusid(data.frame(CensusID = c(1, 2, NA)))
-multiple_censusid(data.frame(CensusID = c(1, 1, NA)))
+dfm <- data.frame(CensusID = c(1, 2, NA))
+censusid_has_multiple_values <- detect_multiple_f("censusid")
+if (censusid_has_multiple_values(dfm)) "Hello world"
+
+censusid_has_multiple_values(data.frame(CensusID = c(1, 1, NA)))
 
 # Insensitive to upper/lowercase
 multiple_censusid <- detect_multiple_f("censusid")
@@ -41,13 +43,14 @@ multiple_censusid <- detect_multiple_f("CENSUSID")
 multiple_censusid(data.frame(censusid = c(1, 2, NA)))
 
 # FLAG --------------------------------------------------------------------
-# On a dataframe
 .df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
-
 flag_multiple_f("a")(.df)
 flag_multiple_f("a", message)(.df, "Hello world.")
+
 # Silent
-flag_multiple_f("b", warning)(.df, "Hello world")
+flag_duplicated_f("a")(.df)
+.df2 <- data.frame(a = c(1, 1, 1), stringsAsFactors = FALSE)
+flag_duplicated_f("a")(.df2)
 
 \dontrun{
 # Dealing with grouped data
@@ -69,7 +72,11 @@ if (!requireNamespace("dplyr")) {
 }
 }
 \seealso{
-\code{\link[=detect_multiple]{detect_multiple()}}, \code{\link[=flag_multiple]{flag_multiple()}}.
+\code{\link[=detect_multiple]{detect_multiple()}}, \code{\link[=flag_multiple]{flag_multiple()}}, \code{\link[=detect_duplicated]{detect_duplicated()}},
+\code{\link[=flag_duplicated]{flag_duplicated()}}.
+
+Other functions to check inputs.: \code{\link{check_crucial_names}},
+  \code{\link{detect_multiple}}
 
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{detect_multiple}},
@@ -78,6 +85,11 @@ Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
+
+Other predicates.: \code{\link{detect_multiple}},
+  \code{\link{extract_insensitive}}
 }
 \concept{function factories.}
 \concept{functions for developers.}
+\concept{functions to check inputs.}
+\concept{predicates.}

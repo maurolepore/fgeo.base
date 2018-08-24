@@ -25,7 +25,8 @@ dfm <- data.frame(x = 1)
 check_crucial_names(dfm, "x")
 }
 \seealso{
-Other functions to check inputs.: \code{\link{detect_multiple}}
+Other functions to check inputs.: \code{\link{detect_multiple_f}},
+  \code{\link{detect_multiple}}
 
 Other functions for developers.: \code{\link{detect_multiple_f}},
   \code{\link{detect_multiple}},

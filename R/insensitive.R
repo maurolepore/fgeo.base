@@ -1,7 +1,4 @@
-# TODO: Move to fgeo.base and @importFrom it --------------------------------
-
 #' Create a vector or dataframe with case insensitive name matching.
-#'
 #'
 #' @section Acknowledgment:
 #' Thanks to Neil Richardson for recommending this function

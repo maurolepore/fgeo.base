@@ -16,30 +16,23 @@ flag_duplicated(.data, cond, msg = NULL)
 flag_multiple(.data, cond, msg = NULL)
 }
 \arguments{
-\item{.data}{A dataframe.}
+\item{.data}{A vector.}
 
 \item{cond}{Symbol; the bare name of a function that outputs a condition:
 e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.}
 
 \item{msg}{String; a custom message.}
-
-\item{name}{String; the name of a variable of \code{.data}.}
 }
 \value{
-\itemize{
-\item \code{detect_multiple()}:A single \code{TRUE} or \code{FALSE}. Insensitive to upper-
-lower-case.
-}
+See description.
 }
 \description{
 \itemize{
-\item \code{detect_multiple()} is a predicate function that returns \code{TRUE} if it
-detects multiple different values of a variable  (e.g. c(1, 2)`).
-\item \code{detect_duplicated()} is a predicate function that returns \code{TRUE} if it
-detects duplicated values of a variable (e.g. c(1, 1)`).
-\item \code{flag_multiple()} and \code{flag_duplicated()} throw a condition when
-\code{detect_multiple()} and \code{detect_duplicated()} would return \code{TRUE}. They also
-return the main input, invisibly.
+\item \code{detect_multiple()} and \code{detect_duplicated()} return \code{TRUE} if they detect,
+respectively, multiple different values of a variable (e.g. c(1, 2)\code{), or duplicated values of a variable (e.g. c(1, 1)}).
+\item \code{flag_multiple()} and \code{flag_duplicated()} throw a condition (message,
+warning, or error) when \code{detect_multiple()} and \code{detect_duplicated()} would
+return \code{TRUE}. They also return the main input, invisibly.
 }
 }
 \examples{
@@ -55,14 +48,16 @@ detect_duplicated(c(1, NA))
 # FLAG -------------------------------------------------------------------
 duplicated_not_multiple <- c(1, 1, 1)
 flag_multiple(duplicated_not_multiple, warning)
-flag_duplicated(duplicated_not_multiple, warning)
 
+flag_duplicated(duplicated_not_multiple, warning)
 flag_duplicated(duplicated_not_multiple, warning, "Custom message")
 }
 \seealso{
-\code{\link[=detect_multiple_f]{detect_multiple_f()}}, \code{\link[=flag_multiple_f]{flag_multiple_f()}}.
+\code{\link[=detect_multiple_f]{detect_multiple_f()}}, \code{\link[=flag_multiple_f]{flag_multiple_f()}}, \code{\link[=detect_duplicated_f]{detect_duplicated_f()}},
+\code{\link[=flag_duplicated_f]{flag_duplicated_f()}}.
 
-Other functions to check inputs.: \code{\link{check_crucial_names}}
+Other functions to check inputs.: \code{\link{check_crucial_names}},
+  \code{\link{detect_multiple_f}}
 
 Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{detect_multiple_f}},
@@ -72,7 +67,8 @@ Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 
-Other predicates.: \code{\link{extract_insensitive}}
+Other predicates.: \code{\link{detect_multiple_f}},
+  \code{\link{extract_insensitive}}
 }
 \concept{functions for developers.}
 \concept{functions to check inputs.}
