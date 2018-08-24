@@ -83,8 +83,8 @@ flag_multiple <- flag_predicate_f(detect_multiple, "Multiple")
 #'   e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.
 #'
 #' @section Arguments to the resulting function:
-#' * .data (Argument to the resulting function) A dataframe.
-#' * msg (Argument to the resulting function) String; an optional custom
+#' * `.data`: A dataframe.
+#' * `msg`: String; an optional custom
 #'   message.
 #'
 #' @seealso [detect_multiple()], [flag_multiple()], [detect_duplicated()],
