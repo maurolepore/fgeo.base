@@ -25,12 +25,14 @@ dfm <- data.frame(x = 1)
 check_crucial_names(dfm, "x")
 }
 \seealso{
-Other functions to check inputs.: \code{\link{flag_multiple}}
+Other functions to check inputs.: \code{\link{detect_multiple_f}},
+  \code{\link{detect_multiple}}
 
-Other functions for developers.: \code{\link{exists_in_pkg}},
+Other functions for developers.: \code{\link{detect_multiple_f}},
+  \code{\link{detect_multiple}},
+  \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
-  \code{\link{flag_multiple}}, \code{\link{insensitive}},
-  \code{\link{multiple_var}},
+  \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 }
