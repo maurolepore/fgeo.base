@@ -22,3 +22,18 @@ A condition (and \code{.data} invisibly).
 \description{
 Flag if a predicate returns TRUE and throw a condtion with optional message.
 }
+\examples{
+dupl <- c(1, 1)
+flag_if(dupl, is_duplicated)
+# Silent
+flag_if(dupl, is_multiple)
+
+mult <- c(1, 2)
+flag_if(mult, is_multiple, message, "Custom")
+# Silent
+flag_if(mult, is_duplicated)
+
+# Both silent
+flag_if(c(1, NA), is_multiple)
+flag_if(c(1, NA), is_duplicated)
+}
