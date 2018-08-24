@@ -81,8 +81,10 @@ flag_multiple <- flag_predicate_f(detect_multiple, "Multiple")
 #' @param name String; the name of a variable of `.data`.
 #' @param cond Symbol; the bare name of a function that outputs a condition:
 #'   e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.
-#' @param .data (Argument to the resulting function) A dataframe.
-#' @param msg (Argument to the resulting function) String; an optional custom
+#'
+#' @section Arguments to the resulting function:
+#' * .data (Argument to the resulting function) A dataframe.
+#' * msg (Argument to the resulting function) String; an optional custom
 #'   message.
 #'
 #' @seealso [detect_multiple()], [flag_multiple()], [detect_duplicated()],
@@ -184,5 +186,7 @@ extract_column <- function(.data, name) {
 }
 
 stopifnot_has_name <- function(.data, name) {
-  if (!hasName(.data, name)) stop(name, " is an invalid name", call. = FALSE)
+  if (!utils::hasName(.data, name)) {
+    stop(name, " is an invalid name", call. = FALSE)
+  }
 }

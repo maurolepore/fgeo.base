@@ -20,11 +20,6 @@ flag_duplicated_f(name, cond = warning)
 
 \item{cond}{Symbol; the bare name of a function that outputs a condition:
 e.g. warning, stop, message, rlang::warn, rlang::abort, rlang::inform.}
-
-\item{.data}{(Argument to the resulting function) A dataframe.}
-
-\item{msg}{(Argument to the resulting function) String; an optional custom
-message.}
 }
 \value{
 A function.
@@ -35,6 +30,15 @@ specific variable. Their goal is to create expressive predicates
 (\code{detect_*()}) that can be used in, for example, \code{if()} statements; and
 expressive functions to create messages when a condition is true (\code{flag_*()}).
 }
+\section{Arguments to the resulting function}{
+
+\itemize{
+\item .data (Argument to the resulting function) A dataframe.
+\item msg (Argument to the resulting function) String; an optional custom
+message.
+}
+}
+
 \examples{
 # DETECT ------------------------------------------------------------------
 dfm <- data.frame(CensusID = c(1, 2, NA))
