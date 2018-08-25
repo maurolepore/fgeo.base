@@ -3,6 +3,8 @@
 S3method("$",insensitive)
 S3method("[",insensitive)
 S3method("[[",insensitive)
+S3method(flag_if,data.frame)
+S3method(flag_if,default)
 export("%||%")
 export(abort_na)
 export(check_crucial_names)

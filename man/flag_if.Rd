@@ -2,15 +2,22 @@
 % Please edit documentation in R/flag_if.R
 \name{flag_if}
 \alias{flag_if}
-\alias{detect_if}
-\title{Flag if a predicate returns TRUE and throw a condtion with optional message.}
+\alias{flag_if.default}
+\alias{flag_if.data.frame}
+\title{Flag if a vector or dataframe-column meets a condition.}
 \usage{
 flag_if(.data, ...)
 
-detect_if(.data, name, predicate)
+\method{flag_if}{default}(.data, predicate, condition = warning,
+  msg = NULL, ...)
+
+\method{flag_if}{data.frame}(.data, name, predicate, condition = warning,
+  msg = NULL, ...)
 }
 \arguments{
 \item{.data}{Vector.}
+
+\item{...}{Other arguments passed to methods.}
 
 \item{predicate}{A predicate function.}
 
@@ -18,14 +25,19 @@ detect_if(.data, name, predicate)
 \code{rlang::inform()}).}
 
 \item{msg}{String. An optional custom message.}
+
+\item{name}{String. The name of a column of a dataframe.}
 }
 \value{
 A condition (and \code{.data} invisibly).
 }
 \description{
-Flag if a predicate returns TRUE and throw a condtion with optional message.
+This function returns a condition (error, warning, or message) and its first
+argument, invisibly. It is a generic. If the first input is a vector, it
+evaluates it directly; if it is is a dataframe, it evaluates a given column.
 }
 \examples{
+# WITH VECTORS
 dupl <- c(1, 1)
 flag_if(dupl, is_duplicated)
 # Silent
@@ -40,6 +52,9 @@ flag_if(mult, is_duplicated)
 flag_if(c(1, NA), is_multiple)
 flag_if(c(1, NA), is_duplicated)
 
-
-
+# WITH DATAFRAMES
+.df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
+flag_if(.df, "b", is_multiple)
+flag_if(.df, "a", is_multiple)
+flag_if(.df, "a", is_multiple, message, "Custom")
 }

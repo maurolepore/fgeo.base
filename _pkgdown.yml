@@ -82,7 +82,7 @@ reference:
       - abort_na
       - inform_na
       - warn_na
-      - flag_multiple
+      - flag_if
 
   - title: Find or approximate
     desc: General (not specific to ForestGEO)

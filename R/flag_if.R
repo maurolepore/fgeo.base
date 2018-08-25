@@ -1,15 +1,22 @@
-#' Flag if a predicate returns TRUE and throw a condtion with optional message.
+#' Flag if a vector or dataframe-column meets a condition.
+#'
+#' This function returns a condition (error, warning, or message) and its first
+#' argument, invisibly. It is a generic. If the first input is a vector, it
+#' evaluates it directly; if it is is a dataframe, it evaluates a given column.
 #'
 #' @param .data Vector.
+#' @param name String. The name of a column of a dataframe.
 #' @param predicate A predicate function.
 #' @param condition A condition function (e.g. [stop()], [warning()],
 #'   `rlang::inform()`).
 #' @param msg String. An optional custom message.
+#' @param ... Other arguments passed to methods.
 #'
 #' @return A condition (and `.data` invisibly).
 #' @export
 #'
 #' @examples
+#' # WITH VECTORS
 #' dupl <- c(1, 1)
 #' flag_if(dupl, is_duplicated)
 #' # Silent
@@ -24,27 +31,63 @@
 #' flag_if(c(1, NA), is_multiple)
 #' flag_if(c(1, NA), is_duplicated)
 #'
-#'
-#'
+#' # WITH DATAFRAMES
+#' .df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
+#' flag_if(.df, "b", is_multiple)
+#' flag_if(.df, "a", is_multiple)
+#' flag_if(.df, "a", is_multiple, message, "Custom")
 flag_if <- function(.data, ...) {
   UseMethod("flag_if")
 }
 
-flag_if.default <- function(.data, predicate, condition = warning, msg = NULL) {
+#' @rdname flag_if
+#' @export
+flag_if.default <- function(.data,
+                            predicate,
+                            condition = warning,
+                            msg = NULL,
+                            ...) {
   stopifnot(length(condition) == 1)
   if (predicate(.data)) condition(msg %||% "Flagged values were detected.")
   invisible(.data)
 }
 
-flag_if.data.frame <- function(.data, name, predicate, condition = warning, msg = NULL) {
+#' @rdname flag_if
+#' @export
+flag_if.data.frame <- function(.data,
+                               name,
+                               predicate,
+                               condition = warning,
+                               msg = NULL,
+                               ...) {
   name <- tolower(name)
   msg <- msg %||% paste0(name, ": Flagged values were detected.")
   flag_if(extract_column(.data, name), predicate, condition, msg)
   invisible(.data)
 }
 
-#' @rdname flag_if
+
+
+#' Apply a predicate function to a column of a dataframe.
+#'
+#' @param .data A dataframe.
+#' @inheritParams flag_if
+#'
+#' @return Logical of length 1.
 #' @export
+#'
+#' @examples
+#' dfm <- data.frame(CensusID = c(1, 2, NA))
+#' detect_if(dfm, "censusid", is_multiple)
+#' detect_if(dfm, "censusid", is_duplicated)
+#'
+#' dfm <- data.frame(CensusID = c(1, 1))
+#' detect_if(dfm, "censusid", is_duplicated)
+#' detect_if(dfm, "censusid", is_multiple)
+#'
+#' dfm <- data.frame(CensusID = c(1, 1, 2))
+#' detect_if(dfm, "censusid", is_duplicated)
+#' detect_if(dfm, "censusid", is_multiple)
 detect_if <- function(.data, name, predicate) {
   name <- tolower(name)
   predicate(extract_column(.data, name))
