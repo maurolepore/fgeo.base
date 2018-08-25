@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Predicates to detect and flag duplicated and multiple values of a variable. — flag_duplicated • fgeo.base</title>
+<title>Predicates to detect and flag duplicated and multiple values of a variable. — is_multiple • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="Predicates to detect and flag duplicated and multiple values of a variable. — flag_duplicated" />
+<meta property="og:title" content="Predicates to detect and flag duplicated and multiple values of a variable. — is_multiple" />
 
 <meta property="og:description" content="is_multiple() and is_duplicated() return TRUE if they detect,
 respectively, multiple different values of a variable (e.g. c(1, 2)), or duplicated values of a variable (e.g. c(1, 1))." />
@@ -108,7 +108,7 @@ respectively, multiple different values of a variable (e.g. c(1, 2)), or duplica
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Predicates to detect and flag duplicated and multiple values of a variable.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/detect_multiple.R'><code>R/detect_multiple.R</code></a>, <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/is_duplicated.R'><code>R/is_duplicated.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/is_duplicated.R'><code>R/is_duplicated.R</code></a></small>
     <div class="hidden name"><code>is_multiple.Rd</code></div>
     </div>
 
@@ -119,11 +119,7 @@ respectively, multiple different values of a variable (e.g. c(1, 2)<code>), or d
     
     </div>
 
-    <pre class="usage"><span class='fu'>flag_duplicated</span>(<span class='no'>.data</span>, <span class='no'>cond</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>flag_multiple</span>(<span class='no'>.data</span>, <span class='no'>cond</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)
-
-<span class='fu'>is_multiple</span>(<span class='no'>.data</span>)
+    <pre class="usage"><span class='fu'>is_multiple</span>(<span class='no'>.data</span>)
 
 <span class='fu'>is_duplicated</span>(<span class='no'>.data</span>)</pre>
     
@@ -142,17 +138,14 @@ respectively, multiple different values of a variable (e.g. c(1, 2)<code>), or d
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other functions to check inputs.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
-  <code><a href='detect_multiple_f.html'>detect_multiple_f</a></code></p>
+    <div class='dont-index'><p>Other functions to check inputs.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code></p>
 <p>Other functions for developers.: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
-  <code><a href='detect_multiple_f.html'>detect_multiple_f</a></code>,
   <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
   <code><a href='extract_insensitive.html'>extract_insensitive</a></code>,
   <code><a href='insensitive.html'>insensitive</a></code>,
   <code><a href='nms_pull_matches.html'>nms_pull_matches</a></code>,
   <code><a href='rename_matches.html'>rename_matches</a></code>, <code><a href='round_any.html'>round_any</a></code></p>
-<p>Other predicates.: <code><a href='detect_multiple_f.html'>detect_multiple_f</a></code>,
-  <code><a href='extract_insensitive.html'>extract_insensitive</a></code></p></div>
+<p>Other predicates.: <code><a href='extract_insensitive.html'>extract_insensitive</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>

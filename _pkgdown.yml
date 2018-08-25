@@ -75,6 +75,7 @@ reference:
       - is_named
       - is_multiple
       - is_duplicated
+      - detect_if
 
   - title: Throw conditions
     desc: General (not specific to ForestGEO)

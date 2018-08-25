@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Flag if a predicate returns TRUE and throw a condtion with optional message. — flag_if • fgeo.base</title>
+<title>Flag if a vector or dataframe-column meets a condition. — flag_if • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Flag if a predicate returns TRUE and throw a condtion with optional message. — flag_if" />
+<meta property="og:title" content="Flag if a vector or dataframe-column meets a condition. — flag_if" />
 
-<meta property="og:description" content="Flag if a predicate returns TRUE and throw a condtion with optional message." />
+<meta property="og:description" content="This function returns a condition (error, warning, or message) and its first
+argument, invisibly. It is a generic. If the first input is a vector, it
+evaluates it directly; if it is is a dataframe, it evaluates a given column." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,18 +108,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Flag if a predicate returns TRUE and throw a condtion with optional message.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/detect_multiple.R'><code>R/detect_multiple.R</code></a></small>
+    <h1>Flag if a vector or dataframe-column meets a condition.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/flag_if.R'><code>R/flag_if.R</code></a></small>
     <div class="hidden name"><code>flag_if.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Flag if a predicate returns TRUE and throw a condtion with optional message.</p>
+    <p>This function returns a condition (error, warning, or message) and its first
+argument, invisibly. It is a generic. If the first input is a vector, it
+evaluates it directly; if it is is a dataframe, it evaluates a given column.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warning</span>, <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for default</span>
+<span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warning</span>,
+  <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for data.frame</span>
+<span class='fu'>flag_if</span>(<span class='no'>.data</span>, <span class='no'>name</span>, <span class='no'>predicate</span>, <span class='kw'>condition</span> <span class='kw'>=</span> <span class='no'>warning</span>,
+  <span class='kw'>msg</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,6 +137,10 @@
     <tr>
       <th>.data</th>
       <td><p>Vector.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Other arguments passed to methods.</p></td>
     </tr>
     <tr>
       <th>predicate</th>
@@ -139,6 +155,10 @@
       <th>msg</th>
       <td><p>String. An optional custom message.</p></td>
     </tr>
+    <tr>
+      <th>name</th>
+      <td><p>String. The name of a column of a dataframe.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -146,6 +166,24 @@
     <p>A condition (and <code>.data</code> invisibly).</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># WITH VECTORS</span>
+<span class='no'>dupl</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>)
+<span class='fu'>flag_if</span>(<span class='no'>dupl</span>, <span class='no'>is_duplicated</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Flagged values were detected.</span></div><div class='input'><span class='co'># Silent</span>
+<span class='fu'>flag_if</span>(<span class='no'>dupl</span>, <span class='no'>is_multiple</span>)
+
+<span class='no'>mult</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>)
+<span class='fu'>flag_if</span>(<span class='no'>mult</span>, <span class='no'>is_multiple</span>, <span class='no'>message</span>, <span class='st'>"Custom"</span>)</div><div class='output co'>#&gt; <span class='message'>Custom</span></div><div class='input'><span class='co'># Silent</span>
+<span class='fu'>flag_if</span>(<span class='no'>mult</span>, <span class='no'>is_duplicated</span>)
+
+<span class='co'># Both silent</span>
+<span class='fu'>flag_if</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>), <span class='no'>is_multiple</span>)
+<span class='fu'>flag_if</span>(<span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>NA</span>), <span class='no'>is_duplicated</span>)
+
+<span class='co'># WITH DATAFRAMES</span>
+<span class='no'>.df</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>3</span>, <span class='kw'>b</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>stringsAsFactors</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)
+<span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"b"</span>, <span class='no'>is_multiple</span>)
+<span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: a: Flagged values were detected.</span></div><div class='input'><span class='fu'>flag_if</span>(<span class='no'>.df</span>, <span class='st'>"a"</span>, <span class='no'>is_multiple</span>, <span class='no'>message</span>, <span class='st'>"Custom"</span>)</div><div class='output co'>#&gt; <span class='message'>Custom</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,7 +191,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
