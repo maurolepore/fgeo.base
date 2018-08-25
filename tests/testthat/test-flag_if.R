@@ -15,35 +15,35 @@ test_that("flag_if flaggs if predicate is true", {
 
 
 
-context("flag_name_if")
+context("flag_if")
 
 .df <- data.frame(a = 1:3, b = 1, stringsAsFactors = FALSE)
 
 test_that("flags a variable with multiple values", {
-  expect_silent(flag_name_if(.df, "b", is_multiple))
-  expect_warning(flag_name_if(.df, "a", is_multiple))
-  expect_error(flag_name_if(.df, "a", is_multiple, stop, "Custom"), "Custom")
+  expect_silent(flag_if(.df, "b", is_multiple))
+  expect_warning(flag_if(.df, "a", is_multiple))
+  expect_error(flag_if(.df, "a", is_multiple, stop, "Custom"), "Custom")
 })
 
 test_that("is insensitive to name-case", {
-  expect_error(flag_name_if(.df, "A", is_multiple, stop, "Custom"), "Custom")
-  expect_silent(flag_name_if(.df, "B", is_multiple, stop, "Custom"))
+  expect_error(flag_if(.df, "A", is_multiple, stop, "Custom"), "Custom")
+  expect_silent(flag_if(.df, "B", is_multiple, stop, "Custom"))
 })
 
 test_that("returns `cond`", {
   msg <- "Flagged values were detected"
   dfm <- function(x) data.frame(Name = x, stringsAsFactors = TRUE)
   .data <- dfm(c(1, 1))
-  expect_warning(flag_name_if(.data, "Name", is_duplicated, warning, msg))
+  expect_warning(flag_if(.data, "Name", is_duplicated, warning, msg))
 
-  expect_error(flag_name_if(.data, "Name", is_duplicated, stop, msg))
+  expect_error(flag_if(.data, "Name", is_duplicated, stop, msg))
   .data <- dfm(c(1, 2))
-  expect_silent(flag_name_if(.data, "Name", is_duplicated, stop))
+  expect_silent(flag_if(.data, "Name", is_duplicated, stop))
 })
 
 test_that("includes in the message the name of the variable being tested", {
   tree <- data.frame(treeID = c(1, 1), stringsAsFactors = FALSE)
-  expect_warning(flag_name_if(tree, "treeID", is_duplicated), "treeid")
+  expect_warning(flag_if(tree, "treeID", is_duplicated), "treeid")
 })
 
 test_that("doesn't deal directly with grouped data to work within groups", {
@@ -54,11 +54,11 @@ test_that("doesn't deal directly with grouped data to work within groups", {
   .df <- tibble(a = c(1, 1, 2, 2), b = c(1, 1, 2, 2))
 
   by_a <- group_by(.df, a)
-  warn_if_b_is_multiple <- function(.data) flag_name_if(.data, "b", is_multiple)
+  warn_if_b_is_multiple <- function(.data) flag_if(.data, "b", is_multiple)
   expect_warning(warn_if_b_is_multiple(by_a), "Flagged values")
 
   # To deal with grouped data, apply flag_multiple_f to each group
-  warn_if_b_is_multiple <- function(.data) flag_name_if(.data, "b", is_multiple)
+  warn_if_b_is_multiple <- function(.data) flag_if(.data, "b", is_multiple)
   expect_silent(fgeo.tool::by_group(by_a, warn_if_b_is_multiple))
 })
 

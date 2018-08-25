@@ -36,11 +36,18 @@ flag_if.default <- function(.data, predicate, condition = warning, msg = NULL) {
   invisible(.data)
 }
 
-flag_name_if <- function(.data, name, predicate, condition = warning, msg = NULL) {
+flag_if.data.frame <- function(.data, name, predicate, condition = warning, msg = NULL) {
   name <- tolower(name)
   msg <- msg %||% paste0(name, ": Flagged values were detected.")
   flag_if(extract_column(.data, name), predicate, condition, msg)
   invisible(.data)
+}
+
+#' @rdname flag_if
+#' @export
+detect_if <- function(.data, name, predicate) {
+  name <- tolower(name)
+  predicate(extract_column(.data, name))
 }
 
 extract_column <- function(.data, name) {
@@ -55,24 +62,3 @@ stopifnot_has_name <- function(.data, name) {
     stop(name, " is an invalid name", call. = FALSE)
   }
 }
-
-
-
-
-
-
-#' Title
-#'
-#' @param name
-#' @param cond
-#' @param predicate
-#'
-#' @return
-#' @export
-#'
-#' @examples
-detect_if <- function(.data, name, predicate) {
-  name <- tolower(name)
-  predicate(extract_column(.data, name))
-}
-

@@ -2,9 +2,12 @@
 % Please edit documentation in R/flag_if.R
 \name{flag_if}
 \alias{flag_if}
+\alias{detect_if}
 \title{Flag if a predicate returns TRUE and throw a condtion with optional message.}
 \usage{
-flag_if(.data, predicate, condition = warning, msg = NULL)
+flag_if(.data, ...)
+
+detect_if(.data, name, predicate)
 }
 \arguments{
 \item{.data}{Vector.}
@@ -36,4 +39,7 @@ flag_if(mult, is_duplicated)
 # Both silent
 flag_if(c(1, NA), is_multiple)
 flag_if(c(1, NA), is_duplicated)
+
+
+
 }
