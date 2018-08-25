@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Throw condition if variable has missing values. — condition_na • fgeo.base</title>
+<title>Apply a predicate function to a column of a dataframe. — detect_if • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Throw condition if variable has missing values. — condition_na" />
+<meta property="og:title" content="Apply a predicate function to a column of a dataframe. — detect_if" />
 
-<meta property="og:description" content="Throw condition if variable has missing values." />
+<meta property="og:description" content="Apply a predicate function to a column of a dataframe." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,39 +106,48 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Throw condition if variable has missing values.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/condition_na.R'><code>R/condition_na.R</code></a></small>
-    <div class="hidden name"><code>condition_na.Rd</code></div>
+    <h1>Apply a predicate function to a column of a dataframe.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/flag_if.R'><code>R/flag_if.R</code></a></small>
+    <div class="hidden name"><code>detect_if.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Throw condition if variable has missing values.</p>
+    <p>Apply a predicate function to a column of a dataframe.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>warn_na</span>(<span class='no'>x</span>)
-
-<span class='fu'>inform_na</span>(<span class='no'>x</span>)
-
-<span class='fu'>abort_na</span>(<span class='no'>x</span>)</pre>
+    <pre class="usage"><span class='fu'>detect_if</span>(<span class='no'>.data</span>, <span class='no'>name</span>, <span class='no'>predicate</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A vector or dataframe.</p></td>
+      <th>.data</th>
+      <td><p>A dataframe.</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>String. The name of a column of a dataframe.</p></td>
+    </tr>
+    <tr>
+      <th>predicate</th>
+      <td><p>A predicate function.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A warning message and invisible <code>x</code>.</p>
+    <p>Logical of length 1.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>warn_na</span>(<span class='fu'>c</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>NA</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: Detected missing values in: y</span></div><div class='input'><span class='fu'>inform_na</span>(<span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='fl'>NA</span>))</div><div class='output co'>#&gt; <span class='message'>Detected missing values in: y</span></div></pre>
+    <pre class="examples"><div class='input'><span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>NA</span>))
+<span class='fu'>detect_if</span>(<span class='no'>dfm</span>, <span class='st'>"censusid"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>detect_if</span>(<span class='no'>dfm</span>, <span class='st'>"censusid"</span>, <span class='no'>is_duplicated</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>))
+<span class='fu'>detect_if</span>(<span class='no'>dfm</span>, <span class='st'>"censusid"</span>, <span class='no'>is_duplicated</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>detect_if</span>(<span class='no'>dfm</span>, <span class='st'>"censusid"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>CensusID</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>2</span>))
+<span class='fu'>detect_if</span>(<span class='no'>dfm</span>, <span class='st'>"censusid"</span>, <span class='no'>is_duplicated</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='fu'>detect_if</span>(<span class='no'>dfm</span>, <span class='st'>"censusid"</span>, <span class='no'>is_multiple</span>)</div><div class='output co'>#&gt; [1] TRUE</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

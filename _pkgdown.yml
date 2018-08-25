@@ -65,15 +65,25 @@ reference:
   - title: Assert
     desc: General (not specific to ForestGEO)
     contents:
+      - check_crucial_names
+      - detect_insensitive
+      - exists_in_pkg
+
+  - title: Predicates
+    desc: General (not specific to ForestGEO)
+    contents:
+      - is_named
+      - is_multiple
+      - is_duplicated
+      - detect_if
+
+  - title: Throw conditions
+    desc: General (not specific to ForestGEO)
+    contents:
       - abort_na
       - inform_na
       - warn_na
-      - check_crucial_names
-      - flag_multiple
-      - multiple_var
-      - flag_multiple_vector
-      - exists_in_pkg
-      - is_named
+      - flag_if
 
   - title: Find or approximate
     desc: General (not specific to ForestGEO)
@@ -97,12 +107,6 @@ reference:
     contents:
       - gather_mat
       - gather_mats
-
-  - title: Predicates
-    desc: General (not specific to ForestGEO)
-    contents:
-      - detect_insensitive
-      - multiple_var
 
   - title: Miscellaneous
     desc: General (not specific to ForestGEO)
