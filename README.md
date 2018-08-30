@@ -21,8 +21,8 @@ package as small and independent as possible.
 [Install all **fgeo** packages in one
 step](https://forestgeo.github.io/fgeo/index.html#installation)
 
-    # install.packages("remotes")
-    remotes::install_github("forestgeo/fgeo.base")
+    # install.packages("devtools")
+    devtools::install_github("forestgeo/fgeo.base")
 
 For details on how to install packages from GitHub, see [this
 article](https://goo.gl/dQKEeg).
