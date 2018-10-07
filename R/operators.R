@@ -6,15 +6,12 @@
 #'
 #' @param x,y If x is NULL, will return y; otherwise returns x.
 #'
+#' @export
+#'
 #' @examples
 #' 1 %||% 2
 #' NULL %||% 2
-#' @name %>%
-#' @rdname pipe
-NULL
-
-#' @rdname pipe
-#' @export
+#' @name op-null-default
 `%||%` <- function (x, y) {
   if (is.null(x)) {
     y
