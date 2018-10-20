@@ -21,12 +21,12 @@ check_crucial_names <- function(x, nms) {
   are_names_expected <- all(nms %in% names(x))
   if (are_names_expected) {
     return(invisible(x))
-  } else {
-    stop(
-      "Ensure your data set has these variables:\n", glue_comma(nms),
-      call. = FALSE
-    )
   }
+
+  stop(
+    "Ensure your data set has these variables:\n", glue_comma(nms),
+      call. = FALSE
+  )
 }
 
 #' Is named object? (Base-only version of rlang::is_named).
