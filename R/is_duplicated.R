@@ -8,7 +8,7 @@
 #'
 #' @family functions to check inputs.
 #' @family functions for developers.
-#' @family predicates.
+#' @family predicates
 #'
 #' @return Logical.
 #'

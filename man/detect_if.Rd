@@ -32,3 +32,8 @@ dfm <- data.frame(CensusID = c(1, 1, 2))
 detect_if(dfm, "censusid", is_duplicated)
 detect_if(dfm, "censusid", is_multiple)
 }
+\seealso{
+Other predicates: \code{\link{check_crucial_names}},
+  \code{\link{has_table_names}}, \code{\link{is_multiple}}
+}
+\concept{predicates}

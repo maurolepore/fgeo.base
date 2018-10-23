@@ -3,6 +3,7 @@
 #' @param x A named object.
 #' @param nms String; names expected to be found in `x`.
 #'
+#' @family predicates
 #' @family functions to check inputs.
 #' @family functions for developers.
 #' @return Invisible `x`, or an error with informative message.

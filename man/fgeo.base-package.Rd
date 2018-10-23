@@ -6,9 +6,9 @@
 \alias{fgeo.base-package}
 \title{fgeo.base: ForestGEO Functions With No External Dependency}
 \description{
-ForestGEO functions with no external dependency. These functions
-  are isolated from other packages so they can be imported by any fgeo package
-  without dragging any external dependency.
+ForestGEO functions with no external dependency.
+    These functions are isolated from other packages so they can be
+    imported by any fgeo package without dragging any external dependency.
 }
 \seealso{
 Useful links:

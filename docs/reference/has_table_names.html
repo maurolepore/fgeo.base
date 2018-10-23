@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check if an object contains specific names. — check_crucial_names • fgeo.base</title>
+<title>Factory of predicates to check if a table has the names of a template. — has_table_names • fgeo.base</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Check if an object contains specific names. — check_crucial_names" />
+<meta property="og:title" content="Factory of predicates to check if a table has the names of a template. — has_table_names" />
 
-<meta property="og:description" content="Check if an object contains specific names." />
+<meta property="og:description" content="Factory of predicates to check if a table has the names of a template." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,54 +106,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check if an object contains specific names.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/check_crucial_names.R'><code>R/check_crucial_names.R</code></a></small>
-    <div class="hidden name"><code>check_crucial_names.Rd</code></div>
+    <h1>Factory of predicates to check if a table has the names of a template.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/forestgeo/fgeo.base/blob/master/R/has_table_names.R'><code>R/has_table_names.R</code></a></small>
+    <div class="hidden name"><code>has_table_names.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Check if an object contains specific names.</p>
+    <p>Factory of predicates to check if a table has the names of a template.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>check_crucial_names</span>(<span class='no'>x</span>, <span class='no'>nms</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A named object.</p></td>
-    </tr>
-    <tr>
-      <th>nms</th>
-      <td><p>String; names expected to be found in <code>x</code>.</p></td>
+      <th>template</th>
+      <td><p>A dataframe.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Invisible <code>x</code>, or an error with informative message.</p>
+    <p>A closure.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other predicates: <code><a href='detect_if.html'>detect_if</a></code>,
-  <code><a href='has_table_names.html'>has_table_names</a></code>, <code><a href='is_multiple.html'>is_multiple</a></code></p>
-<p>Other functions to check inputs.: <code><a href='is_multiple.html'>is_multiple</a></code></p>
-<p>Other functions for developers.: <code><a href='exists_in_pkg.html'>exists_in_pkg</a></code>,
-  <code><a href='extract_insensitive.html'>extract_insensitive</a></code>,
-  <code><a href='insensitive.html'>insensitive</a></code>, <code><a href='is_multiple.html'>is_multiple</a></code>,
-  <code><a href='nms_pull_matches.html'>nms_pull_matches</a></code>,
-  <code><a href='rename_matches.html'>rename_matches</a></code>, <code><a href='round_any.html'>round_any</a></code></p></div>
+    <div class='dont-index'><p>Other predicates: <code><a href='check_crucial_names.html'>check_crucial_names</a></code>,
+  <code><a href='detect_if.html'>detect_if</a></code>, <code><a href='is_multiple.html'>is_multiple</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>v</span> <span class='kw'>&lt;-</span> <span class='fu'>c</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>check_crucial_names</span>(<span class='no'>v</span>, <span class='st'>"x"</span>)
-
-<span class='no'>dfm</span> <span class='kw'>&lt;-</span> <span class='fu'>data.frame</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fl'>1</span>)
-<span class='fu'>check_crucial_names</span>(<span class='no'>dfm</span>, <span class='st'>"x"</span>)</div></pre>
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (!<span class='fu'>requireNamespace</span>(<span class='st'>"fgeo.data"</span>)) {
+  <span class='no'>stem</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/census_luquillo'>luquillo_stem5_random</a></span>
+  <span class='no'>tree</span> <span class='kw'>&lt;-</span> <span class='kw pkg'>fgeo.data</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/fgeo.data/topics/census_luquillo'>luquillo_tree5_random</a></span>
+  <span class='fu'>has_table_names</span>(<span class='no'>stem</span>)(<span class='no'>stem</span>)
+  <span class='fu'>has_table_names</span>(<span class='no'>stem</span>)(<span class='no'>tree</span>)
+}</div><div class='output co'>#&gt; <span class='message'>Loading required namespace: fgeo.data</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

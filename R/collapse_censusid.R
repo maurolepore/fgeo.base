@@ -22,7 +22,7 @@ collapse_censusid <- function(x) {
 
   old <- names(x)
   names(x) <- tolower(old)
-  fgeo.base::check_crucial_names(x, "censusid")
+  check_crucial_names(x, "censusid")
 
   x$censusid <- glue_comma(sort(unique(x$censusid)))
 

@@ -73,6 +73,8 @@ flag_if.data.frame <- function(.data,
 #' @param .data A dataframe.
 #' @inheritParams flag_if
 #'
+#' @family predicates
+#'
 #' @return Logical of length 1.
 #' @export
 #'
