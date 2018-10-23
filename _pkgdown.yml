@@ -73,9 +73,7 @@ reference:
     desc: General (not specific to ForestGEO)
     contents:
       - is_named
-      - is_multiple
-      - is_duplicated
-      - detect_if
+      - has_concept("predicates")
 
   - title: Throw conditions
     desc: General (not specific to ForestGEO)

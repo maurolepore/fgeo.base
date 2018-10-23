@@ -39,8 +39,6 @@ Other functions for developers.: \code{\link{check_crucial_names}},
   \code{\link{is_multiple}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
-
-Other predicates.: \code{\link{is_multiple}}
 }
 \concept{functions for developers.}
 \concept{predicates.}
