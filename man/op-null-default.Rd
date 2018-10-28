@@ -20,6 +20,6 @@ adapted from \code{rlang::}%||%`.
 NULL \%||\% 2
 }
 \seealso{
-Other general miscellaneous functions: \code{\link{print_all}}
+Other general miscellaneous functions: \code{\link{print.tbl}}
 }
 \concept{general miscellaneous functions}

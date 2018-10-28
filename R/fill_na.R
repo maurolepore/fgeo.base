@@ -1,14 +1,13 @@
 #' Fill NA's with a single filler.
 #'
 #' This is a wrapper of [base::replace()] with a simplified interface and a name
-#' that target the specific job of filling NA's.
+#' that target the specific job of filling NA's. See also `tidyr::replace_na`
+#' and `dplyr::coalesce`.
 #'
 #' @param x A dataframe.
 #' @param filler A filler; whatever you want to replace NA's with.
 #'
 #' @family general functions to edit data in place
-#'
-#' @seealso `tidyr::replace_na`, `dplyr::coalesce`, [base::replace()].
 #'
 #' @return A modified version of `x`.
 #'

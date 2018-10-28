@@ -4,6 +4,9 @@
     <loc>https://forestgeo.github.io/fgeo.base//index.html</loc>
   </url>
   <url>
+    <loc>https://forestgeo.github.io/fgeo.base//reference/anchor.html</loc>
+  </url>
+  <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/check_crucial_names.html</loc>
   </url>
   <url>
@@ -17,9 +20,6 @@
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/drop_if_na.html</loc>
-  </url>
-  <url>
-    <loc>https://forestgeo.github.io/fgeo.base//reference/enline.html</loc>
   </url>
   <url>
     <loc>https://forestgeo.github.io/fgeo.base//reference/exists_in_pkg.html</loc>

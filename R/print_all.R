@@ -1,30 +1,23 @@
-#' Print all rows and columns of a tibble -- as if it was a dataframe.
+#' Print all rows and/or columns of a tibble.
 #'
-#' @param x A tibble
-#' @param n Integer; number of rows to print.
-#' @param width Integer; number of columns to print.
+#' @inheritParams tibble::format.tbl
 #'
 #' @family general miscellaneous functions
 #'
-#' @return A tibble.
-#' @export
+#' @return Print output (and the main input invisibly).
 #'
+#' @export
 #' @examples
-#' \dontrun{
-#' if (!requireNamespace("tibble")) {
-#'   stop(
-#'     "To run this example you must first install tibble with:\n",
-#'     "install.packages('tibble')",
-#'     call. = FALSE
-#'   )
-#' }
-#' tbl <- tibble::tibble(runif(50))
-#' print_all(tbl)
-#' }
-print_all <- function(x, n = nrow(x), width = Inf) {
-  if (!any(grepl("tbl", class(x)))) {
-    stop("`x` must be a tibble.")
-  }
-  print(x = x, n = n, width = width)
+#' print(as_tibble(iris), n = 1)
+#' print(as_tibble(iris), n = 100)
+#' print(fgeo.data::luquillo_tree5_random)
+#' print(fgeo.data::luquillo_tree5_random, n_extra = 2)
+#' print(fgeo.data::luquillo_tree5_random, width = Inf)
+print.tbl <- function(x, ..., n = NULL, width = NULL, n_extra = NULL) {
+  cli::cat_line(format(x, ..., n = n, width = width, n_extra = n_extra))
+  invisible(x)
 }
 
+#' @export
+#' @rdname print.tbl
+print.tbl_df <- print.tbl

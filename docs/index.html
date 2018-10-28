@@ -79,11 +79,12 @@
     
     
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<div id="general-functions-with-no-external-dependency" class="section level1">
+<div id="independent-utility-functions" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#general-functions-with-no-external-dependency" class="anchor"></a><img src="https://i.imgur.com/vTLlhbp.png" align="right" height="88"> General functions with no external dependency</h1></div>
+<a href="#independent-utility-functions" class="anchor"></a><img src="https://i.imgur.com/vTLlhbp.png" align="right" height="88"> Independent utility functions</h1></div>
 
-<p>The goal of <strong>fgeo.base</strong> is to provide functions with no external dependency. This makes it easy to import its functions into any <strong>fgeo</strong> package without carrying any dependency, which helps keep each <strong>fgeo</strong> package as small and independent as possible.</p>
+<p>The goal of <strong>fgeo.base</strong> is to provide functions with no external dependency that can easily be imported into any other <strong>fgeo</strong> package.</p>
+<p><strong>fgeo.base</strong> is mostly a repository of internal functions for other <strong>fgeo.packages</strong>: it hosts the kind of functions you would generally place in utils.R – except it can be accessed from any other <strong>fgeo</strong> package. As such, <strong>fgeo.base</strong> is not directly exposed to users, although a few functions are reexported by other <strong>fgeo</strong> packages.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
