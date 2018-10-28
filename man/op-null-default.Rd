@@ -19,7 +19,4 @@ adapted from \code{rlang::}%||%`.
 1 \%||\% 2
 NULL \%||\% 2
 }
-\seealso{
-Other general miscellaneous functions: \code{\link{print.tbl}}
-}
 \concept{general miscellaneous functions}
