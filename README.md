@@ -22,9 +22,6 @@ although a few functions are reexported by other **fgeo** packages.
 
 ## Installation
 
-[Install all **fgeo** packages in one
-step](https://forestgeo.github.io/fgeo/index.html#installation)
-
     # install.packages("devtools")
     devtools::install_github("forestgeo/fgeo.base")
 
@@ -47,14 +44,8 @@ drop_if_na(dfm, "a")
 #> 1 1 NA
 ```
 
-[Get started](https://forestgeo.github.io/fgeo/articles/fgeo.html)
-
 ## Information
 
   - [Getting help](SUPPORT.md).
   - [Contributing](CONTRIBUTING.md).
   - [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
-
-## Acknowledgements
-
-Thanks to all partners of ForestGEO for sharing their ideas and code.

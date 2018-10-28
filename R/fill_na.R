@@ -14,7 +14,7 @@
 #' @section Acknowledgments:
 #'   This function was inspired by conversations with David Kenfack and by a
 #'   [blog post by Rick Pack](https://goo.gl/aMTQck). Also tanks to Edgar Ruiz
-#'   (@edgararuiz) for discussing alternatives
+#'   for discussing alternatives
 #'   (via [this blog post](https://goo.gl/4uME2U) on RStudio community).
 #' @export
 #'

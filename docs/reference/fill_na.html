@@ -33,7 +33,8 @@
 <meta property="og:title" content="Fill NA's with a single filler. — fill_na" />
 
 <meta property="og:description" content="This is a wrapper of base::replace() with a simplified interface and a name
-that target the specific job of filling NA's." />
+that target the specific job of filling NA's. See also tidyr::replace_na
+and dplyr::coalesce." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,7 +116,8 @@ that target the specific job of filling NA's." />
     <div class="ref-description">
     
     <p>This is a wrapper of <code><a href='http://www.rdocumentation.org/packages/base/topics/replace'>base::replace()</a></code> with a simplified interface and a name
-that target the specific job of filling NA's.</p>
+that target the specific job of filling NA's. See also <code><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>tidyr::replace_na</a></code>
+and <code><a href='http://dplyr.tidyverse.org/reference/coalesce.html'>dplyr::coalesce</a></code>.</p>
     
     </div>
 
@@ -143,13 +145,12 @@ that target the specific job of filling NA's.</p>
     
     <p>This function was inspired by conversations with David Kenfack and by a
 <a href='https://goo.gl/aMTQck'>blog post by Rick Pack</a>. Also tanks to Edgar Ruiz
-(@edgararuiz) for discussing alternatives
+for discussing alternatives
 (via <a href='https://goo.gl/4uME2U'>this blog post</a> on RStudio community).</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://tidyr.tidyverse.org/reference/replace_na.html'>tidyr::replace_na</a></code>, <code><a href='http://dplyr.tidyverse.org/reference/coalesce.html'>dplyr::coalesce</a></code>, <code><a href='http://www.rdocumentation.org/packages/base/topics/replace'>base::replace()</a></code>.</p>
-<p>Other general functions to edit data in place: <code><a href='anchor.html'>anchor</a></code>,
+    <div class='dont-index'><p>Other general functions to edit data in place: <code><a href='anchor.html'>anchor</a></code>,
   <code><a href='glue_comma.html'>glue_comma</a></code>, <code><a href='suffix_match.html'>suffix_match</a></code>,
   <code><a href='to_tidy_names.html'>to_tidy_names</a></code></p></div>
     
