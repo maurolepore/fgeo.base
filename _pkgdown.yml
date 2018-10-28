@@ -38,6 +38,7 @@ reference:
   - title: Edit data in place
     contents:
     - has_concept("functions to edit ForestGEO data in place")
+    - -matches("collapse_censusid")
     - has_concept("general functions to edit data in place")
 
   - title: Pick/drop rows with matching conditions

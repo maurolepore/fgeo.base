@@ -29,7 +29,7 @@ glue_comma(1:3)
 glue_pipe(1:3)
 }
 \seealso{
-Other general functions to edit data in place: \code{\link{enline}},
+Other general functions to edit data in place: \code{\link{anchor}},
   \code{\link{fill_na}}, \code{\link{suffix_match}},
   \code{\link{to_tidy_names}}
 }

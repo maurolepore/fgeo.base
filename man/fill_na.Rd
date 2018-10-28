@@ -44,7 +44,7 @@ a_list <- list(x, x, x)
 lapply(a_list, fill_na)
 }
 \seealso{
-Other general functions to edit data in place: \code{\link{enline}},
+Other general functions to edit data in place: \code{\link{anchor}},
   \code{\link{glue_comma}}, \code{\link{suffix_match}},
   \code{\link{to_tidy_names}}
 }

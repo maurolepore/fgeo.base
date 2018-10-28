@@ -33,7 +33,7 @@ setNames(list(1), to_tidy_names(messy))
 \seealso{
 \code{fgeo.tool::nms_tidy()}.
 
-Other general functions to edit data in place: \code{\link{enline}},
+Other general functions to edit data in place: \code{\link{anchor}},
   \code{\link{fill_na}}, \code{\link{glue_comma}},
   \code{\link{suffix_match}}
 }

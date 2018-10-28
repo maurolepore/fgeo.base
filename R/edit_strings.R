@@ -109,7 +109,7 @@ to_tidy_names <- function(x) {
 #' @export
 #'
 #' @examples
-#' enline(c("a", "b"))
-enline <- function(x) {
+#' anchor(c("a", "b"))
+anchor <- function(x) {
   paste0("^", x, "$")
 }

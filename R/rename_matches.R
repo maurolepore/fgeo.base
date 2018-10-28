@@ -71,7 +71,7 @@ extract_insensitive <- function(x, y) {
 #' @rdname extract_insensitive
 detect_insensitive <- function(x, y) {
   stopifnot(is.character(x), is.character(y))
-  matches <- lapply(fgeo.base::enline(x), grepl, y, ignore.case = TRUE)
+  matches <- lapply(anchor(x), grepl, y, ignore.case = TRUE)
   vapply(matches, any, logical(1))
 }
 
