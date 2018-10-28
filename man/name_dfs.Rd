@@ -28,8 +28,9 @@ dfs2 <- list(data.frame(x = 1), data.frame(x = 1))
 name_dfs(dfs2)
 }
 \seealso{
-Other functions dealing with names.: \code{\link{insensitive}},
+Other general functions to deal with names: \code{\link{extract_insensitive}},
+  \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
-  \code{\link{rename_matches}}, \code{\link{round_any}}
+  \code{\link{rename_matches}}
 }
-\concept{functions dealing with names.}
+\concept{general functions to deal with names}

@@ -5,6 +5,8 @@
 #' @param .match A string to match the vector `to_match` with.
 #' @param suffix A suffix to add at the end of each element of `string`.
 #'
+#' @family general functions to edit data in place
+#'
 #' @return A modified version of `x`.
 #' @export
 #'
@@ -69,6 +71,10 @@ check_suffix_match <- function(string, to_match, .match, suffix) {
 #' @param x A character string.
 #'
 #' @seealso `fgeo.tool::nms_tidy()`.
+#' @family general functions to edit data in place
+#'
+#'
+#'
 #' @return A modified version of `x`.
 #'
 #' @export
@@ -96,6 +102,8 @@ to_tidy_names <- function(x) {
 #' Add regex line-start and -end.
 #'
 #' @param x A vector.
+#'
+#' @family general functions to edit data in place
 #'
 #' @return A character vector.
 #' @export

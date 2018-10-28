@@ -5,8 +5,8 @@
 #' @param x A named object.
 #' @param .match A character vector giving names to match.
 #'
-#' @family functions dealing with names.
-#' @family functions for developers.
+#' @family general functions to deal with names
+#' @family functions for developers
 #'
 #'
 #' @return A character vector.

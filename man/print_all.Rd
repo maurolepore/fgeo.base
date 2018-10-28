@@ -32,3 +32,7 @@ tbl <- tibble::tibble(runif(50))
 print_all(tbl)
 }
 }
+\seealso{
+Other general miscellaneous functions: \code{\link{op-null-default}}
+}
+\concept{general miscellaneous functions}

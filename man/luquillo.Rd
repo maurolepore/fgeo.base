@@ -19,4 +19,5 @@ Datasets from \strong{fgeo.data}.
 str(luquillo_stem_random_tiny, give.attr = FALSE)
 str(luquillo_vft_4quad, give.attr = FALSE)
 }
+\concept{ForestGEO datasets}
 \keyword{datasets}

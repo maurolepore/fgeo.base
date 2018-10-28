@@ -3,8 +3,8 @@
 #' @param y Named object to use as reference.
 #' @param x x object which names to restored if they match the reference.
 #'
-#' @family functions for developers.
-#' @family functions dealing with names.
+#' @family functions for developers
+#' @family general functions to deal with names
 #'
 #' @return The output is `x` with as many names changed as case-insensitive
 #'   matches there are with the reference.
@@ -25,8 +25,8 @@ rename_matches <- function(x, y) {
 #'   found.
 #' @param y A string to use as a reference to match `x`.
 #'
-#' @family functions for developers.
-#' @family predicates.
+#' @family functions for developers
+#' @family general functions to deal with names
 #'
 #' @return `detect_*` and `extract_*` return a logical vector and a string.
 #' @export
@@ -64,6 +64,8 @@ extract_insensitive <- function(x, y) {
 }
 
 #' Return TRUE in position where name of x is in y; FALSE otherwise.
+#'
+#' @family general functions to assert
 #'
 #' @export
 #' @rdname extract_insensitive

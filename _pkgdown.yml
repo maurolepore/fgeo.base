@@ -32,88 +32,47 @@ navbar:
       href: https://forestgeo.github.io/fgeo/
 
 
+
 reference:
 
-  - title: Pick/drop rows with matching conditions
-    desc: General (not specific to ForestGEO)
-    contents:
-      - drop_if_na
-
-  - title: Pick/drop rows with matching conditions
-    desc: Specific to ForestGEO
-    contents:
-      - drop_status
-      - pick_status
-      - pick_plotname
-      - starts_with("pick_dbh")
-
   - title: Edit data in place
-    desc: Specific to ForestGEO
     contents:
-      - collapse_censusid
+    - has_concept("functions to edit ForestGEO data in place")
+    - has_concept("general functions to edit data in place")
 
-  - title: Edit data in place
-    desc: General (not specific to ForestGEO)
+  - title: Pick/drop rows with matching conditions
     contents:
-      - fill_na
-      - suffix_match
-      - to_tidy_names
-      - glue_comma
-      - glue_pipe
-      - enline
-
-  - title: Assert
-    desc: General (not specific to ForestGEO)
-    contents:
-      - check_crucial_names
-      - detect_insensitive
-      - exists_in_pkg
-
-  - title: Predicates
-    desc: General (not specific to ForestGEO)
-    contents:
-      - is_named
-      - has_concept("predicates")
-
-  - title: Throw conditions
-    desc: General (not specific to ForestGEO)
-    contents:
-      - abort_na
-      - inform_na
-      - warn_na
-      - flag_if
+    - has_concept("functions to pick or drop rows of a ForestGEO dataframe")
+    - has_concept("general functions to pick or drop rows of a dataframe")
 
   - title: Find or approximate
-    desc: General (not specific to ForestGEO)
     contents:
-      - round_any
-      - guess_max
-      - guess_plotdim
-      - find_datasets
+    - has_concept("general functions to find or approximate")
 
-  - title: Deal with objects' names
-    desc: General (not specific to ForestGEO)
+  - title: Assert
     contents:
-      - extract_insensitive
-      - insensitive
-      - name_dfs
-      - nms_pull_matches
-      - rename_matches
+    - has_concept("general functions to assert")
+
+  - title: Predicates
+    contents:
+    - has_concept("general predicates")
+
+  - title: Throw conditions
+    contents:
+    - has_concept("functions to throw conditions")
+
+  - title: Deal with names
+    contents:
+    - has_concept("general functions to deal with names")
 
   - title: Construct or restructure data
-    desc: General (not specific to ForestGEO)
     contents:
-      - gather_mat
-      - gather_mats
+    - has_concept("general functions to construct or restructure data")
 
   - title: Miscellaneous
-    desc: General (not specific to ForestGEO)
     contents:
-      - print_all
-      - "`%||%`"
+    - has_concept("general miscellaneous functions")
 
   - title: Access data
-    desc: Specific to ForestGEO
     contents:
-      - luquillo_stem_random_tiny
-      - luquillo_vft_4quad
+    - has_concept("ForestGEO datasets")

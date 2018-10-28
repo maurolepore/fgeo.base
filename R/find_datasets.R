@@ -2,6 +2,8 @@
 #'
 #' @param package String; package name to search.
 #'
+#' @family general functions to find or approximate
+#'
 #' @return Sting.
 #' @export
 #'

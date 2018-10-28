@@ -8,8 +8,8 @@
 #' @param x vector or dataframe to modify.
 #' @seealso `httr::insensitive()`.
 #'
-#' @family functions for developers.
-#' @family functions dealing with names.
+#' @family functions for developers
+#' @family general functions to deal with names
 #'
 #' @author Hadley Wickham (see `httr::insensitive()`).
 #' (https://twitter.com/hadleywickham)

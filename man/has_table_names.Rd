@@ -22,7 +22,7 @@ has_table_names(stem)(stem)
 has_table_names(stem)(tree)
 }
 \seealso{
-Other predicates: \code{\link{check_crucial_names}},
-  \code{\link{detect_if}}, \code{\link{is_multiple}}
+Other general predicates: \code{\link{detect_if}},
+  \code{\link{is_multiple}}, \code{\link{is_named}}
 }
-\concept{predicates}
+\concept{general predicates}

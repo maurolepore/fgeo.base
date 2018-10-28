@@ -7,7 +7,7 @@
 #'
 #' @seealso `tidyr::drop_na()`.
 #'
-#' @family functions to pick or drop rows of a dataframe.
+#' @family general functions to pick or drop rows of a dataframe
 #'
 #' @return A dataframe.
 #' @export

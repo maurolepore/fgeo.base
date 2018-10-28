@@ -26,3 +26,8 @@ dfm <- data.frame(1)
 is_named(dfm)
 dfm
 }
+\seealso{
+Other general predicates: \code{\link{detect_if}},
+  \code{\link{has_table_names}}, \code{\link{is_multiple}}
+}
+\concept{general predicates}

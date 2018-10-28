@@ -4,6 +4,8 @@
 #' @param n Integer; number of rows to print.
 #' @param width Integer; number of columns to print.
 #'
+#' @family general miscellaneous functions
+#'
 #' @return A tibble.
 #' @export
 #'

@@ -3,9 +3,11 @@
 #' @param x A named object.
 #' @param nms String; names expected to be found in `x`.
 #'
-#' @family predicates
 #' @family functions to check inputs.
-#' @family functions for developers.
+#' @family functions for developers
+#' @family general functions to assert
+#'
+#'
 #' @return Invisible `x`, or an error with informative message.
 #' @export
 #'
@@ -33,6 +35,8 @@ check_crucial_names <- function(x, nms) {
 #' Is named object? (Base-only version of rlang::is_named).
 #'
 #' @param x An object to test.
+#'
+#' @family general predicates
 #'
 #' @return The scalar `TRUE` or `FALSE`.
 #' @export

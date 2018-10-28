@@ -24,8 +24,5 @@ drop_if_na(dfm, "a")
 }
 \seealso{
 \code{tidyr::drop_na()}.
-
-Other functions to pick or drop rows of a dataframe.: \code{\link{pick_drop}},
-  \code{\link{pick_plotname}}
 }
-\concept{functions to pick or drop rows of a dataframe.}
+\concept{general functions to pick or drop rows of a dataframe}

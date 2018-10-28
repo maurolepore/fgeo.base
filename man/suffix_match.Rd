@@ -43,3 +43,9 @@ vft <- data.frame(
 )
 transform(vft, tagged = suffix_match(Tag, Status, "dead", ".d"))
 }
+\seealso{
+Other general functions to edit data in place: \code{\link{enline}},
+  \code{\link{fill_na}}, \code{\link{glue_comma}},
+  \code{\link{to_tidy_names}}
+}
+\concept{general functions to edit data in place}

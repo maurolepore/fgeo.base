@@ -1,5 +1,7 @@
 #' Datasets from __fgeo.data__.
 #'
+#' @family ForestGEO datasets
+#'
 #' @examples
 #' str(luquillo_stem_random_tiny, give.attr = FALSE)
 #' str(luquillo_vft_4quad, give.attr = FALSE)

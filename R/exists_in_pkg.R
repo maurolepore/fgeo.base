@@ -6,9 +6,11 @@
 #' @param object String giving the object to find.
 #' @param package String giving the package which namespace to search.
 #'
+#' @family general functions to assert
+#'
 #' @return Logical.
 #' @export
-#' @family functions for developers.
+#' @family functions for developers
 #' @examples
 #' exists_in_pkg("cars", "datasets")
 exists_in_pkg <- function(object, package){

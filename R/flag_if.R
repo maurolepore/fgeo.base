@@ -12,6 +12,8 @@
 #' @param msg String. An optional custom message.
 #' @param ... Other arguments passed to methods.
 #'
+#' @family functions to throw conditions
+#'
 #' @return A condition (and `.data` invisibly).
 #' @export
 #'
@@ -73,7 +75,7 @@ flag_if.data.frame <- function(.data,
 #' @param .data A dataframe.
 #' @inheritParams flag_if
 #'
-#' @family predicates
+#' @family general predicates
 #'
 #' @return Logical of length 1.
 #' @export

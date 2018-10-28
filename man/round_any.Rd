@@ -31,17 +31,17 @@ round_any(135, 25, ceiling)
 \seealso{
 \code{plyr::round_any()} and \url{http://bit.ly/2JrBQK3}.
 
-Other functions for developers.: \code{\link{check_crucial_names}},
+Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
   \code{\link{insensitive}}, \code{\link{is_multiple}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}
 
-Other functions dealing with names.: \code{\link{insensitive}},
-  \code{\link{name_dfs}}, \code{\link{nms_pull_matches}},
-  \code{\link{rename_matches}}
+Other general functions to find or approximate: \code{\link{find_datasets}},
+  \code{\link{guess_max}}, \code{\link{guess_plotdim}}
 }
 \concept{functions dealing with names.}
+\concept{functions for developers}
 \concept{functions for developers with no dependencies.}
-\concept{functions for developers.}
+\concept{general functions to find or approximate}
