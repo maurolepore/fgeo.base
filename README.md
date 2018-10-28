@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> General functions with no external dependency
+# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> Independent utility functions
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
@@ -12,9 +12,13 @@ status](https://travis-ci.org/forestgeo/fgeo.base.svg?branch=master)](https://tr
 status](https://coveralls.io/repos/github/forestgeo/fgeo.base/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.base?branch=master)
 
 The goal of **fgeo.base** is to provide functions with no external
-dependency. This makes it easy to import its functions into any **fgeo**
-package without carrying any dependency, which helps keep each **fgeo**
-package as small and independent as possible.
+dependency that can easily be imported into any other **fgeo** package.
+
+**fgeo.base** is mostly a repository of internal functions for other
+**fgeo.packages**: it hosts the kind of functions you would generally
+place in utils.R – except it can be accessed from any other **fgeo**
+package. As such, **fgeo.base** is not directly exposed to users,
+although a few functions are reexported by other **fgeo** packages.
 
 ## Installation
 

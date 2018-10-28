@@ -18,7 +18,8 @@
 #' @family functions for fgeo census.
 #' @family functions for fgeo vft.
 #'
-#' @family functions to pick or drop rows of a dataframe.
+#' @family functions to pick or drop rows of a ForestGEO dataframe
+#'
 #'
 #' @return Dataframe rows with matching conditions.
 #'

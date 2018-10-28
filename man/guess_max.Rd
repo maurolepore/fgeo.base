@@ -20,3 +20,8 @@ Guess maximum value of a vector with flexible accuracy.
 \examples{
 guess_max(1:19, 20)
 }
+\seealso{
+Other general functions to find or approximate: \code{\link{find_datasets}},
+  \code{\link{guess_plotdim}}, \code{\link{round_any}}
+}
+\concept{general functions to find or approximate}

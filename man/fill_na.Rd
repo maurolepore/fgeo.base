@@ -16,7 +16,8 @@ A modified version of \code{x}.
 }
 \description{
 This is a wrapper of \code{\link[base:replace]{base::replace()}} with a simplified interface and a name
-that target the specific job of filling NA's.
+that target the specific job of filling NA's. See also \code{tidyr::replace_na}
+and \code{dplyr::coalesce}.
 }
 \section{Acknowledgments}{
 
@@ -43,3 +44,9 @@ fill_na(a_vector)
 a_list <- list(x, x, x)
 lapply(a_list, fill_na)
 }
+\seealso{
+Other general functions to edit data in place: \code{\link{anchor}},
+  \code{\link{glue_comma}}, \code{\link{suffix_match}},
+  \code{\link{to_tidy_names}}
+}
+\concept{general functions to edit data in place}

@@ -5,6 +5,7 @@
 #' adapted from `rlang::`%||%`.
 #'
 #' @param x,y If x is NULL, will return y; otherwise returns x.
+#' @family general miscellaneous functions
 #'
 #' @export
 #'

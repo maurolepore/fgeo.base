@@ -85,10 +85,9 @@ Other functions for fgeo census.: \code{\link{guess_plotdim}}
 Other functions for fgeo vft.: \code{\link{guess_plotdim}},
   \code{\link{pick_plotname}}
 
-Other functions to pick or drop rows of a dataframe.: \code{\link{drop_if_na}},
-  \code{\link{pick_plotname}}
+Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_plotname}}
 }
 \concept{functions for fgeo census and vft.}
 \concept{functions for fgeo census.}
 \concept{functions for fgeo vft.}
-\concept{functions to pick or drop rows of a dataframe.}
+\concept{functions to pick or drop rows of a ForestGEO dataframe}

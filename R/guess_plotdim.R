@@ -10,6 +10,7 @@
 #' @family functions for fgeo census and vft.
 #' @family functions for fgeo census.
 #' @family functions for fgeo vft.
+#' @family general functions to find or approximate
 #'
 #' @examples
 #' x <- data.frame(
@@ -43,6 +44,8 @@ guess_plotdim <- function(x, accuracy = 20) {
 #' @param x Numeric vector.
 #' @param accuracy A single number.
 #'
+#' @family general functions to find or approximate
+#'
 #' @return A number.
 #' @export
 #'
@@ -60,6 +63,10 @@ guess_max <- function(x, accuracy) {
 #' @param f Rounding function: floor, ceiling or round.
 #'
 #' @seealso `plyr::round_any()` and \url{http://bit.ly/2JrBQK3}.
+#' @family functions for developers
+#' @family functions dealing with names.
+#' @family functions for developers with no dependencies.
+#' @family general functions to find or approximate
 #'
 #' @export
 #'
@@ -74,9 +81,6 @@ guess_max <- function(x, accuracy) {
 #' round_any(135, 10, ceiling)
 #' round_any(135, 100, ceiling)
 #' round_any(135, 25, ceiling)
-#' @family functions for developers.
-#' @family functions dealing with names.
-#' @family functions for developers with no dependencies.
 round_any <- function(x, accuracy, f = round) {
   f(x / accuracy) * accuracy
 }

@@ -97,8 +97,8 @@ test_that("works as unnamed character string", {
 
 
 
-context("enline")
+context("anchor")
 
 test_that("outputs the expected string", {
-  expect_equal(enline(letters[1:3]), c("^a$", "^b$", "^c$"))
+  expect_equal(anchor(letters[1:3]), c("^a$", "^b$", "^c$"))
 })

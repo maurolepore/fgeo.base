@@ -26,3 +26,7 @@ Throw condition if variable has missing values.
 warn_na(c(x = 1, y = NA))
 inform_na(data.frame(x = 1, y = NA))
 }
+\seealso{
+Other functions to throw conditions: \code{\link{flag_if}}
+}
+\concept{functions to throw conditions}

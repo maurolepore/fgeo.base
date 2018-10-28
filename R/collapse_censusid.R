@@ -5,6 +5,9 @@
 #'
 #' @param x A dataframe -- specifically a ViewFullTable.
 #'
+#' @family functions to edit ForestGEO data in place
+#' @keywords internal
+#'
 #' @return A modified version of `x`, most likely with less rows.
 #' @export
 #'

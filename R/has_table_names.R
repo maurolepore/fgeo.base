@@ -1,7 +1,8 @@
 #' Factory of predicates to check if a table has the same names as a reference.
 #'
 #' @param reference A dataframe.
-#' @family predicates
+#' @family general predicates
+#'
 #' @return A closure.
 #' @export
 #' @examples

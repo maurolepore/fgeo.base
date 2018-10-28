@@ -2,6 +2,8 @@
 #'
 #' @param x A vector or dataframe.
 #'
+#' @family functions to throw conditions
+#'
 #' @return A warning message and invisible `x`.
 #'
 #' @examples

@@ -11,14 +11,16 @@ knitr::opts_chunk$set(
 )
 ```
 
-# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> General functions with no external dependency
+# <img src="https://i.imgur.com/vTLlhbp.png" align="right" height=88 /> Independent utility functions
 
 [![lifecycle](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/fgeo.base)](https://cran.r-project.org/package=fgeo.base)
 [![Travis build status](https://travis-ci.org/forestgeo/fgeo.base.svg?branch=master)](https://travis-ci.org/forestgeo/fgeo.base)
 [![Coverage status](https://coveralls.io/repos/github/forestgeo/fgeo.base/badge.svg)](https://coveralls.io/r/forestgeo/fgeo.base?branch=master)
 
-The goal of __fgeo.base__ is to provide functions with no external dependency. This makes it easy to import its functions into any __fgeo__ package without carrying any dependency, which helps keep each __fgeo__ package as small and independent as possible.
+The goal of __fgeo.base__ is to provide functions with no external dependency that can easily be imported into any other __fgeo__ package. 
+
+__fgeo.base__ is mostly a repository of internal functions for other __fgeo.packages__: it hosts the kind of functions you would generally place in utils.R -- except it can be accessed from any other __fgeo__ package. As such, __fgeo.base__ is not directly exposed to users, although a few functions are reexported by other __fgeo__ packages. 
 
 ## Installation
 

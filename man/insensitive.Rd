@@ -44,20 +44,20 @@ transform(insensitive(vft), new = treeid)
 \seealso{
 \code{httr::insensitive()}.
 
-Other functions for developers.: \code{\link{check_crucial_names}},
+Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
   \code{\link{is_multiple}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 
-Other functions dealing with names.: \code{\link{name_dfs}},
-  \code{\link{nms_pull_matches}},
-  \code{\link{rename_matches}}, \code{\link{round_any}}
+Other general functions to deal with names: \code{\link{extract_insensitive}},
+  \code{\link{name_dfs}}, \code{\link{nms_pull_matches}},
+  \code{\link{rename_matches}}
 }
 \author{
 Hadley Wickham (see \code{httr::insensitive()}).
 (https://twitter.com/hadleywickham)
 }
-\concept{functions dealing with names.}
-\concept{functions for developers.}
+\concept{functions for developers}
+\concept{general functions to deal with names}

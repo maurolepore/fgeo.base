@@ -27,8 +27,7 @@ pick_plotname(vft, "b")
 Other functions for fgeo vft.: \code{\link{guess_plotdim}},
   \code{\link{pick_drop}}
 
-Other functions to pick or drop rows of a dataframe.: \code{\link{drop_if_na}},
-  \code{\link{pick_drop}}
+Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_drop}}
 }
 \concept{functions for fgeo vft.}
-\concept{functions to pick or drop rows of a dataframe.}
+\concept{functions to pick or drop rows of a ForestGEO dataframe}

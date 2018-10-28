@@ -16,6 +16,8 @@
 #'
 #' @seealso `enframe()` (__tibble__ package) and `gather()` (__tidyr__ package).
 #'
+#' @family general functions to construct or restructure data
+#'
 #' @return
 #' * [gather_mat()]: A dataframe.
 #' * [gather_mats()]: A list of dataframes.

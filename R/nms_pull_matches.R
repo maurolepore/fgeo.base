@@ -5,8 +5,8 @@
 #' @param x A named object.
 #' @param .match A character vector giving names to match.
 #'
-#' @family functions dealing with names.
-#' @family functions for developers.
+#' @family general functions to deal with names
+#' @family functions for developers
 #'
 #'
 #' @return A character vector.
@@ -18,5 +18,5 @@
 #' nms_pull_matches(luquillo_vft_4quad, c("PY", "PX", "gx", "gy"))
 nms_pull_matches <- function(x, .match) {
   stopifnot(is_named(x))
-  names(x)[grepl(glue_pipe(enline(.match)), names(x))]
+  names(x)[grepl(glue_pipe(anchor(.match)), names(x))]
 }

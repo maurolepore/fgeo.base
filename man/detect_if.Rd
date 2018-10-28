@@ -33,7 +33,7 @@ detect_if(dfm, "censusid", is_duplicated)
 detect_if(dfm, "censusid", is_multiple)
 }
 \seealso{
-Other predicates: \code{\link{check_crucial_names}},
-  \code{\link{has_table_names}}, \code{\link{is_multiple}}
+Other general predicates: \code{\link{has_table_names}},
+  \code{\link{is_multiple}}, \code{\link{is_named}}
 }
-\concept{predicates}
+\concept{general predicates}

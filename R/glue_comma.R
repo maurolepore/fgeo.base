@@ -4,11 +4,12 @@
 #'
 #' @inheritDotParams base::paste
 #'
+#' @family general functions to edit data in place
+#' @keywords internal
+#'
 #' @return String.
+#'
 #' @export
-#'
-#'
-#'
 #' @examples
 #' glue_comma(1:3)
 #' glue_pipe(1:3)

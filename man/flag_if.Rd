@@ -58,3 +58,7 @@ flag_if(.df, "b", is_multiple)
 flag_if(.df, "a", is_multiple)
 flag_if(.df, "a", is_multiple, message, "Custom")
 }
+\seealso{
+Other functions to throw conditions: \code{\link{condition_na}}
+}
+\concept{functions to throw conditions}

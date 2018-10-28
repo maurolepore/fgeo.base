@@ -55,3 +55,4 @@ of the original matrix.
 \seealso{
 \code{enframe()} (\strong{tibble} package) and \code{gather()} (\strong{tidyr} package).
 }
+\concept{general functions to construct or restructure data}

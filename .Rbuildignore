@@ -1,3 +1,5 @@
+^tmp\.sh$
+^ship\.sh$
 ^appveyor\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$

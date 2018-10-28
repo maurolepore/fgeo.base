@@ -31,16 +31,16 @@ is_duplicated(c(1, NA))
 \seealso{
 Other functions to check inputs.: \code{\link{check_crucial_names}}
 
-Other functions for developers.: \code{\link{check_crucial_names}},
+Other functions for developers: \code{\link{check_crucial_names}},
   \code{\link{exists_in_pkg}},
   \code{\link{extract_insensitive}},
   \code{\link{insensitive}},
   \code{\link{nms_pull_matches}},
   \code{\link{rename_matches}}, \code{\link{round_any}}
 
-Other predicates: \code{\link{check_crucial_names}},
-  \code{\link{detect_if}}, \code{\link{has_table_names}}
+Other general predicates: \code{\link{detect_if}},
+  \code{\link{has_table_names}}, \code{\link{is_named}}
 }
-\concept{functions for developers.}
+\concept{functions for developers}
 \concept{functions to check inputs.}
-\concept{predicates}
+\concept{general predicates}
