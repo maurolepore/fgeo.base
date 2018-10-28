@@ -23,7 +23,7 @@ and \code{dplyr::coalesce}.
 
 This function was inspired by conversations with David Kenfack and by a
 \href{https://goo.gl/aMTQck}{blog post by Rick Pack}. Also tanks to Edgar Ruiz
-(@edgararuiz) for discussing alternatives
+for discussing alternatives
 (via \href{https://goo.gl/4uME2U}{this blog post} on RStudio community).
 }
 
