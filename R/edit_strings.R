@@ -104,6 +104,7 @@ to_tidy_names <- function(x) {
 #' @param x A vector.
 #'
 #' @family general functions to edit data in place
+#' @keywords internal
 #'
 #' @return A character vector.
 #' @export

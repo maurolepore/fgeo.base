@@ -8,6 +8,8 @@
 #'
 #' @family general functions to edit data in place
 #'
+#' @seealso `tidyr::replace_na`, `dplyr::coalesce`, [base::replace()].
+#'
 #' @return A modified version of `x`.
 #'
 #' @section Acknowledgments:

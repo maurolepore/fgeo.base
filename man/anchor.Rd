@@ -24,3 +24,4 @@ Other general functions to edit data in place: \code{\link{fill_na}},
   \code{\link{to_tidy_names}}
 }
 \concept{general functions to edit data in place}
+\keyword{internal}

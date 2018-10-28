@@ -44,6 +44,8 @@ a_list <- list(x, x, x)
 lapply(a_list, fill_na)
 }
 \seealso{
+\code{tidyr::replace_na}, \code{dplyr::coalesce}, \code{\link[base:replace]{base::replace()}}.
+
 Other general functions to edit data in place: \code{\link{anchor}},
   \code{\link{glue_comma}}, \code{\link{suffix_match}},
   \code{\link{to_tidy_names}}
