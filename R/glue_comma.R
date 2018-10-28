@@ -5,6 +5,7 @@
 #' @inheritDotParams base::paste
 #'
 #' @family general functions to edit data in place
+#' @keywords internal
 #'
 #' @return String.
 #'
