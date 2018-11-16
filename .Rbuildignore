@@ -1,5 +1,5 @@
-^tmp\.sh$
-^ship\.sh$
+^\.buildignore$
+
 ^appveyor\.yml$
 ^.*\.Rproj$
 ^\.Rproj\.user$
@@ -10,5 +10,4 @@
 ^docs$
 ^data-raw$
 ^\.github$
-^tmp\.R$
 ^\.Rprofile$
