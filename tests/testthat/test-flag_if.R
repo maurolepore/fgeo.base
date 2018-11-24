@@ -56,9 +56,6 @@ test_that("doesn't deal directly with grouped data to work within groups", {
   by_a <- group_by(.df, a)
   warn_if_b_is_multiple <- function(.data) flag_if(.data, "b", is_multiple)
   expect_warning(warn_if_b_is_multiple(by_a), "Flagged values")
-
-  warn_if_b_is_multiple <- function(.data) flag_if(.data, "b", is_multiple)
-  expect_silent(fgeo.tool::by_group(by_a, warn_if_b_is_multiple))
 })
 
 
