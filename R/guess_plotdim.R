@@ -35,7 +35,7 @@ guess_plotdim <- function(x, accuracy = 20) {
     x[ , c("gx", "gy")], guess_max, double(1), accuracy = accuracy
   )
 
-  message("Gessing: plotdim = c(", glue_comma(guess), ")")
+  message("Guessing: plotdim = c(", glue_comma(guess), ")")
   unname(guess)
 }
 
