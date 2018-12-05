@@ -39,6 +39,70 @@ guess_plotdim <- function(x, accuracy = 20) {
   unname(guess)
 }
 
+#' Pull names that match a character vector.
+#'
+#' The `nms_` prefix matches functions in other fgeo packages.
+#'
+#' @param x A named object.
+#' @param .match A character vector giving names to match.
+#'
+#' @family general functions to deal with names
+#' @family functions for developers
+#'
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#' nms_pull_matches(luquillo_stem_random_tiny, c("x", "PX", "gx"))
+#' nms_pull_matches(luquillo_vft_4quad, c("x", "PX", "gx"))
+#' nms_pull_matches(luquillo_vft_4quad, c("PY", "PX", "gx", "gy"))
+nms_pull_matches <- function(x, .match) {
+  stopifnot(is_named(x))
+  names(x)[grepl(glue_pipe(anchor(.match)), names(x))]
+}
+
+#' Add regex line-start and -end.
+#'
+#' @param x A vector.
+#'
+#' @family general functions to edit data in place
+#' @keywords internal
+#'
+#' @return A character vector.
+#' @export
+#'
+#' @examples
+#' anchor(c("a", "b"))
+anchor <- function(x) {
+  paste0("^", x, "$")
+}
+
+#' Collapse strings into a single one.
+#'
+#' These functions are a shortcut for paste0(..., collapse = "SOMETHING").
+#'
+#' @inheritDotParams base::paste
+#'
+#' @family general functions to edit data in place
+#' @keywords internal
+#'
+#' @return String.
+#'
+#' @export
+#' @examples
+#' glue_comma(1:3)
+#' glue_pipe(1:3)
+glue_comma <- function(...) {
+  paste0(..., collapse = ", ")
+}
+
+#' @export
+#' @rdname glue_comma
+glue_pipe <- function(...) {
+  paste0(..., collapse = "|")
+}
+
 #' Guess maximum value of a vector with flexible accuracy.
 #'
 #' @param x Numeric vector.
@@ -55,35 +119,4 @@ guess_max <- function(x, accuracy) {
   max_x <- max(x, na.rm = TRUE)
   round_any(max_x, f = ceiling, accuracy = accuracy)
 }
-
-#' Round to multiple of any number. Copied from `plyr:::round_any.numeric()`.
-#'
-#' @param x Numeric vector to round.
-#' @param accuracy Number to round to.
-#' @param f Rounding function: floor, ceiling or round.
-#'
-#' @seealso `plyr::round_any()` and \url{http://bit.ly/2JrBQK3}.
-#' @family functions for developers
-#' @family functions dealing with names.
-#' @family functions for developers with no dependencies.
-#' @family general functions to find or approximate
-#'
-#' @export
-#'
-#' @examples
-#' # From pryr::round_any()
-#' round_any(135, 10)
-#' round_any(135, 100)
-#' round_any(135, 25)
-#' round_any(135, 10, floor)
-#' round_any(135, 100, floor)
-#' round_any(135, 25, floor)
-#' round_any(135, 10, ceiling)
-#' round_any(135, 100, ceiling)
-#' round_any(135, 25, ceiling)
-round_any <- function(x, accuracy, f = round) {
-  f(x / accuracy) * accuracy
-}
-
-
 
