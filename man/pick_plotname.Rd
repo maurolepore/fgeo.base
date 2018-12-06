@@ -23,11 +23,5 @@ vft <- data.frame(PlotName = c("a", "b"), stringsAsFactors = FALSE)
 pick_plotname(vft)
 pick_plotname(vft, "b")
 }
-\seealso{
-Other functions for fgeo vft.: \code{\link{guess_plotdim}},
-  \code{\link{pick_drop}}
-
-Other functions to pick or drop rows of a ForestGEO dataframe: \code{\link{pick_drop}}
-}
 \concept{functions for fgeo vft.}
 \concept{functions to pick or drop rows of a ForestGEO dataframe}

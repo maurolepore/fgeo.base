@@ -22,14 +22,10 @@ Test if an object exists in the namespace of a package. Useful inside an
 exists_in_pkg("cars", "datasets")
 }
 \seealso{
-Other general functions to assert: \code{\link{check_crucial_names}},
-  \code{\link{extract_insensitive}}
+Other general functions to assert: \code{\link{check_crucial_names}}
 
 Other functions for developers: \code{\link{check_crucial_names}},
-  \code{\link{extract_insensitive}},
-  \code{\link{insensitive}}, \code{\link{is_multiple}},
-  \code{\link{nms_pull_matches}},
-  \code{\link{rename_matches}}, \code{\link{round_any}}
+  \code{\link{insensitive}}
 }
 \concept{functions for developers}
 \concept{general functions to assert}

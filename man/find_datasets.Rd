@@ -18,8 +18,4 @@ Find datasets in a package.
 \examples{
 find_datasets("fgeo.base")
 }
-\seealso{
-Other general functions to find or approximate: \code{\link{guess_max}},
-  \code{\link{guess_plotdim}}, \code{\link{round_any}}
-}
 \concept{general functions to find or approximate}

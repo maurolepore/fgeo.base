@@ -39,7 +39,8 @@ check_crucial_names <- function(x, nms) {
 #' @family general predicates
 #'
 #' @return The scalar `TRUE` or `FALSE`.
-#' @export
+#' @keywords internal
+#' @noRd
 #'
 #' @examples
 #' is_named(c(x = 1))
@@ -60,4 +61,8 @@ is_named <- function (x) {
     return(FALSE)
   }
   TRUE
+}
+
+glue_comma <- function(...) {
+  paste0(..., collapse = ", ")
 }

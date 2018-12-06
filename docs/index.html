@@ -95,12 +95,12 @@ devtools::install_github("forestgeo/fgeo.base")</a></code></pre>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(fgeo.base)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3">dfm &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/data.frame">data.frame</a></span>(<span class="dt">a =</span> <span class="dv">1</span>, <span class="dt">b =</span> <span class="ot">NA</span>)</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw"><a href="reference/drop_if_na.html">drop_if_na</a></span>(dfm, <span class="st">"b"</span>)</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="kw">drop_if_na</span>(dfm, <span class="st">"b"</span>)</a>
 <a class="sourceLine" id="cb2-5" data-line-number="5"><span class="co">#&gt; Warning: Dropping 1 rows with missing `b` values.</span></a>
 <a class="sourceLine" id="cb2-6" data-line-number="6"><span class="co">#&gt; [1] a b</span></a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"><span class="co">#&gt; &lt;0 rows&gt; (or 0-length row.names)</span></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="kw"><a href="reference/drop_if_na.html">drop_if_na</a></span>(dfm, <span class="st">"a"</span>)</a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="kw">drop_if_na</span>(dfm, <span class="st">"a"</span>)</a>
 <a class="sourceLine" id="cb2-10" data-line-number="10"><span class="co">#&gt;   a  b</span></a>
 <a class="sourceLine" id="cb2-11" data-line-number="11"><span class="co">#&gt; 1 1 NA</span></a></code></pre></div>
 </div>
